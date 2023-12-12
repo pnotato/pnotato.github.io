@@ -63,14 +63,16 @@ body, html {
 .splash-text {
     width: 50%;
     font-size: calc(1.3rem + .6vw);
-    float: left;
     margin-bottom: 25px;
+    user-select: auto;
+    display: inline-block; /* Make it inline-block to be on the same line */
 }
 
 .icons {
     display: flex;
     flex-direction: column;
     float: right;
+    justify-content: flex-start;
 }
 
 .social-icon {
