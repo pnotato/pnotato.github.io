@@ -26,7 +26,7 @@ body, html {
     padding: 25px;
     background: linear-gradient(290deg, #c80000, #d66a00, #d20037, #c67405);
     background-size: 240% 240%;
-    animation: gradient-animation 36s ease infinite;
+    animation: gradient-animation 10s ease infinite;
 }
 
 @keyframes gradient-animation {
