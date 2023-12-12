@@ -1,0 +1,58 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold; /* Specify the font weight here */
+    color: white;
+}
+
+@font-face {
+    font-family: 'Montserrat'; /* a name to be used later */
+    src: url("fonts/Montserrat-Bold.ttf"); /* URL to font */
+    font-weight: normal; /* specify the font weight, should match the one in font-family */
+    font-style: normal; /* specify the font style, e.g., normal or italic */
+}
+
+
+.gradient-background {
+    height: 100%;
+    padding: 2%;
+    background: linear-gradient(290deg, #c80000, #d66a00, #d20037, #c67405);
+    background-size: 240% 240%;
+    animation: gradient-animation 36s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.text-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    padding: 5%; 
+    background-color: #282B30;
+}
+
+.title-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20vh;
+    width: 50vw;
+    color: #fff;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: -6.5px;
+    top: 20px;
+    line-height: 0.9;
+}
+
