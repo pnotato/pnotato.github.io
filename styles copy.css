@@ -47,6 +47,7 @@ body, html {
     position: relative;
     padding: 5%; 
     background-color: #282B30;
+    display: flex;
 }
 
 .title-text {
@@ -55,22 +56,26 @@ body, html {
     width: 50vw;
     color: white;
     text-align: left;
+    margin: 0;
+    padding: 0;
+    left: -6.5px;
+    top: 20px;
     line-height: 1;
-    transform: translateX(-6px);
-    margin-bottom: 20vh;
 }
 
 .splash-text {
     width: 50%;
     font-size: calc(1.3rem + .6vw);
-    float: left;
-    margin-bottom: 25px;
+    display: flex;
+    justify-content: flex-start; /* Align text to the left */
 }
 
 .icons {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    float: right;
+    flex-direction: column; /* Stack icons vertically */
+    justify-content: flex-start; /* Align icons to the bottom */
+    align-items: flex-end;
 }
 
 .social-icon {
