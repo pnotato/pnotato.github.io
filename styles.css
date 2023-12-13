@@ -26,7 +26,7 @@ body, html {
     padding: 25px;
     background: linear-gradient(290deg, #c80000, #d66a00, #d20037, #c67405);
     background-size: 240% 240%;
-    animation: gradient-animation 36s ease infinite;
+    animation: gradient-animation 10s ease infinite;
 }
 
 @keyframes gradient-animation {
@@ -58,12 +58,23 @@ body, html {
     line-height: 1;
     transform: translateX(-6px);
     margin-bottom: 20vh;
+    margin-top: 4vh;
+}
+
+.proj-title-text {
+    font-family: 'Montserrat-Bold';
+    font-size: 5vw;
+    width: 50vw;
+    color: white;
+    text-align: left;
+    line-height: 1;
+    margin-bottom: 10vh;
+    margin-top: 4vh;
 }
 
 .splash-text {
     width: 50%;
     font-size: calc(1.3rem + .6vw);
-    margin-bottom: 25px;
     user-select: auto;
     display: inline-block; /* Make it inline-block to be on the same line */
 }
@@ -79,4 +90,49 @@ body, html {
     width: 50px;
     height: 50px;
     margin-bottom: 20px; /* Adjust the margin between icons if needed */
+}
+
+.back-button {
+    font-family: 'Montserrat';
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    color: #e0764a;
+    transition: 0.2s;
+}
+
+.button {
+    font-family: 'Montserrat';
+    color: #c67405;
+    text-decoration: none;
+}
+
+.button:hover {
+    color: #e0764a;
+    transition: 0.2s;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 40vw;
+    margin-bottom: 5%;
+    background-color: #202225;
+    border-radius: 10px;
+    align-items: center;
+    display: inline-block;
+
+}
+
+.card-img-top {
+    border-radius: 10px;
+
 }
