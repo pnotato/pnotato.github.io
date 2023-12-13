@@ -134,5 +134,16 @@ body, html {
 
 .card-img-top {
     border-radius: 10px;
+    max-height: 50vh;
+    min-height: 50vh;
+}
 
+.btn {
+    background-color: #424549;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #e0764a;
+    transition: 0.2s;
 }
