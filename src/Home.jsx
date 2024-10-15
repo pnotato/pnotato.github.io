@@ -1,7 +1,10 @@
 import { IconPhoto, IconMessageCircle, IconSettings } from '@tabler/icons-react';
 import { Tabs, rem } from '@mantine/core';
+import ReactFloaterJs from 'react-floaterjs'
 import './Home.css';
 import Wave from 'react-wavify'
+import githubIcon from './assets/github-mark.svg';
+import linkedinIcon from './assets/icons8-linkedin-100.svg';
 
 function Home() {
   return (
@@ -10,6 +13,15 @@ function Home() {
       <h1> Hi, I'm</h1>
       <div className="title-text">
         Nicholas Chan
+      </div>
+      
+      <div className="socials">
+        <a href="https://github.com/pnotato/">
+          <img className="social-icons" src={githubIcon} alt="GitHub Icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/nicholasch-an/">
+          <img className="social-icons-linkedin" src={linkedinIcon} alt="GitHub Icon" />
+        </a>   
       </div>
     </div>
     <div className="wave">

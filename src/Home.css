@@ -38,3 +38,21 @@ body {
 .title h1 {
   margin: 0;
 }
+
+.socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icons {
+  margin-left: 20px;
+  height:50px;
+  width: 50px;
+}
+.social-icons-linkedin {
+  margin-left: 20px;
+  height:60px;
+  width: 60px;
+}
