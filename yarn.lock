@@ -549,11 +549,6 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@mantine/carousel@^7.13.2":
-  version "7.13.2"
-  resolved "https://registry.yarnpkg.com/@mantine/carousel/-/carousel-7.13.2.tgz#c1e1c5f2190596e5d2149dbdabcaeef6d361b585"
-  integrity sha512-qFIM32uWiiQQPkdAOeymVstwOGiPR/0jxvniHO3llPB193ZFWsKKq3IBIch6zRG2bSPOV18yZsWR6VVkXYXb+A==
-
 "@mantine/core@^7.13.2":
   version "7.13.2"
   resolved "https://registry.yarnpkg.com/@mantine/core/-/core-7.13.2.tgz#8fb8ee2857a40f237ffed370a6ad768fbb1b3be2"
@@ -570,23 +565,6 @@
   version "7.13.2"
   resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-7.13.2.tgz#ec6a17faee4c8f3c0fe06f7b66c0e4a12c9b1ad1"
   integrity sha512-NKfGl2sKZw6zF//AfAFJrVDftjg7DKCn0h8rwJBIZCKi9axhwlV0Mvlqe2dep8QuM7O/uLLJSymSKIv1gaxIJg==
-
-"@mantine/nprogress@^7.13.2":
-  version "7.13.2"
-  resolved "https://registry.yarnpkg.com/@mantine/nprogress/-/nprogress-7.13.2.tgz#dfe8f23dd21eb13a21642b054935621ddad3ad26"
-  integrity sha512-GiseMDc1K42vZa2nHS19rvvtOZX+o2vmwhVhOFRZJ8NxIaR/pk2DcRjeq2cbRFgz9/KtUZNoehOwDqHY+ZYw/A==
-  dependencies:
-    "@mantine/store" "7.13.2"
-
-"@mantine/store@7.13.2":
-  version "7.13.2"
-  resolved "https://registry.yarnpkg.com/@mantine/store/-/store-7.13.2.tgz#aba23573bff42eda28716f422275929afde086c9"
-  integrity sha512-JcBGOqRynYiRWzw1rYdmViB/lfeYSec2EXVdSt4eJv+RPICsjjuqrIc3sNzfqJEGxcN4hGSlaeBriSh05K+vNQ==
-
-"@mantine/tiptap@^7.13.2":
-  version "7.13.2"
-  resolved "https://registry.yarnpkg.com/@mantine/tiptap/-/tiptap-7.13.2.tgz#f85aca02caa14ae54dd3e9e2123e54fbaf8e7d2d"
-  integrity sha512-7trWaaGoyLdYdxmiunuAANL/euYjZAv5ZfVq7T/T+5SrvLObrEJicdT62nTmEoI5a7bG4R0lE7v22n4FNydohA==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

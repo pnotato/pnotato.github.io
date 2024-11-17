@@ -9,17 +9,9 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "scripts": {
-    "build": "vite build",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d dist"
-  },
   "dependencies": {
-    "@mantine/carousel": "^7.13.2",
     "@mantine/core": "^7.13.2",
     "@mantine/hooks": "^7.13.2",
-    "@mantine/nprogress": "^7.13.2",
-    "@mantine/tiptap": "^7.13.2",
     "@tabler/icons-react": "^3.19.0",
     "@tiptap/extension-link": "^2.8.0",
     "@tiptap/pm": "^2.8.0",
