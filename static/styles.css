@@ -52,12 +52,20 @@ body {
     background-size: cover;
 }
 
+.footer-spacer {
+    aspect-ratio: 960/300;
+}
+
 .layer1 {
     background-image: url('./waves/wave-up.svg');
 }
 
 .layer2 {
     background-image: url('./waves/wave-down.svg');
+}
+
+.layer3 {
+    background-image: url('./waves/footer-wave.svg');
 }
 
 .socials {
@@ -77,4 +85,13 @@ body {
 .section-A {
     background-color: #ff5f6d;
     height: 90vh;
+}
+
+.section-B {
+    height: 100vh;
+}
+
+.footer {
+    height: 10vh;
+    background-color: #ff5f6d;
 }
