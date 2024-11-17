@@ -1,0 +1,80 @@
+body {
+    background-color: #001220;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* CSS */
+:root {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+}
+@supports (font-variation-settings: normal) {
+    :root { font-family: InterVariable, sans-serif; }
+}
+
+.intro {
+    width: 100%;
+    height: 70vh;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+}
+
+.intro h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+.title-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    color: #fff;
+    font-size: 8em;
+    text-align: center;
+    background: -webkit-linear-gradient(#ff5f6d, #ffc371);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.spacer {
+    aspect-ratio: 960/150;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.layer1 {
+    background-image: url('./waves/wave-up.svg');
+}
+
+.layer2 {
+    background-image: url('./waves/wave-down.svg');
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    gap: 15px;
+}
+
+.socials a {
+    display: inline-block;
+    height: 100%;
+}
+
+.section-A {
+    background-color: #ff5f6d;
+    height: 90vh;
+}
