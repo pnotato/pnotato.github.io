@@ -1,8 +1,8 @@
 import { IconPhoto, IconMessageCircle, IconSettings } from '@tabler/icons-react';
 import { Tabs, rem } from '@mantine/core';
-import ReactFloaterJs from 'react-floaterjs'
 import './Home.css';
 import Wave from 'react-wavify'
+import WaveDivider from './components/WaveDivider/WaveDivider.jsx';
 import githubIcon from './assets/github-mark.svg';
 import linkedinIcon from './assets/icons8-linkedin-100.svg';
 
@@ -14,7 +14,7 @@ function Home() {
         <div className="title-text">
           Nicholas Chan
         </div>
-
+        
         <div className="socials">
           <a href="https://github.com/pnotato/">
             <img className="social-icons" src={githubIcon} alt="GitHub Icon" />
@@ -24,45 +24,8 @@ function Home() {
           </a>
         </div>
       </div>
-      <div className="waves">
-        <div className="wave">
-          <Wave fill='#ffc371'
-            paused={false}
-            style={{ display: 'flex' }}
-            options={{
-              height: 20,
-              amplitude: 50,
-              speed: 0.15,
-              points: 7
-            }}
-          />
-        </div>
-        <div className="wave">
-          <Wave fill='#ff8a6f'
-            paused={false}
-            style={{ display: 'flex' }}
-            options={{
-              height: 100,
-              amplitude: 30,
-              speed: 0.20,
-              points: 5
-            }}
-          />
-        </div>
-        <div className="wave">
-          <Wave fill='#ff5f6d'
-            paused={false}
-            style={{ display: 'flex' }}
-            options={{
-              height: 200,
-              amplitude: 30,
-              speed: 0.20,
-              points: 3
-            }}
-          />
-        </div>
-      </div>
-
+      
+      <WaveDivider />
       <div className="sectionA">
             <div className="sectionA-body">
               <div className="sectionA-intro">
@@ -72,45 +35,10 @@ function Home() {
                 </div>
             </div>
       </div>
-
-      <div className="wavesdown">
-        <div className="wavedown">
-          <Wave fill='#ffc371'
-            paused={false}
-            style={{ display: 'flex' }}
-            options={{
-              height: 20,
-              amplitude: 50,
-              speed: 0.15,
-              points: 7
-            }}
-          />
-        </div>
-        <div className="wavedown">
-          <Wave fill='#ff8a6f'
-            paused={false}
-            style={{ display: 'flex' }}
-            options={{
-              height: 100,
-              amplitude: 30,
-              speed: 0.20,
-              points: 5
-            }}
-          />
-        </div>
-        <div className="wavedown">
-          <Wave fill='#ff5f6d'
-            paused={false}
-            style={{ display: 'flex' }}
-            options={{
-              height: 200,
-              amplitude: 30,
-              speed: 0.20,
-              points: 3
-            }}
-          />
-        </div>
+      <div style={{ transform: 'translateY(-20px) rotate(180deg) ' }}>
+        <WaveDivider />
       </div>
+      <div className="sectionB"></div>
     </>
   );
 }
