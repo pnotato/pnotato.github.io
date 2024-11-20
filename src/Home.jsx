@@ -1,10 +1,8 @@
-import { IconPhoto, IconMessageCircle, IconSettings } from '@tabler/icons-react';
-import { Tabs, rem } from '@mantine/core';
 import './Home.css';
-import Wave from 'react-wavify'
 import WaveDivider from './components/WaveDivider/WaveDivider.jsx';
-import IntroSection from './components/Intro-Section/Intro-Section.jsx';
-import ResumeSection from './components/Resume-Section/Resume-Section.jsx';
+import IntroSection from './components/sections/Intro-Section/Intro-Section.jsx';
+import ResumeSection from './components/sections/Resume-Section/Resume-Section.jsx';
+import ProjectsSection from './components/sections/Projects-Section/Projects-Section.jsx';
 import githubIcon from './assets/github-mark.svg';
 import linkedinIcon from './assets/icons8-linkedin-100.svg';
 import IntroImage from './assets/tmp-logo.png';
@@ -34,7 +32,8 @@ function Home() {
         <WaveDivider />
       </div>
       <ResumeSection />
-      
+      <WaveDivider />
+      <ProjectsSection />
     </>
   );
 }
