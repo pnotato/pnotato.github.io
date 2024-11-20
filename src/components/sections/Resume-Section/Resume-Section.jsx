@@ -7,9 +7,9 @@ function ResumeSection() {
         <>
             <div className="sectionB">
                 <div className="sectionB-body">
-                    <h1>Experience</h1>
+                    <h1> Work Experience</h1>
                     <ResumeTimeline />
-                    <p>View my resume <a href="/portfolio/Resume.pdf" target="_blank" rel="noopener noreferrer">here</a></p>
+                    <p>View my resume <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer">here</a>.</p>
                 </div>
             </div>
         </>

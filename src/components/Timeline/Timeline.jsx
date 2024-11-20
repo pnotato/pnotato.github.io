@@ -1,89 +1,52 @@
 import './Timeline.css'
-import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
-import TimelineDot from '@mui/lab/TimelineDot';
-import FastfoodIcon from '@mui/icons-material/Fastfood';
-import LaptopMacIcon from '@mui/icons-material/LaptopMac';
-import HotelIcon from '@mui/icons-material/Hotel';
-import RepeatIcon from '@mui/icons-material/Repeat';
-import Typography from '@mui/material/Typography';
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+
 
 export default function ResumeTimeline() {
-    return (
-      <Timeline position="alternate">
-        
-        <TimelineItem>
-          <TimelineOppositeContent
-            sx={{ 
-              m: 'auto 0',
-              fontFamily: 'Montserrat-Medium', 
-              color: '#ffffff',
-              fontSize: '1.5rem',
-             }}
-            variant="body2"
-            color="white"
-          >
-            May - December 2024
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineDot color="primary">
-              <LaptopMacIcon />
-            </TimelineDot>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ py: '50px', px: 2 }}>
-            <Typography variant="h6" sx={{ 
-              
-              fontFamily: 'Montserrat-Medium', 
-              color: '#ffffff',
-              fontSize: '1.5rem',
+  return (
+    <VerticalTimeline>
+      <VerticalTimelineElement
+        className="vertical-timeline-element--work"
+        date="May - December 2024"
+        iconStyle={{ background: '#ffc371', color: '#fff' }}
+        contentStyle={{ background: '#0F2F45', color: '#fff' }}
+        contentArrowStyle={{ opacity: 0 }}
+      >
 
-              }} component="span">
-              BC Cancer Foundation - Genome Sciences Centre
-            </Typography>
-            <Typography>Because it&apos;s awesome!</Typography>
-          </TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-        <TimelineOppositeContent
-            sx={{ m: 'auto 0' }}
-            variant="body2"
-            color="white"
-          >
-            May - December 2024
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineConnector />
-            <TimelineDot color="primary" variant="outlined">
-              <HotelIcon />
-            </TimelineDot>
-            <TimelineConnector sx={{ bgcolor: 'primary' }} />
-          </TimelineSeparator>
-          <TimelineContent sx={{ py: '50px', px: 2 }}>
-            <Typography variant="h6" component="span">
-              Sleep
-            </Typography>
-            <Typography>Because you need rest</Typography>
-          </TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineSeparator>
-            <TimelineConnector sx={{ bgcolor: 'primary' }} />
-            <TimelineDot color="secondary">
-              <RepeatIcon />
-            </TimelineDot>
-          </TimelineSeparator>
-          <TimelineContent sx={{ py: '50px', px: 2 }}>
-            <Typography variant="h6" component="span">
-              Repeat
-            </Typography>
-            <Typography>Because this is the life you love!</Typography>
-          </TimelineContent>
-        </TimelineItem>
-      </Timeline>
-    );
-  }
+        <h3 className="vertical-timeline-element-title">BC Cancer Foundation - BCGSC</h3>
+        <h4 className="vertical-timeline-element-subtitle">Systems Co-op Student</h4>
+        <p>
+          I was involved in creating Python Scripts for our account onboarding/offboarding process. I also worked on a web interface for our purchasing database.
+        </p>
+        <p className="tools">Python, Bash, Powershell, JavaScript, Node.js</p>
+      </VerticalTimelineElement>
+      <VerticalTimelineElement
+        className="vertical-timeline-element--work"
+        date="October 2023 - January 2024"
+        iconStyle={{ background: '#ffc371', color: '#fff' }}
+        contentStyle={{ background: '#0F2F45', color: '#fff' }}
+        contentArrowStyle={{ opacity: 0 }}
+      >
+
+        <h3 className="vertical-timeline-element-title">AumOui</h3>
+        <h4 className="vertical-timeline-element-subtitle">Website Developer</h4>
+        <p>
+          I was in charge of building and integrating custom HTML and CSS elements into a Shopify website.
+        </p>
+        <p className="tools">Liquid, HTML, CSS</p>
+      </VerticalTimelineElement>
+      <VerticalTimelineElement
+        className="vertical-timeline-element--work"
+        date="May 2023 - May 2024"
+        iconStyle={{ background: '#ffc371', color: '#fff' }}
+        contentStyle={{ background: '#0F2F45', color: '#fff' }}
+        contentArrowStyle={{ opacity: 0 }}
+      >
+        <h3 className="vertical-timeline-element-title">The TJX Companies, Inc.</h3>
+        <h4 className="vertical-timeline-element-subtitle">Sales Associate</h4>
+      </VerticalTimelineElement>
+
+    </VerticalTimeline>
+  );
+}
