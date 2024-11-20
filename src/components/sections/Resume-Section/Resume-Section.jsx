@@ -1,13 +1,15 @@
 import "./Resume-Section.css";
-import CustomizedTimeline from "../../Timeline/Timeline.jsx";
+import ResumeTimeline from "../../Timeline/Timeline.jsx";
+import ReactMarkdown from 'react-markdown';
 
 function ResumeSection() {
     return (
         <>
             <div className="sectionB">
                 <div className="sectionB-body">
-                    <h1>My Experience</h1>
-                    <CustomizedTimeline />
+                    <h1>Experience</h1>
+                    <ResumeTimeline />
+                    <p>View my resume <a href="/portfolio/Resume.pdf" target="_blank" rel="noopener noreferrer">here</a></p>
                 </div>
             </div>
         </>

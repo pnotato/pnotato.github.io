@@ -12,63 +12,58 @@ import HotelIcon from '@mui/icons-material/Hotel';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import Typography from '@mui/material/Typography';
 
-export default function CustomizedTimeline() {
+export default function ResumeTimeline() {
     return (
       <Timeline position="alternate">
+        
         <TimelineItem>
           <TimelineOppositeContent
-            sx={{ m: 'auto 0' }}
-            align="right"
+            sx={{ 
+              m: 'auto 0',
+              fontFamily: 'Montserrat-Medium', 
+              color: '#ffffff',
+              fontSize: '1.5rem',
+             }}
             variant="body2"
-            color="text.secondary"
+            color="white"
           >
-            9:30 am
+            May - December 2024
           </TimelineOppositeContent>
           <TimelineSeparator>
-            <TimelineConnector />
-            <TimelineDot>
-              <FastfoodIcon />
-            </TimelineDot>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ py: '12px', px: 2 }}>
-            <Typography variant="h6" component="span">
-              Eat
-            </Typography>
-            <Typography>Because you need strength</Typography>
-          </TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineOppositeContent
-            sx={{ m: 'auto 0' }}
-            variant="body2"
-            color="text.secondary"
-          >
-            10:00 am
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineConnector />
             <TimelineDot color="primary">
               <LaptopMacIcon />
             </TimelineDot>
             <TimelineConnector />
           </TimelineSeparator>
-          <TimelineContent sx={{ py: '12px', px: 2 }}>
-            <Typography variant="h6" component="span">
-              Code
+          <TimelineContent sx={{ py: '50px', px: 2 }}>
+            <Typography variant="h6" sx={{ 
+              
+              fontFamily: 'Montserrat-Medium', 
+              color: '#ffffff',
+              fontSize: '1.5rem',
+
+              }} component="span">
+              BC Cancer Foundation - Genome Sciences Centre
             </Typography>
             <Typography>Because it&apos;s awesome!</Typography>
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
+        <TimelineOppositeContent
+            sx={{ m: 'auto 0' }}
+            variant="body2"
+            color="white"
+          >
+            May - December 2024
+          </TimelineOppositeContent>
           <TimelineSeparator>
             <TimelineConnector />
             <TimelineDot color="primary" variant="outlined">
               <HotelIcon />
             </TimelineDot>
-            <TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
+            <TimelineConnector sx={{ bgcolor: 'primary' }} />
           </TimelineSeparator>
-          <TimelineContent sx={{ py: '12px', px: 2 }}>
+          <TimelineContent sx={{ py: '50px', px: 2 }}>
             <Typography variant="h6" component="span">
               Sleep
             </Typography>
@@ -77,13 +72,12 @@ export default function CustomizedTimeline() {
         </TimelineItem>
         <TimelineItem>
           <TimelineSeparator>
-            <TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
+            <TimelineConnector sx={{ bgcolor: 'primary' }} />
             <TimelineDot color="secondary">
               <RepeatIcon />
             </TimelineDot>
-            <TimelineConnector />
           </TimelineSeparator>
-          <TimelineContent sx={{ py: '12px', px: 2 }}>
+          <TimelineContent sx={{ py: '50px', px: 2 }}>
             <Typography variant="h6" component="span">
               Repeat
             </Typography>
