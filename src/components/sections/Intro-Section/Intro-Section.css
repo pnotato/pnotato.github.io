@@ -37,6 +37,10 @@
     color: #ff8a6f; 
     transition: color 0.3s ease;
   }
+
+  .profile-picture {
+    aspect-ratio: 1/1;
+  }
   
   @media (max-width: 768px) {
     .sectionA {
@@ -49,7 +53,10 @@
         text-align: center;
         width: 100%;
       }
-    
+
+      .sectionA-body {
+        flex-direction: column;
+      }
     
       .sectionA-intro h1 {
         font-size: 3em;

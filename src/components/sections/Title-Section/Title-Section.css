@@ -37,9 +37,15 @@
     width: 50px;
   }
   .social-icons-linkedin {
-    margin-left: 20px;
+    margin-left: 18px;
     height:60px;
     width: 60px;
+  }
+
+  .social-icons-mail{
+    margin-left: 20px;
+    height:51px;
+    width: 51px;
   }
   
   @media (max-width: 768px) {
