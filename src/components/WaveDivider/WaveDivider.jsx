@@ -35,7 +35,7 @@ function WaveDivider() {
                         style={{ display: 'flex', transform: 'translateY(10px)' }}
                         options={{
                             height: 150,
-                            amplitude: 30,
+                            amplitude: 25,
                             speed: 0.20,
                             points: 3
                         }}

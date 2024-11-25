@@ -5,16 +5,16 @@ import CardCover from '@mui/joy/CardCover';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
-export default function ProjectCard(imgsource, alt, hreflink) {
+export default function ProjectCard({imgsource, alt, title, hreflink}) {
     return (
-        <Card sx={{ minHeight: '250px', width: 400 }}>
+        <Card className="projectcard">
             <CardCover>
                 <img
-                    src="https://images.unsplash.com/photo-1542773998-9325f0a098d7?auto=format&fit=crop&w=320"
-                    srcSet="https://images.unsplash.com/photo-1542773998-9325f0a098d7?auto=format&fit=crop&w=320&dpr=2 2x"
+                    src={imgsource}
                     loading="lazy"
-                    alt=""
+                    alt={alt}
                 />
             </CardCover>
             <CardCover
@@ -25,13 +25,13 @@ export default function ProjectCard(imgsource, alt, hreflink) {
             />
             <CardContent sx={{ justifyContent: 'flex-end' }}>
                 <Typography level="title-lg" textColor="#fff">
-                    Yosemite National Park
+                    {title}
                 </Typography>
                 <Typography
-                    startDecorator={<LocationOnRoundedIcon />}
+                    startDecorator={<GitHubIcon />}
                     textColor="neutral.300"
                 >
-                    California, USA
+                    <a className="link" href={hreflink}>View Project</a>
                 </Typography>
             </CardContent>
         </Card>

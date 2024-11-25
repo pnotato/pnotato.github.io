@@ -1,0 +1,20 @@
+.projectcard {
+    height: 35vh;
+    width: 400px;
+}
+
+.link {
+    color: #ffc371
+}
+
+.link:hover {
+    color: #ff8a6f; 
+    transition: color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .projectcard {
+        height: 20vh;
+        width: 300px;
+    }
+}
