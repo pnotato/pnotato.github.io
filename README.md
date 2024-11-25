@@ -1,4 +1,4 @@
-![Image Example](./src/assetsasd/content/wavy.gif)
+![Image Example](./src/assets/content/wavy.gif)
 
 # Portfolio
 
