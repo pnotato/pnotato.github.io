@@ -12,7 +12,7 @@ export default function TitleSection() {
                     Nicholas Chan
                 </div>
 
-                {/* <div className="socials">
+                <div className="socials">
                     <a href="https://github.com/pnotato/">
                         <img className="social-icons" src={githubIcon} alt="GitHub Icon" />
                     </a>
@@ -22,7 +22,7 @@ export default function TitleSection() {
                     <a href="mailto:nca100@sfu.ca">
                         <img className="social-icons-mail" src={mailIcon} alt="<Mail> Icon" />
                     </a>
-                </div> */}
+                </div>
             </div>
         </>
     )
