@@ -1,4 +1,4 @@
-<img src="./src/assets/content/wavy.gif" alt="Example Image" style="width:200%;" />
+<img src="./src/assets/content/wavy.gif" alt="Example Image" style="width:150%;" />
 
 # Portfolio
 
