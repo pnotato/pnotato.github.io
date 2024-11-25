@@ -1,4 +1,4 @@
-![Image Example](./src/assets/content/wavy.gif)
+<img src="./src/assets/content/wavy.gif" alt="Example Image" style="width:100%;" />
 
 # Portfolio
 
