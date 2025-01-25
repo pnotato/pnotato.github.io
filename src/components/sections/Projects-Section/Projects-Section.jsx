@@ -7,6 +7,7 @@ import aslingo from "../../../assets/images/aslingo.png";
 import Blackjack from "../../../assets/images/Blackjack.png";
 import electric from "../../../assets/images/electric.png";
 import rainy from "../../../assets/images/rainy.jpg";
+import credeat from "../../../assets/images/credeat.png"
 
 function ProjectsSection() {
     return (
@@ -34,6 +35,12 @@ function ProjectsSection() {
                             hreflink="https://github.com/pnotato/ElectricAnomalies"
                         />
                         <ProjectCard 
+                            imgsource={credeat}
+                            alt="CredEat"
+                            title="CredEat"
+                            hreflink="https://github.com/pnotato/credeat"
+                        />
+                        <ProjectCard 
                             imgsource={aslingo}
                             alt="ASLingo"
                             title="ASLingo"
@@ -58,6 +65,7 @@ function ProjectsSection() {
                             title="Umbrella"
                             hreflink="https://github.com/pnotato/Umbrella"
                         />
+
                     </div>
                 </div>
             </div>
