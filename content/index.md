@@ -13,4 +13,5 @@ Take a look at my [[projects/index|projects]], or read about my [[experience/ind
 
 
 
-![TEST](https://www.sfu.ca/content/sfu/fs/get-help/jcr:content/main_content/image.img.640.medium.jpg/1715115175559.jpg)
+![SFU Campus](https://www.sfu.ca/content/sfu/fs/get-help/jcr:content/main_content/image.img.640.medium.jpg/1715115175559.jpg)
+*Image source: Simon Fraser University*
