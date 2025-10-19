@@ -1,0 +1,45 @@
+{
+  "projects": [
+    {
+      "id": "bitmap",
+      "label": "Bitmap Editor",
+      "image": "/assets/project/hirehigher.jpg",
+      "link": "#",
+      "description": "A documentation platform with visual diagram generation.",
+      "tags": ["Systems Programming", "Personal"]
+    },
+    {
+      "id": "credeat",
+      "label": "CredEat",
+      "image": "/assets/project/hirehigher.jpg",
+      "link": "#",
+      "description": "A job matching platform that connects students with opportunities.",
+      "tags": ["Full Stack", "Hackathon"]
+    },
+    {
+      "id": "quackii",
+      "label": "Quackii",
+      "image": "/assets/project/hirehigher.jpg",
+      "link": "#",
+      "description": "A documentation platform with visual diagram generation.",
+      "tags": ["Hackathon"]
+    },
+    {
+      "id": "shell",
+      "label": "Shell",
+      "image": "/assets/project/hirehigher.jpg",
+      "link": "#",
+      "description": "A documentation platform with visual diagram generation.",
+      "tags": ["Systems Programming", "Personal"]
+    },
+    {
+      "id": "wikilosophy",
+      "label": "Wikilosophy",
+      "image": "/assets/project/hirehigher.jpg",
+      "link": "#",
+      "description": "A job matching platform that connects students with opportunities.",
+      "tags": ["Data Analysis & ML", "Personal"]
+    }
+  ]
+}
+

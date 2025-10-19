@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/geist');
+
+:root {
+  /* Layout */
+  --border-width: 20px;
+  --border-indent: calc(var(--border-width) * 3.5);
+  --title-indent: 3rem;
+  --navbar-height: 60px;
+  
+  /* Colors */
+  --background-blue: #181743;
+  --accent-gold: #F2D8A7;
+  --accent-gold-hover: #F2C78A;
+  --hero-red: #E85D5E;
+  --white: #FFFFFF;
+  --white-transparent-20: rgba(255, 255, 255, 0.2);
+  --white-transparent-80: rgba(255, 255, 255, 0.8);
+  
+  /* Font Sizes */
+  --font-size-hero: 3.5rem;
+  --font-size-large: 2.5rem;
+  --font-size-medium: 1.3rem;
+  --font-size-base: 1rem;
+  --font-size-small: 0.9rem;
+}
+
+html {
+  font-size: clamp(14px, 1.2vw, 20px);
+}
+
+body {
+  margin: 0;
+  background-color: var(--background-blue);
+  border: var(--border-width) solid var(--white);
+  border-top: none;
+  min-height: 100vh; 
+  font-family: Inter;
+  color: var(--white);
+  z-index: 10; 
+}
+
+h1 {
+    font-size: var(--font-size-hero);
+}
+
+a {
+    color: var(--accent-gold);
+    text-decoration: none;
+}
+
+a.button{
+    color: var(--white);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent-gold-hover);
+    transition: color 0.2s;
+}
+
+/* Kind of a jank fix but this allows the navbar background to show up properly */
+.border {
+  position: relative;                
+  width: 100%;
+  height: var(--border-width);       
+  background: var(--white);               
+  z-index: 10;                        
+}
+
+.content-wrapper {
+    margin-top: calc(var(--border-width) * 2);   
+    height: 100%;
+}
+

@@ -1,0 +1,45 @@
+{
+  "projects": [
+    {
+      "id": "hirehigher",
+      "label": "HireHigher",
+      "image": "/assets/project/hirehigher.jpg",
+      "link": "#",
+      "description": "A job matching platform that connects students with opportunities.",
+      "tags": ["Full Stack", "Hackathon"]
+    },
+    {
+      "id": "visudocs",
+      "label": "VisuDocs",
+      "image": "/assets/project/visudocs.jpg",
+      "link": "#",
+      "description": "A documentation platform with visual diagram generation.",
+      "tags": ["Full Stack", "Personal"]
+    },
+    {
+      "id": "loadbalancer",
+      "label": "Load Balancer",
+      "image": "/assets/project/loadbalancer.jpg",
+      "link": "#",
+      "description": "A custom load balancer implementation for distributed systems.",
+      "tags": ["Systems Programming", "Personal"]
+    },
+    {
+      "id": "universe",
+      "label": "uniVerse",
+      "image": "/assets/project/universe.jpg",
+      "link": "#",
+      "description": "A job matching platform that connects students with opportunities.",
+      "tags": ["Full Stack", "Hackathon"]
+    },
+    {
+      "id": "aslingo",
+      "label": "ASLingo",
+      "image": "/assets/project/hirehigher.jpg",
+      "link": "#",
+      "description": "A documentation platform with visual diagram generation.",
+      "tags": ["Full Stack", "Data Analysis & ML", "Hackathon"]
+    }
+  ]
+}
+

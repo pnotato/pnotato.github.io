@@ -1,0 +1,47 @@
+.card {
+  display: block;
+  border: 5px solid var(--white);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  height: auto;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%; 
+  object-fit: cover;
+  display: block;
+}
+
+.card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.card-label-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
+  z-index: -1;
+}
+
+.card-label-text {
+  position: relative;
+  padding: 0.75rem;
+  font-size: var(--font-size-medium);
+  font-weight: 600;
+  text-decoration: none;
+}
+

@@ -1,0 +1,43 @@
+.Navbar {
+  position: fixed;
+  top: 0;
+  left: var(--border-width);
+  right: var(--border-width);
+  height: var(--border-indent);
+  display: flex;
+  justify-content: space-between;
+  background-image: linear-gradient( rgba(0,0,0,0.25), rgba(0,0,0,0));
+  align-items: flex-end;
+  padding: 0 3rem 3rem 3rem;
+  z-index: 5;
+  font-size: var(--font-size-medium);
+}
+
+.brand {
+  color: var(--white);
+}
+
+.brand .name {
+  color: var(--white);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.brand .page {
+  color: var(--white);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.brand .page:hover {
+  color: var(--accent-gold-hover);
+  transition: color 0.2s;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  font-family: Geist;
+}
+
