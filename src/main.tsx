@@ -5,6 +5,7 @@ import '/styles/base.css';
 import '/styles/components/header.css';
 import '/styles/components/planet.css';
 import '/styles/components/card.css';
+import '/styles/components/rocket.css';
 import '/styles/pages/index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

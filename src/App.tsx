@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Planet } from './components/Planet';
 import { Card } from './components/Card';
+import { Rocket } from './components/Rocket';
 import { Project, ProjectCollection } from './types/project';
 import projectsData1 from './data/projects-1.json';
 import projectsData2 from './data/projects-2.json';
 
+// Define allowed tags in specific order
+const ALLOWED_TAGS = ['Hackathon', 'Personal', 'Full Stack', 'Systems Programming', 'Data Analysis'];
+
 export const App: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedTag, setSelectedTag] = useState<string>('all');
-  const [allTags, setAllTags] = useState<string[]>([]);
+  
+  // Refs for scroll animations
+  const heroRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Load and combine projects from both JSON files
@@ -17,18 +24,49 @@ export const App: React.FC = () => {
     const allProjects = [...collection1.projects, ...collection2.projects];
     
     setProjects(allProjects);
-
-    // Extract unique tags
-    const tagsSet = new Set<string>();
-    allProjects.forEach(project => {
-      project.tags.forEach(tag => tagsSet.add(tag));
-    });
-    setAllTags(Array.from(tagsSet).sort());
   }, []);
+  
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    
+    // Observe hero section elements
+    if (heroRef.current) {
+      const heroElements = heroRef.current.querySelectorAll('.hidden-until-scroll');
+      heroElements.forEach(el => observer.observe(el));
+    }
+    
+    // Observe project cards
+    if (projectsRef.current) {
+      const projectCards = projectsRef.current.querySelectorAll('.project-item');
+      projectCards.forEach(el => observer.observe(el));
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [projects]);
 
   const filteredProjects = selectedTag === 'all' 
     ? projects 
-    : projects.filter(project => project.tags.includes(selectedTag));
+    : projects.filter(project => 
+        project.internalTags.some(tag => ALLOWED_TAGS.includes(tag)) && 
+        project.internalTags.includes(selectedTag)
+      );
 
   return (
     <>
@@ -38,9 +76,8 @@ export const App: React.FC = () => {
           <span className="name">Nicholas Chan</span>
         </div>
         <div className="nav-links">
-          <a className="button" href="/">About</a>
-          <a className="button" href="/">Portfolio</a>
-          <a className="button" href="/">Contact</a>
+          <a className="button" href="#about">About</a>
+          <a className="button" href="#portfolio">Portfolio</a>
         </div>
       </nav>
 
@@ -50,14 +87,17 @@ export const App: React.FC = () => {
         {/* Intro Section */}
         <div className="intro-section">
           <div className="intro-content">
-            <h1>Hi, I'm Nick.</h1>
-            <p>I'm a computer science student based in Vancouver, BC. I'm currently interning at <a href="https://www.blaisetransit.com/">Blaise Transit</a>!</p>
-            <p>I'm interested in backend development, embedded systems and data science.</p>
+            <h1 className="fade-in">Hi, I'm Nick.</h1>
+            <p className="fade-in-delayed">I'm a computer science student based in Vancouver, BC. I'm currently interning at <a href="https://www.blaisetransit.com/">Blaise Transit</a>!</p>
+            <p className="fade-in-delayed-2">I'm interested in backend development, embedded systems and data science.</p>
           </div>
           <div id="planet-container">
             <Planet />
           </div>
         </div>
+        
+        {/* Rocket Animation */}
+        <Rocket />
         
         <div className="wave-gap"></div>
         
@@ -67,26 +107,42 @@ export const App: React.FC = () => {
         </div>
         
         {/* Hero Section */}
-        <div className="hero">
+        <div id="about" className="hero" ref={heroRef}>
           <div className="intro-content">
-            <p>At <a href="https://www.sfu.ca/">Simon Fraser University</a>, I'm a Software Developer for our Robot Soccer Team.</p>
-            <p>I was also previously a systems intern at <a>BC Cancer</a>.</p>
-            <p>Take a look at my <a>resume</a>, or read more about my experiences <a>here</a>.</p>
+            <p className="hidden-until-scroll"></p>
+            <p className="hidden-until-scroll">At <a href="https://www.sfu.ca/">Simon Fraser University</a>, I'm a Software Developer for our Robot Soccer Team.</p>
+            <p className="hidden-until-scroll">I was also previously a systems intern at <a>BC Cancer</a>.</p>
+            <p className="hidden-until-scroll">Take a look at my <a>resume</a> or reach out to me on any of the following platforms.</p>
             
-            <div className="socials">
+            <div className="socials hidden-until-scroll">
               <div className="link">
-                <img src="/assets/icons/linkedin.svg" alt="LinkedIn" />
+                <a href="https://www.linkedin.com/in/nicholasch-an/">
+                  <img src="/assets/icons/linkedin.svg" alt="LinkedIn" />
+                </a>
                 <a href="https://www.linkedin.com/in/nicholasch-an/">nicholasch-an</a>
               </div>
               <div className="link">
-                <img src="/assets/icons/github.svg" alt="GitHub" />
+                <a href="https://github.com/pnotato/">
+                  <img src="/assets/icons/github.svg" alt="GitHub" />
+                </a>
                 <a href="https://github.com/pnotato/">github.com/pnotato</a>
               </div>
               <div className="link">
-                <img src="/assets/icons/mail.svg" alt="Email" />
+                <a href="mailto:nicholasch.an@outlook.com">
+                  <img src="/assets/icons/mail.svg" alt="Email" />
+                </a>
                 <a href="mailto:nicholasch.an@outlook.com">nicholasch.an@outlook.com</a>
               </div>
             </div>
+          </div>
+          
+          <div className="hero-images">
+            <a href="#" className="hero-image-box hidden-until-scroll">
+              <img src="/assets/images/sfu.jpg" alt="Featured work 1" />
+            </a>
+            <a href="#" className="hero-image-box hidden-until-scroll">
+              <img src="/assets/images/van.jpg" alt="Featured work 2" />
+            </a>
           </div>
         </div>
         
@@ -96,7 +152,7 @@ export const App: React.FC = () => {
         </div>
         
         {/* Projects Section */}
-        <div className="projects-section">
+        <div id="portfolio" className="projects-section" ref={projectsRef}>
           <h1>Projects</h1>
           
           {/* Filter Buttons */}
@@ -108,7 +164,7 @@ export const App: React.FC = () => {
               >
                 All
               </button>
-              {allTags.map(tag => (
+              {ALLOWED_TAGS.map(tag => (
                 <button 
                   key={tag}
                   className={`filter-btn ${selectedTag === tag ? 'active' : ''}`}
@@ -128,6 +184,8 @@ export const App: React.FC = () => {
                   label={project.label}
                   image={project.image}
                   link={project.link}
+                  description={project.description}
+                  tags={project.externalTags}
                 />
               </div>
             ))}

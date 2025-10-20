@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-top: 10vh;
 }
 
 .intro-content {
@@ -11,8 +12,16 @@
 .intro-content {
     width: min(50%, 800px);
     font-size: var(--font-size-large);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
+.intro-content h1,
+.intro-content p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
 .wave-gap {
     height: 0rem;
 }
@@ -60,12 +69,54 @@
     transform: scaleY(-1);
 }
 
+/* Zoom in wave on smaller displays */
+@media (max-width: 1440px) {
+    .wave img {
+        width: 200%;
+        margin-left: -50%;
+    }
+    
+    .wave.reverse img {
+        width: 200%;
+        margin-left: -50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .wave img {
+        width: 220%;
+        margin-left: -60%;
+    }
+    
+    .wave.reverse img {
+        width: 220%;
+        margin-left: -60%;
+    }
+}
+
+@media (max-width: 480px) {
+    .wave img {
+        width: 250%;
+        margin-left: -75%;
+    }
+    
+    .wave.reverse img {
+        width: 250%;
+        margin-left: -75%;
+    }
+}
+
 .hero {
     height: fit-content;
     width: 100%;
     background-color: var(--hero-red);
     padding: 3rem 0 3rem 0;
-    overflow: hidden;
+    overflow: visible;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 3rem;
 }
 
 .hero h1,
@@ -80,9 +131,42 @@
     align-items: center;
 }
 
+.link a {
+    display: flex;
+    align-items: center;
+}
+
+.hero-images {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-right: 3rem;
+    flex-shrink: 1;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.hero-image-box {
+    width: 550px;
+    height: 367px;
+    border: 5px solid var(--white);
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    flex-shrink: 1;
+}
+
+.hero-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .link img {
-    width: 24px;
-    height: 24px;
+    width: 64px;
+    height: 64px;
 }
 
 .projects-section {
@@ -90,8 +174,8 @@
 }
 
 .projects-section h1 {
-    text-align: left;
-    margin-bottom: 2rem;
+    text-align: center;
+    margin-bottom: 0rem;
 }
 
 /* Filter Section Styles */
@@ -140,12 +224,16 @@
     gap: 2rem;
     margin-bottom: 3rem;
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .project-item {
     opacity: 1;
     transition: opacity 0.3s ease, transform 0.3s ease;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .project-item.hidden {
@@ -160,6 +248,93 @@
 }
 
 @media (max-width: 768px) {
+    /* Intro section mobile */
+    .intro-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 0 2rem;
+    }
+    
+    .intro-content {
+        width: 100%;
+        padding: 0;
+    }
+    
+    /* Hide planet on mobile */
+    #planet-container {
+        display: none;
+    }
+    
+    /* Hero section mobile */
+    .hero {
+        flex-direction: column;
+        padding: 2rem 3rem;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    
+    .hero .intro-content {
+        text-align: center;
+        padding: 0;
+        width: 100%;
+    }
+    
+    .hero-images {
+        padding: 0;
+        padding-bottom: 2rem;
+        margin-top: 2rem;
+        order: 2;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .hero-image-box {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .hero-image-box img {
+        aspect-ratio: 3 / 2;
+        height: auto;
+    }
+    
+    /* Socials mobile - icons only in a row */
+    .socials {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .link {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    /* Hide text links on mobile, keep only icon links */
+    .link a:not(:has(img)) {
+        display: none;
+    }
+    
+    .link a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .link img {
+        width: 56px;
+        height: 56px;
+        transition: transform 0.2s;
+    }
+    
+    .link a:hover img {
+        transform: scale(1.1);
+    }
+    
+    /* Projects section mobile */
     .projects-section {
         padding: 2rem 1.5rem;
     }
@@ -179,8 +354,8 @@
     }
     
     .filter-btn {
-        padding: 0.5rem 1rem;
-        font-size: var(--font-size-small);
+        padding: 0.6rem 1.2rem;
+        font-size: var(--font-size-base);
     }
 }
 

@@ -1,0 +1,212 @@
+.space-container {
+    width: 100%;
+    height: 30vh;
+    background: var(--navy-blue);
+    position: relative;
+    overflow: hidden;
+    margin: 3rem 0;
+}
+
+.rocket {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    animation: flyAcross 20s linear infinite;
+    z-index: 10;
+    opacity: 1;
+}
+
+@keyframes flyAcross {
+    0% {
+        left: -160px;
+    }
+    50% {
+        left: calc(100% + 160px);
+    }
+    50.01% {
+        left: -160px;
+    }
+    100% {
+        left: -160px;
+    }
+}
+
+.rocket-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+}
+
+.rocket-main {
+    width: 60px;
+    height: 90px;
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+    border-radius: 50% 50% 10px 10px;
+    position: absolute;
+    left: 30px;
+    top: 10px;
+    box-shadow: inset -2px -2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.rocket-nose {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #ffb3c9 0%, #ff6b9d 100%);
+    border-radius: 50%;
+    position: absolute;
+    left: 14px;
+    top: -12px;
+}
+
+.rocket-window {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #a8c8e4 0%, #6b8fb8 100%);
+    border-radius: 50%;
+    position: absolute;
+    left: 18px;
+    top: 16px;
+    opacity: 0.9;
+    box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.5), inset -2px -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.rocket-window-highlight {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+}
+
+.rocket-wing {
+    width: 36px;
+    height: 50px;
+    background: linear-gradient(135deg, #d65780 0%, #a83d5e 100%);
+    position: absolute;
+    top: 60px;
+    border-radius: 0 0 10px 0;
+    box-shadow: inset -1px -1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.rocket-wing.left {
+    left: 0;
+    transform: skewY(-15deg);
+}
+
+.rocket-wing.right {
+    right: 0;
+    transform: skewY(15deg) scaleX(-1);
+}
+
+.rocket-stripe {
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, transparent 0%, #ffb3c9 50%, transparent 100%);
+    position: absolute;
+    top: 40px;
+    left: 0;
+}
+
+.rocket-booster {
+    width: 24px;
+    height: 16px;
+    background: linear-gradient(135deg, #8b5a7a 0%, #5a3d4f 100%);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0 0 4px 4px;
+}
+
+.rocket-thruster {
+    width: 32px;
+    height: 18px;
+    background: linear-gradient(180deg, #5a3d4f 0%, #3a2a3a 100%);
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0 0 8px 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.rocket-flame {
+    position: absolute;
+    bottom: -36px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flicker 0.2s infinite alternate;
+}
+
+.flame-part {
+    width: 16px;
+    height: 30px;
+    background: linear-gradient(180deg, #ffd700 0%, #ff6b00 50%, #ff0000 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    display: inline-block;
+    margin: 0 4px;
+}
+
+@keyframes flicker {
+    0% {
+        transform: translateX(-50%) scaleY(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) scaleY(0.85);
+        opacity: 0.8;
+    }
+}
+
+.rocket-star {
+    position: absolute;
+    z-index: 1;
+}
+
+.rocket-star-horizontal {
+    width: 32px;
+    height: 8px;
+    border-radius: 100%;
+    background: #fff;
+    position: relative;
+    animation: rocket-twinkle-width 1s ease infinite;
+}
+
+.rocket-star-vertical {
+    width: 8px;
+    height: 32px;
+    position: absolute;
+    background: #fff;
+    border-radius: 100%;
+    left: 12px;
+    top: -12px;
+    animation: rocket-twinkle-height 1s ease infinite;
+}
+
+.rocket-star-center {
+    background: #fff;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 9px;
+    top: -3px;
+    border-radius: 50%;
+}
+
+@keyframes rocket-twinkle-height {
+    0% { height: 32px; top: -12px; }
+    50% { height: 16px; top: -4px; }
+    100% { height: 32px; top: -12px; }
+}
+
+@keyframes rocket-twinkle-width {
+    0% { width: 32px; left: 0; }
+    50% { width: 16px; left: 8px; }
+    100% { width: 32px; left: 0; }
+}
+

@@ -4,7 +4,8 @@ export interface Project {
   image: string;
   link: string;
   description: string;
-  tags: string[];
+  internalTags: string[];
+  externalTags: string[];
 }
 
 export interface ProjectCollection {
