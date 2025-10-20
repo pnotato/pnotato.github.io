@@ -26,7 +26,7 @@
       "link": "https://github.com/SahirSood/UniVerse",
       "description": "A proximity based social media app for university students.",
       "internalTags": ["Full Stack", "Hackathon"],
-      "externalTags": ["React", "Node.ts", "Firebase", "WebSockets"]
+      "externalTags": ["React", "TypeScript", "Firebase", "WebSockets"]
     },
         {
       "id": "loadbalancer",
