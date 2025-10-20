@@ -8,13 +8,14 @@ interface CardProps {
   tags?: string[];
 }
 
-// Technology color mapping with muted, creative colors and better contrast
+// Technology color mapping with muted, creative colors and better contrast, courtesy of ChatGPT
 const getTechnologyColor = (tag: string): string => {
   const tagLower = tag.toLowerCase().replace(/\s+/g, '');
   
   const colorMap: { [key: string]: string } = {
     // JavaScript frameworks & libraries
     'react': '#3A7A8F',      // muted cyan
+    'reactnative': '#3A7A8F',      // muted cyan
     'vue': '#5A8A4A',        // muted lime green (brighter green)
     'angular': '#8B2F4E',    // muted crimson
     'svelte': '#B8654A',     // muted coral (more orange)
@@ -23,7 +24,7 @@ const getTechnologyColor = (tag: string): string => {
     
     // Backend & Runtime
     'node.js': '#6A8A3A',    // muted olive green (yellower)
-    'nodejs': '#6A8A3A',     // muted olive green (yellower)
+    'node.ts': '#6A8A3A',     // muted olive green (yellower)
     'express': '#6A5A8B',    // muted indigo
     'django': '#2A6A5A',     // muted teal (bluer)
     'flask': '#8A4A7A',      // muted plum (more purple)
@@ -48,11 +49,12 @@ const getTechnologyColor = (tag: string): string => {
     'postgresql': '#4A5A9F',  // muted royal blue
     'mysql': '#6A8AAF',       // muted steel blue (lighter)
     'redis': '#9B5A4A',       // muted brick red (more orange)
-    'firebase': '#B89F4A',    // muted amber (brighter)
+    'firebase': '#B8754A',    // muted amber (brighter)
     'supabase': '#3A9B7A',    // muted jade (more saturated)
     
     // Cloud & DevOps
     'aws': '#B8844A',         // muted orange (brighter)
+    'selenium': '#9B3A5A',         // muted orange (brighter)
     'azure': '#3A7AAA',       // muted azure (brighter)
     'gcp': '#5A7AC8',         // muted periwinkle (brighter)
     'docker': '#3A8AC8',      // muted dodger blue (brighter)
@@ -62,7 +64,7 @@ const getTechnologyColor = (tag: string): string => {
     'git': '#B8654A',         // muted terracotta (brighter)
     'linux': '#AA9A5A',       // muted khaki (more yellow)
     'unix': '#9A8A6A',        // muted tan (more brown)
-    'websockets': '#5A7A8A',  // muted slate blue (more blue)
+    'websockets': '#B8654A',  
     'graphql': '#AA5A9B',     // muted magenta (brighter)
     'tensorflow': '#B87A4A',  // muted pumpkin (more orange)
     'pytorch': '#B8604A',     // muted vermillion (brighter)
@@ -77,7 +79,9 @@ export const Card: React.FC<CardProps> = ({ label, image, link = '#', descriptio
   return (
     <div className="card">
       <div className="card-image">
-        <img src={image} alt={label} loading="lazy" />
+        <a href={link}>
+          <img src={image} alt={label} loading="lazy" />
+        </a>
       </div>
       <div className="card-content">
         <a href={link} className="card-title">{label}</a>

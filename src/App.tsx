@@ -89,7 +89,7 @@ export const App: React.FC = () => {
           <div className="intro-content">
             <h1 className="fade-in">Hi, I'm Nick.</h1>
             <p className="fade-in-delayed">I'm a computer science student based in Vancouver, BC. I'm currently interning at <a href="https://www.blaisetransit.com/">Blaise Transit</a>!</p>
-            <p className="fade-in-delayed-2">I'm interested in backend development, embedded systems and data science.</p>
+            <p className="fade-in-delayed-2">I'm interested in backend development, distributed systems, and data engineering.</p>
           </div>
           <div id="planet-container">
             <Planet />
@@ -110,9 +110,9 @@ export const App: React.FC = () => {
         <div id="about" className="hero" ref={heroRef}>
           <div className="intro-content">
             <p className="hidden-until-scroll"></p>
-            <p className="hidden-until-scroll">At <a href="https://www.sfu.ca/">Simon Fraser University</a>, I'm a Software Developer for our Robot Soccer Team.</p>
-            <p className="hidden-until-scroll">I was also previously a systems intern at <a>BC Cancer</a>.</p>
-            <p className="hidden-until-scroll">Take a look at my <a>resume</a> or reach out to me on any of the following platforms.</p>
+            <p className="hidden-until-scroll">At <a href="https://www.sfu.ca/">Simon Fraser University</a>, I'm also a Software Developer for our <a href="https://www.sfurobotsoccer.com/">Robot Soccer Team</a>.</p>
+            <p className="hidden-until-scroll">I was also previously a systems intern at <a href="https://www.bcgsc.ca">BC Cancer</a>.</p>
+            <p className="hidden-until-scroll">Take a look at my <a href="/assets/Resume_Sept_2025.pdf">resume</a> or reach out to me on any of the following platforms.</p>
             
             <div className="socials hidden-until-scroll">
               <div className="link">
@@ -137,11 +137,11 @@ export const App: React.FC = () => {
           </div>
           
           <div className="hero-images">
-            <a href="#" className="hero-image-box hidden-until-scroll">
-              <img src="/assets/images/sfu.jpg" alt="Featured work 1" />
+            <a className="hero-image-box hidden-until-scroll">
+              <img src="/assets/images/sfu.jpg" alt="SFU Campus" />
             </a>
-            <a href="#" className="hero-image-box hidden-until-scroll">
-              <img src="/assets/images/van.jpg" alt="Featured work 2" />
+            <a  className="hero-image-box hidden-until-scroll">
+              <img src="/assets/images/van.jpg" alt="Vancouver, BC" />
             </a>
           </div>
         </div>

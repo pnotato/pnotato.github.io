@@ -65,6 +65,10 @@
     width: 100%;
 }
 
+.wave.reverse {
+    margin-top: -3rem;
+}
+
 .wave.reverse img {
     transform: scaleY(-1);
 }
@@ -155,6 +159,9 @@
     overflow: hidden;
     transition: transform 0.3s ease;
     flex-shrink: 1;
+    background-color: white;
+    padding: 0.25rem;
+    box-sizing: content-box;
 }
 
 .hero-image-box img {

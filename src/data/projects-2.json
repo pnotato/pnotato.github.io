@@ -3,47 +3,57 @@
     {
       "id": "bitmap",
       "label": "Bitmap Editor",
-      "image": "/assets/project/hirehigher.jpg",
+      "image": "/assets/project/bitmap.png",
       "link": "#",
       "description": "A documentation platform with visual diagram generation.",
       "internalTags": ["Systems Programming", "Personal"],
-      "externalTags": ["C", "Linux"]
-    },
-    {
-      "id": "credeat",
-      "label": "CredEat",
-      "image": "/assets/project/hirehigher.jpg",
-      "link": "#",
-      "description": "A job matching platform that connects students with opportunities.",
-      "internalTags": ["Full Stack", "Hackathon"],
-      "externalTags": ["React", "Node.js", "PostgreSQL"]
-    },
-    {
-      "id": "quackii",
-      "label": "Quackii",
-      "image": "/assets/project/hirehigher.jpg",
-      "link": "#",
-      "description": "A documentation platform with visual diagram generation.",
-      "internalTags": ["Hackathon"],
-      "externalTags": ["JavaScript", "WebSockets"]
+      "externalTags": ["C++", "CMake"]
     },
     {
       "id": "shell",
       "label": "Shell",
-      "image": "/assets/project/hirehigher.jpg",
+      "image": "/assets/project/shell.jpg",
       "link": "#",
-      "description": "A documentation platform with visual diagram generation.",
+      "description": "A simple, multi-threaded Unix shell with in-built commands.",
       "internalTags": ["Systems Programming", "Personal"],
       "externalTags": ["C", "Unix"]
+    },
+
+    {
+      "id": "credeat",
+      "label": "CredEat",
+      "image": "/assets/project/credeat.jpg",
+      "link": "#",
+      "description": "An AI-powered food nutrition analyzer. Submission for nwHacks 2024.",
+      "internalTags": ["Full Stack", "Hackathon"],
+      "externalTags": ["React", "Flask"]
+    },
+    {
+      "id": "quackii",
+      "label": "Quackii",
+      "image": "/assets/project/quackii.png",
+      "link": "#",
+      "description": "A desktop assistant matching students with volunteering opportunities!",
+      "internalTags": ["Hackathon"],
+      "externalTags": ["JavaScript", "WebSockets"]
     },
     {
       "id": "wikilosophy",
       "label": "Wikilosophy",
-      "image": "/assets/project/hirehigher.jpg",
+      "image": "/assets/project/wikilosophy.jpg",
       "link": "#",
-      "description": "A job matching platform that connects students with opportunities.",
+      "description": "An analysis of Wikipedia's \"Getting to Philosophy\" phenomenon.",
       "internalTags": ["Data Analysis", "Personal"],
-      "externalTags": ["Python", "Pandas", "NetworkX"]
+      "externalTags": ["Python", "Pandas", "NumPy"]
+    },
+    {
+      "id": "aslingo",
+      "label": "ASLingo",
+      "image": "/assets/project/aslingo.png",
+      "link": "#",
+      "description": "An AI-assisted ASL learning platform!",
+      "internalTags": ["Full Stack", "Data Analysis", "Hackathon"],
+      "externalTags": ["JavaScript", "Flask", "TensorFlow"]
     }
   ]
 }

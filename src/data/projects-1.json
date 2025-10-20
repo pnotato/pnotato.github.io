@@ -5,45 +5,37 @@
       "label": "HireHigher",
       "image": "/assets/project/hirehigher.jpg",
       "link": "#",
-      "description": "A job matching platform that connects students with opportunities.",
+      "description": "An AI-powered interview simulator. Winning project of LangaraHacks!",
       "internalTags": ["Full Stack", "Hackathon"],
-      "externalTags": ["React", "Node.js", "MongoDB"]
+      "externalTags": ["React", "Django", "Selenium"]
     },
     {
       "id": "visudocs",
       "label": "VisuDocs",
       "image": "/assets/project/visudocs.jpg",
       "link": "#",
-      "description": "A documentation platform with visual diagram generation.",
+      "description": "A realtime, multi-user IDE allowing multiple people to code together.",
       "internalTags": ["Full Stack", "Personal"],
-      "externalTags": ["TypeScript", "React", "Express"]
+      "externalTags": ["React", "Node.js", "MongoDB", "WebSockets"]
     },
-    {
-      "id": "loadbalancer",
-      "label": "Load Balancer",
-      "image": "/assets/project/loadbalancer.jpg",
-      "link": "#",
-      "description": "A custom load balancer implementation for distributed systems.",
-      "internalTags": ["Systems Programming", "Personal"],
-      "externalTags": ["C", "Linux"]
-    },
+
     {
       "id": "universe",
       "label": "uniVerse",
       "image": "/assets/project/universe.jpg",
       "link": "#",
-      "description": "A job matching platform that connects students with opportunities.",
+      "description": "A proximity based social media app for university students.",
       "internalTags": ["Full Stack", "Hackathon"],
-      "externalTags": ["React", "Firebase", "JavaScript"]
+      "externalTags": ["React", "Node.ts", "Firebase", "WebSockets"]
     },
-    {
-      "id": "aslingo",
-      "label": "ASLingo",
-      "image": "/assets/project/hirehigher.jpg",
+        {
+      "id": "loadbalancer",
+      "label": "TCP Load Balancer",
+      "image": "/assets/project/loadbalancer.jpg",
       "link": "#",
-      "description": "A documentation platform with visual diagram generation.",
-      "internalTags": ["Full Stack", "Data Analysis", "Hackathon"],
-      "externalTags": ["Python", "TensorFlow", "React"]
+      "description": "A C++ load balancer class implementation for distributed systems.",
+      "internalTags": ["Systems Programming", "Personal"],
+      "externalTags": ["C++", "Python", "CMake"]
     }
   ]
 }

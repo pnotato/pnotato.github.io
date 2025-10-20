@@ -61,6 +61,9 @@ a:hover {
     transition: color 0.2s;
 }
 
+img {
+}
+
 /* Kind of a jank fix but this allows the navbar background to show up properly */
 .border {
   position: relative;                
