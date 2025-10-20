@@ -4,7 +4,7 @@
       "id": "hirehigher",
       "label": "HireHigher",
       "image": "/assets/project/hirehigher.jpg",
-      "link": "#",
+      "link": "https://github.com/Jordan-SFU/HireHigher",
       "description": "An AI-powered interview simulator. Winning project of LangaraHacks!",
       "internalTags": ["Full Stack", "Hackathon"],
       "externalTags": ["React", "Django", "Selenium"]
@@ -13,7 +13,7 @@
       "id": "visudocs",
       "label": "VisuDocs",
       "image": "/assets/project/visudocs.jpg",
-      "link": "#",
+      "link": "https://github.com/pnotato/VisuDocs",
       "description": "A realtime, multi-user IDE allowing multiple people to code together.",
       "internalTags": ["Full Stack", "Personal"],
       "externalTags": ["React", "Node.js", "MongoDB", "WebSockets"]
@@ -23,7 +23,7 @@
       "id": "universe",
       "label": "uniVerse",
       "image": "/assets/project/universe.jpg",
-      "link": "#",
+      "link": "https://github.com/SahirSood/UniVerse",
       "description": "A proximity based social media app for university students.",
       "internalTags": ["Full Stack", "Hackathon"],
       "externalTags": ["React", "Node.ts", "Firebase", "WebSockets"]
@@ -32,7 +32,7 @@
       "id": "loadbalancer",
       "label": "TCP Load Balancer",
       "image": "/assets/project/loadbalancer.jpg",
-      "link": "#",
+      "link": "https://github.com/pnotato/cpp-loadbalancer",
       "description": "A C++ load balancer class implementation for distributed systems.",
       "internalTags": ["Systems Programming", "Personal"],
       "externalTags": ["C++", "Python", "CMake"]

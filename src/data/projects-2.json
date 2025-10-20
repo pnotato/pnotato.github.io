@@ -4,7 +4,7 @@
       "id": "bitmap",
       "label": "Bitmap Editor",
       "image": "/assets/project/bitmap.png",
-      "link": "#",
+      "link": "https://github.com/pnotato/BitmapEditor",
       "description": "A documentation platform with visual diagram generation.",
       "internalTags": ["Systems Programming", "Personal"],
       "externalTags": ["C++", "CMake"]
@@ -13,7 +13,7 @@
       "id": "shell",
       "label": "Shell",
       "image": "/assets/project/shell.jpg",
-      "link": "#",
+      "link": "https://github.com/pnotato/shell",
       "description": "A simple, multi-threaded Unix shell with in-built commands.",
       "internalTags": ["Systems Programming", "Personal"],
       "externalTags": ["C", "Unix"]
@@ -23,7 +23,7 @@
       "id": "credeat",
       "label": "CredEat",
       "image": "/assets/project/credeat.jpg",
-      "link": "#",
+      "link": "https://github.com/pnotato/CredEat",
       "description": "An AI-powered food nutrition analyzer. Submission for nwHacks 2024.",
       "internalTags": ["Full Stack", "Hackathon"],
       "externalTags": ["React", "Flask"]
@@ -32,7 +32,7 @@
       "id": "quackii",
       "label": "Quackii",
       "image": "/assets/project/quackii.png",
-      "link": "#",
+      "link": "https://github.com/pnotato/Quackii",
       "description": "A desktop assistant matching students with volunteering opportunities!",
       "internalTags": ["Hackathon"],
       "externalTags": ["JavaScript", "WebSockets"]
@@ -41,7 +41,7 @@
       "id": "wikilosophy",
       "label": "Wikilosophy",
       "image": "/assets/project/wikilosophy.jpg",
-      "link": "#",
+      "link": "https://github.com/pnotato/WikipediaFoundations",
       "description": "An analysis of Wikipedia's \"Getting to Philosophy\" phenomenon.",
       "internalTags": ["Data Analysis", "Personal"],
       "externalTags": ["Python", "Pandas", "NumPy"]
@@ -50,7 +50,7 @@
       "id": "aslingo",
       "label": "ASLingo",
       "image": "/assets/project/aslingo.png",
-      "link": "#",
+      "link": "https://github.com/Jordan-SFU/ASLingo",
       "description": "An AI-assisted ASL learning platform!",
       "internalTags": ["Full Stack", "Data Analysis", "Hackathon"],
       "externalTags": ["JavaScript", "Flask", "TensorFlow"]
