@@ -26,6 +26,11 @@
     height: 0rem;
 }
 
+.hero-wave-gap {
+    height: 10vh;
+    width: 100%;
+}
+
 @media (max-aspect-ratio: 4/3) {
     .wave-gap {
         height: 10rem;
@@ -115,6 +120,7 @@
     width: 100%;
     background-color: var(--hero-red);
     padding: 3rem 0 3rem 0;
+    margin-bottom: 2.5rem;
     overflow: visible;
     display: flex;
     flex-direction: row;

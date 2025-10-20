@@ -144,6 +144,7 @@ export const App: React.FC = () => {
               <img src="/assets/images/van.jpg" alt="Vancouver, BC" />
             </a>
           </div>
+
         </div>
         
         {/* Wave Reverse */}
