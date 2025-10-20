@@ -35,7 +35,7 @@
       "link": "https://github.com/pnotato/Quackii",
       "description": "A desktop assistant matching students with volunteering opportunities!",
       "internalTags": ["Hackathon"],
-      "externalTags": ["JavaScript", "WebSockets"]
+      "externalTags": ["Flask", "Python", "BeautifulSoup4"]
     },
     {
       "id": "wikilosophy",
