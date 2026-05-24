@@ -1,0 +1,217 @@
+.space-container {
+    width: 100%;
+    height: 30vh;
+    position: relative;
+    overflow: hidden;
+    margin: 3rem 0;
+}
+
+.rocket {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: 50%;
+    /*
+     * Keyframed motion (not offset-path with % coordinates): %-only paths fail in Safari / WebKit,
+     * which freezes the rocket. Two long bends spaced wide along X; eased segments feel smooth.
+     */
+    animation: rocketFlight 36s infinite;
+    z-index: 2;
+    opacity: 1;
+}
+
+@keyframes rocketFlight {
+    0% {
+        left: -180px;
+        top: 50%;
+        transform: translateY(-50%) rotate(88deg);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.2, 1);
+    }
+    34% {
+        left: 44%;
+        top: 43%;
+        transform: translateY(-50%) rotate(95deg);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.2, 1);
+    }
+    47% {
+        left: 82%;
+        top: 53%;
+        transform: translateY(-50%) rotate(85deg);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.2, 1);
+    }
+    50% {
+        left: calc(100% + 180px);
+        top: 49%;
+        transform: translateY(-50%) rotate(91deg);
+        animation-timing-function: linear;
+    }
+    50.01% {
+        left: -180px;
+        top: 51%;
+        transform: translateY(-50%) rotate(88deg);
+        animation-timing-function: linear;
+    }
+    100% {
+        left: -180px;
+        top: 51%;
+        transform: translateY(-50%) rotate(88deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rocket {
+        animation: none;
+        left: 40%;
+        top: 48%;
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .rocket-flame {
+        animation: none;
+        opacity: 0.92;
+    }
+}
+
+.rocket-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+}
+
+/* Palette + shading language shared with the Planet component.
+   Uses soft 150deg linear gradients (matching planet.css) instead of
+   hard outlines or inset shadows, so the rocket reads in the same style. */
+.rocket {
+    --rocket-body-light: #ffc2d7;
+    --rocket-body: #ff7aa2;
+    --rocket-body-dark: #c94b78;
+    --rocket-wing-dark: #8a2f56;
+    --rocket-stripe: #f2d8a7; /* reuse --accent-gold for cohesion */
+    --rocket-thruster: #3a143a;
+    --rocket-window-light: #d5e8f7;
+    --rocket-window-dark: #7ea6c8;
+    --rocket-flame-top: #ffe27a;
+    --rocket-flame-mid: #ff7a2b;
+    --rocket-flame-bottom: #c9264a;
+}
+
+.rocket-main {
+    width: 60px;
+    height: 90px;
+    background: linear-gradient(150deg, var(--rocket-body), var(--rocket-body-dark));
+    border-radius: 50% 50% 10px 10px;
+    position: absolute;
+    left: 30px;
+    top: 10px;
+}
+
+.rocket-nose {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(150deg, var(--rocket-body-light) 35%, var(--rocket-body) 100%);
+    border-radius: 50%;
+    position: absolute;
+    left: 14px;
+    top: -12px;
+}
+
+.rocket-window {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(150deg, var(--rocket-window-light) 45%, var(--rocket-window-dark) 100%);
+    border-radius: 50%;
+    position: absolute;
+    left: 18px;
+    top: 16px;
+}
+
+.rocket-window-highlight {
+    width: 9px;
+    height: 9px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+}
+
+.rocket-wing {
+    width: 30px;
+    height: 46px;
+    background: linear-gradient(150deg, var(--rocket-body-dark), var(--rocket-wing-dark));
+    position: absolute;
+    top: 58px;
+    border-radius: 10px 0 12px 0;
+}
+
+.rocket-wing.left {
+    left: 2px;
+}
+
+.rocket-wing.right {
+    right: 2px;
+    transform: scaleX(-1);
+}
+
+.rocket-stripe {
+    width: 100%;
+    height: 6px;
+    background: var(--rocket-stripe);
+    position: absolute;
+    top: 44px;
+    left: 0;
+}
+
+.rocket-booster {
+    width: 24px;
+    height: 12px;
+    background: linear-gradient(150deg, var(--rocket-wing-dark), var(--rocket-thruster));
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0 0 4px 4px;
+}
+
+.rocket-thruster {
+    width: 30px;
+    height: 16px;
+    background: linear-gradient(180deg, var(--rocket-thruster), #1b0820);
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0 0 8px 8px;
+}
+
+.rocket-flame {
+    position: absolute;
+    bottom: -26px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flicker 0.2s infinite alternate;
+    display: flex;
+    justify-content: center;
+}
+
+.flame-part {
+    width: 22px;
+    height: 34px;
+    background: linear-gradient(180deg,
+        var(--rocket-flame-top) 0%,
+        var(--rocket-flame-mid) 55%,
+        var(--rocket-flame-bottom) 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+@keyframes flicker {
+    0% {
+        transform: translateX(-50%) scaleY(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) scaleY(0.85);
+        opacity: 0.8;
+    }
+}

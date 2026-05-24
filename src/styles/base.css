@@ -12,6 +12,10 @@
   --background-blue: #181743;
   --accent-gold: #F2D8A7;
   --accent-gold-hover: #F2C78A;
+  --accent-moon-blue: #8FA8D9;
+  --accent-moon-blue-hover: #A8BDE8;
+  --accent-purple-soft: #B5A6FF;
+  --accent-purple-soft-hover: #C4B8FF;
   --hero-red: #E85D5E;
   --white: #FFFFFF;
   --white-transparent-20: rgba(255, 255, 255, 0.2);
@@ -29,17 +33,19 @@
 html {
   scroll-behavior: smooth;
   font-size: clamp(14px, 1.2vw, 20px);
+  background-color: var(--background-blue);
 }
 
 body {
   margin: 0;
-  background-color: var(--background-blue);
+  background-color: transparent;
   border: var(--border-width) solid var(--white);
   border-top: none;
-  min-height: 100vh; 
+  min-height: 100vh;
   font-family: Inter;
   color: var(--white);
-  z-index: 10; 
+  position: relative;
+  z-index: 0;
 }
 
 h1 {
@@ -142,4 +148,3 @@ img {
   opacity: 1;
   transform: translateY(0);
 }
-

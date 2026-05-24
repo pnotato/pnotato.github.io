@@ -1,0 +1,164 @@
+:root {
+	--purple1: #181743;
+	--purple2: #730F8E;
+	--purple-pink: #A21190;
+	--pink: #C62368;
+	--purple-pink1: #CE0682;
+	--fuscia: #C62368;
+	--meteor-yellow: #fedc01;
+}
+
+.planet-scene {
+	position: relative;
+	width: min(90vw, 800px);
+	aspect-ratio: 1.2 / 1;
+	margin: 0 auto;
+	overflow: visible;
+	transform: translateX(-0.15em);
+	font-size: clamp(0.45rem, 1.8vw, 1.8rem);
+}
+
+.planet-container {
+	width: 10em;
+	height: 10em;
+	padding: 1em;
+	border-radius: 10em;
+	background: linear-gradient(150deg, var(--fuscia), transparent, transparent);
+	position: absolute;
+	animation: planet-moving 2s ease infinite;
+	transition: all 0.2s ease;
+	left: 42%;
+}
+
+.planet-container .planet {
+	width: 10em;
+	height: 10em;
+	position: absolute;
+	top: 1em;
+	left: 1em;
+	background: linear-gradient(150deg, var(--fuscia), var(--purple2), transparent);
+	border-radius: 5em;
+	z-index: 0;
+}
+
+/* Specular highlights: ellipse aligned to sphere at ~150deg (same bias as planet & moon gradients) */
+.planet-container .shine {
+	position: absolute;
+	top: 1em;
+	left: 1em;
+	width: 10em;
+	height: 10em;
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: 1;
+	background:
+		radial-gradient(
+			circle at 34% 28%,
+			rgba(255, 250, 255, 0.32) 0%,
+			rgba(255, 220, 240, 0.08) 18%,
+			transparent 36%
+		),
+		radial-gradient(
+			ellipse 85% 72% at 30% 26%,
+			rgba(235, 109, 180, 0.22) 0%,
+			rgba(199, 30, 100, 0.06) 48%,
+			transparent 68%
+		);
+	opacity: 0.78;
+}
+
+.planet-container .planet-ring {
+	width: 15em;
+	height: 2em;
+	position: absolute;
+	border-top: 1em solid transparent;
+	border-bottom: 1em solid var(--fuscia);
+	border-left: 1.25em solid var(--fuscia);
+	border-right: 1.25em solid var(--fuscia);
+	border-radius: 100%;
+	left: -2em;
+	transform: rotate(-30deg);
+	top: 4em;
+}
+
+.planet-container .planet-ring2 {
+	width: 15em;
+	height: 2em;
+	position: absolute;
+	border-top: 1em solid var(--fuscia);
+	border-bottom: 1em solid var(--fuscia);
+	border-left: 1.25em solid var(--fuscia);
+	border-right: 1.25em solid var(--fuscia);
+	border-radius: 100%;
+	left: -2em;
+	transform: rotate(-30deg);
+	top: 4em;
+	z-index: -1;
+}
+
+.moon-wrap {
+	width: 5em;
+	height: 5em;
+	position: absolute;
+	top: 20%;
+	left: 10%;
+	animation: planet-moving2 2s ease infinite;
+	animation-delay: 0.5s;
+	animation-fill-mode: both;
+	will-change: transform;
+}
+
+.moon {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 50%;
+	/* Same 150deg key-light as planet; cooler stops for a small icy body */
+	background: linear-gradient(
+		155deg,
+		rgba(220, 230, 250, 0.92) 0%,
+		var(--accent-moon-blue) 42%,
+		var(--fuscia) 100%
+	);
+	z-index: 0;
+	box-shadow:
+		inset -0.2em -0.35em 0.5em rgba(80, 40, 90, 0.22);
+}
+
+/* Cool specular — same shape language as .shine, tuned for blue/silver */
+.moon-shine {
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: 1;
+	background:
+		radial-gradient(
+			circle at 36% 26%,
+			rgba(255, 255, 255, 0.28) 0%,
+			rgba(210, 228, 255, 0.1) 20%,
+			transparent 38%
+		),
+		radial-gradient(
+			ellipse 88% 74% at 32% 24%,
+			rgba(143, 168, 217, 0.26) 0%,
+			rgba(80, 110, 160, 0.05) 52%,
+			transparent 70%
+		);
+	opacity: 0.72;
+}
+
+/* Keyframe animations */
+@keyframes planet-moving {
+	0% { top: 30%; }
+	50% { top: 31%; }
+	100% { top: 30%; }
+}
+
+@keyframes planet-moving2 {
+	0% { transform: translateY(3rem); }
+	50% { transform: translateY(calc(3rem + 0.2rem)); }
+	100% { transform: translateY(3rem); }
+}
