@@ -1,24 +1,26 @@
 {
-  "name": "portfolio-vite",
+  "name": "portfolio",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "deploy": "echo 'nickchan.ca' > ./dist/CNAME && gh-pages -d dist"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "deploy": "astro build && echo 'nickchan.ca' > ./dist/CNAME && gh-pages -d dist"
   },
   "dependencies": {
+    "@astrojs/mdx": "^5.0.3",
+    "@astrojs/react": "^5.0.3",
+    "astro": "^6.1.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react": "^4.2.1",
     "gh-pages": "^6.3.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.0"
+    "typescript": "^5.3.3"
   }
 }
