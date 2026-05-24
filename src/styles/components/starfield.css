@@ -1,0 +1,113 @@
+/* Unified page-wide starfield.
+   Sits behind all content as a fixed background layer.
+   Stars are generated server-side with a seeded PRNG, so their
+   positions are identical on every load and stable across resizes. */
+
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  font-size: clamp(0.45rem, 1.4vw, 1.4rem);
+}
+
+.starfield .star {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(var(--star-scale, 1));
+  will-change: transform, opacity;
+}
+
+/* ---- Cross stars (horizontal bar + vertical bar + center circle) ---- */
+
+.starfield .star.cross {
+  width: 1em;
+  height: 1em;
+}
+
+.starfield .star.cross .star-h {
+  position: absolute;
+  width: 1em;
+  height: 0.3em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 100%;
+  animation: starfield-twinkle-width var(--star-duration, 1s) ease infinite;
+  animation-delay: var(--star-delay, 0s);
+}
+
+.starfield .star.cross .star-v {
+  position: absolute;
+  width: 0.3em;
+  height: 1em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 100%;
+  animation: starfield-twinkle-height var(--star-duration, 1s) ease infinite;
+  animation-delay: var(--star-delay, 0s);
+}
+
+.starfield .star.cross .star-c {
+  position: absolute;
+  width: 0.5em;
+  height: 0.5em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 50%;
+}
+
+/* ---- Dot stars (small gradient dots) ---- */
+
+.starfield .star.dot {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  animation: starfield-twinkle var(--star-duration, 0.5s) ease infinite;
+  animation-delay: var(--star-delay, 0s);
+}
+
+.starfield .star.dot.hue-white {
+  background: #fff;
+}
+
+.starfield .star.dot.hue-purple {
+  background: linear-gradient(to right, #730f8e, transparent);
+}
+
+.starfield .star.dot.hue-pink {
+  background: linear-gradient(to right, transparent, #c62368);
+}
+
+/* ---- Animations (consolidated from planet.css / rocket.css) ---- */
+
+@keyframes starfield-twinkle-height {
+  0% { height: 1em; }
+  50% { height: 0.5em; }
+  100% { height: 1em; }
+}
+
+@keyframes starfield-twinkle-width {
+  0% { width: 1em; }
+  50% { width: 0.5em; }
+  100% { width: 1em; }
+}
+
+@keyframes starfield-twinkle {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .starfield .star.cross .star-h,
+  .starfield .star.cross .star-v,
+  .starfield .star.dot {
+    animation: none;
+  }
+}
