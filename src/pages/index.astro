@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Planet from '../components/Planet.astro';
+import Rocket from '../components/Rocket.astro';
+import projectsData1 from '../data/projects-1.json';
+import projectsData2 from '../data/projects-2.json';
+import type { Project, ProjectCollection } from '../types/project';
+
+const collection1 = projectsData1 as ProjectCollection;
+const collection2 = projectsData2 as ProjectCollection;
+const projects: Project[] = [...collection1.projects, ...collection2.projects];
+---
+
+<BaseLayout title="Nicholas Chan">
+  <div class="intro-section">
+    <div class="intro-content">
+      <h1 class="fade-in">Hi, I'm Nick.</h1>
+      <div class="intro-copy">
+        <p class="fade-in-delayed">I'm a computer science student based in Vancouver. I'm currently a software engineering intern at <a class="rivian-link" href="https://rivianvw.tech/">Rivian</a>!</p>
+        <p class="fade-in-delayed-2">
+          My goal is to build things that make an impact on the world.
+        </p>
+      </div>
+    </div>
+    <div id="planet-container">
+      <Planet />
+    </div>
+  </div>
+
+  <Rocket />
+
+  <div class="wave-gap"></div>
+
+  <div class="wave">
+    <img src="/assets/waves_long.svg" alt="" />
+  </div>
+
+  <div id="about" class="hero">
+    <div class="intro-content">
+      <p class="hidden-until-scroll"></p>
+      <p class="hidden-until-scroll">
+        At <a href="https://www.sfu.ca/">Simon Fraser University</a>, I also contribute to our <a href="https://www.sfurobotsoccer.com/">Robot Soccer Team</a> as a software developer.
+      </p>
+      <p class="hidden-until-scroll">
+        Before that, I was an intern at <a href="https://www.blaisetransit.com">Blaise Transit</a> and <a href="https://www.bcgsc.ca">BC Cancer</a>.
+      </p>
+      <p class="hidden-until-scroll">
+        I'm always looking for opportunities to learn and grow! Connect with me here:
+      </p>
+
+      <div class="socials hidden-until-scroll">
+        <a class="social-link" href="https://www.linkedin.com/in/nicholasch-an/">LinkedIn</a>
+        <a class="social-link" href="https://github.com/pnotato/">GitHub</a>
+        <a class="social-link" href="mailto:nicholasch.an@outlook.com">Email</a>
+        <a class="social-link" href="/assets/Resume_Sept_2025.pdf">Resume</a>
+      </div>
+    </div>
+
+    <div class="hero-images">
+      <a class="hero-image-box hidden-until-scroll">
+        <img src="/assets/images/sfu.jpg" alt="SFU Campus" />
+      </a>
+      <a class="hero-image-box hidden-until-scroll">
+        <img src="/assets/images/van.jpg" alt="Vancouver, BC" />
+      </a>
+    </div>
+  </div>
+
+  <div class="wave reverse">
+    <img src="/assets/waves_long.svg" alt="" />
+  </div>
+
+  <div id="portfolio" class="projects-section">
+    <h1>Projects</h1>
+    <ul class="projects-list">
+      {
+        projects.map((project) => (
+          <li class="project-row hidden-until-scroll">
+            <a href={project.link} class="project-row-link" target="_blank" rel="noopener noreferrer">
+              <div class="project-row-header">
+                <h2 class="project-row-title">{project.label}</h2>
+                {
+                  project.externalTags.length > 0 && (
+                    <span class="project-row-tags">
+                      {project.externalTags.join(' · ')}
+                    </span>
+                  )
+                }
+              </div>
+              <p class="project-row-description">{project.description}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+
+  document
+    .querySelectorAll('.hidden-until-scroll')
+    .forEach((el) => observer.observe(el));
+</script>
