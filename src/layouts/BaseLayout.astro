@@ -1,0 +1,42 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Starfield from '../components/Starfield.astro';
+
+import '../styles/base.css';
+import '../styles/components/header.css';
+import '../styles/components/starfield.css';
+import '../styles/components/planet.css';
+import '../styles/components/card.css';
+import '../styles/components/rocket.css';
+import '../styles/pages/index.css';
+import '../styles/pages/blog.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Nicholas Chan',
+  description = 'Personal site and blog of Nicholas Chan.',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Starfield />
+    <Navbar />
+    <div class="border" aria-hidden="true"></div>
+    <div class="content-wrapper">
+      <slot />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+---
+interface Props {
+  showPortfolioLink?: boolean;
+}
+
+const { showPortfolioLink = true } = Astro.props;
+---
+
+<nav class="Navbar">
+  <div class="brand">
+    <a class="name" href="/">Nicholas Chan</a>
+  </div>
+  <div class="nav-links">
+    <a class="button" href="/#about">About</a>
+    {showPortfolioLink && <a class="button" href="/#portfolio">Portfolio</a>}
+    <a class="button" href="/blog">Blog</a>
+  </div>
+</nav>
