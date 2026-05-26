@@ -1,56 +1,8 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection, render } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
-
-/*
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+  // Blog route temporarily disabled.
+  return [];
 }
-
-type Props = { post: CollectionEntry<'blog'> };
-
-const { post } = Astro.props;
-const { Content } = await render(post);
-
-const dateFormatter = new Intl.DateTimeFormat('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
-*/
 ---
 
-<!--
-<BaseLayout title={`${post.data.title} — Nicholas Chan`} description={post.data.description}>
-  <article class="blog-post">
-    <header class="blog-post-header">
-      <p class="blog-post-meta">
-        <a href="/blog">&larr; All posts</a>
-        <span class="blog-post-sep">·</span>
-        <time datetime={post.data.pubDate.toISOString()}>
-          {dateFormatter.format(post.data.pubDate)}
-        </time>
-        {
-          post.data.updatedDate && (
-            <>
-              <span class="blog-post-sep">·</span>
-              <span>Updated {dateFormatter.format(post.data.updatedDate)}</span>
-            </>
-          )
-        }
-      </p>
-      <h1>{post.data.title}</h1>
-      {post.data.description && <p class="blog-post-lede">{post.data.description}</p>}
-    </header>
-
-    <div class="prose">
-      <Content />
-    </div>
-  </article>
-</BaseLayout>
--->
+<!-- Blog detail page disabled -->
