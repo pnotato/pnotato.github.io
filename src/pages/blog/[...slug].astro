@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
+/*
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
   return posts.map((post) => ({
@@ -21,8 +22,10 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'long',
   day: 'numeric',
 });
+*/
 ---
 
+<!--
 <BaseLayout title={`${post.data.title} — Nicholas Chan`} description={post.data.description}>
   <article class="blog-post">
     <header class="blog-post-header">
@@ -50,3 +53,4 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
     </div>
   </article>
 </BaseLayout>
+-->

@@ -2,13 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Planet from '../components/Planet.astro';
 import Rocket from '../components/Rocket.astro';
-import projectsData1 from '../data/projects-1.json';
-import projectsData2 from '../data/projects-2.json';
-import type { Project, ProjectCollection } from '../types/project';
+import projectsData from '../data/projects-1.json';
+import type { ProjectCollection } from '../types/project';
 
-const collection1 = projectsData1 as ProjectCollection;
-const collection2 = projectsData2 as ProjectCollection;
-const projects: Project[] = [...collection1.projects, ...collection2.projects];
+const projects = projectsData as ProjectCollection;
 ---
 
 <BaseLayout title="Nicholas Chan">
@@ -71,28 +68,26 @@ const projects: Project[] = [...collection1.projects, ...collection2.projects];
   </div>
 
   <div id="portfolio" class="projects-section">
-    <h1>Projects</h1>
-    <ul class="projects-list">
+    <div class="projects-grid">
       {
-        projects.map((project) => (
-          <li class="project-row hidden-until-scroll">
-            <a href={project.link} class="project-row-link" target="_blank" rel="noopener noreferrer">
-              <div class="project-row-header">
-                <h2 class="project-row-title">{project.label}</h2>
-                {
-                  project.externalTags.length > 0 && (
-                    <span class="project-row-tags">
-                      {project.externalTags.join(' · ')}
-                    </span>
-                  )
-                }
+        projects.projects
+          .filter((project) => ['hirehigher', 'universe', 'visudocs'].includes(project.id))
+          .map((project) => (
+            <a href={project.link} class="project-card hidden-until-scroll" target="_blank" rel="noopener noreferrer">
+              <div class="project-card-image">
+                <img src={project.image} alt={project.label} />
               </div>
-              <p class="project-row-description">{project.description}</p>
+              <div class="project-card-content">
+                <h2 class="project-card-title">{project.label}</h2>
+                <p class="project-card-description">{project.description}</p>
+              </div>
             </a>
-          </li>
-        ))
+          ))
       }
-    </ul>
+    </div>
+    <div class="projects-footer">
+      <a href="/projects" class="view-all-btn">View All Projects</a>
+    </div>
   </div>
 </BaseLayout>
 
