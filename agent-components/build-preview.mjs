@@ -89,6 +89,16 @@ const groups = [
       { file: 'land-divider.svg', title: 'Divider', note: 'Stretches to full width. Flip with scaleY(-1) for the reverse wave.', ratio: '1440 / 200' },
     ],
   },
+  {
+    id: 'terrain-fields',
+    title: 'Terrain fields',
+    blurb: 'Violet ground fields speckled with stars. The hills have a rounded bottom edge; the spires sit on a flat baseline with a transparent sky.',
+    items: [
+      { file: 'land-starry-hills.svg', title: 'Starry hills field', note: 'Layered rolling dunes with lit crests, soft lee-side shading, and twinkling stars.', ratio: '5 / 1' },
+      { file: 'land-jagged-hills.svg', title: 'Jagged hills', note: 'Low, rocky ridges in three layers with faceted lit and shadowed faces. Short enough to sit beside the volcano.', ratio: '6 / 1' },
+      { file: 'land-jagged-spires.svg', title: 'Jagged spires', note: 'Low-poly rock spires and boulders with lit faces, starry dark stone, and pink crystals.', ratio: '1200 / 380' },
+    ],
+  },
 ];
 
 const inline = (file) => {

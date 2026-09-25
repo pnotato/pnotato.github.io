@@ -2,7 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import BarPlanet from "@/components/BarPlanet.astro";
 import Volcano from "@/components/Volcano.astro";
-
+import JaggedHills from "@/components/JaggedHills.astro";
 const SECTION_HEIGHT = "min-h-[calc(100dvh-2*var(--frame-width))]";
 ---
 
@@ -98,10 +98,22 @@ const SECTION_HEIGHT = "min-h-[calc(100dvh-2*var(--frame-width))]";
     class:list={[SECTION_HEIGHT, "relative scroll-mt-[var(--frame-width)]"]}
   >
     <div
+      class="pointer-events-none absolute inset-x-0 -bottom-[var(--frame-width)]"
+      aria-hidden="true"
+    >
+      <JaggedHills layer="back" />
+    </div>
+    <div
       class="pointer-events-none absolute -bottom-[var(--frame-width)] left-1/2 w-full max-w-lg -translate-x-1/2"
       aria-hidden="true"
     >
       <Volcano />
+    </div>
+    <div
+      class="pointer-events-none absolute inset-x-0 -bottom-[var(--frame-width)]"
+      aria-hidden="true"
+    >
+      <JaggedHills layer="front" />
     </div>
   </section>
 </BaseLayout>
