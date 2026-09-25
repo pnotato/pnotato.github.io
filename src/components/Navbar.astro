@@ -1,0 +1,83 @@
+---
+import { NAV_LINKS, pageName, SITE } from "@/consts";
+
+const currentPage = pageName(Astro.url.pathname);
+---
+
+<nav class="navbar">
+  <div class="brand">
+    <a class="name" href="/">{SITE.title}</a>
+    <span class="divider">/</span>
+    <span class="page">{currentPage}</span>
+  </div>
+  <div class="links">
+    {
+      NAV_LINKS.map((link) => (
+        <a class="link" href={link.href}>
+          {link.label}
+        </a>
+      ))
+    }
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: var(--frame-width);
+    right: var(--frame-width);
+    z-index: 1000;
+    height: calc(var(--frame-width) * 4);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 2.5rem 0.75rem;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    pointer-events: none;
+  }
+
+  .navbar a {
+    pointer-events: auto;
+    color: var(--color-frame);
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .name {
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .name:hover {
+    color: var(--color-accent);
+  }
+
+  .divider {
+    opacity: 0.5;
+  }
+
+  .page {
+    font-weight: 400;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.25rem;
+    font-size: 1.3rem;
+  }
+
+  .link {
+    text-decoration: none;
+  }
+
+  .link:hover {
+    color: var(--color-accent);
+  }
+</style>

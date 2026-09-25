@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Animated blue molten planet">
+  <defs>
+    <linearGradient id="ac-pmb-body" x1="18%" y1="8%" x2="82%" y2="92%">
+      <stop offset="0%" stop-color="#a8c8ec"/>
+      <stop offset="52%" stop-color="#5a84c0"/>
+      <stop offset="100%" stop-color="#2e4f80"/>
+    </linearGradient>
+    <linearGradient id="ac-pmb-surface" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#dce9f7"/>
+      <stop offset="55%" stop-color="#8FA8D9"/>
+      <stop offset="100%" stop-color="#40689f"/>
+    </linearGradient>
+    <clipPath id="ac-pmb-clip"><circle cx="200" cy="200" r="116"/></clipPath>
+    <filter id="ac-pmb-glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+  </defs>
+  <style>
+    svg{display:block}
+    .ac-pmb-glow{transform-origin:200px 200px;animation:ac-pmb-pulse 3.8s ease-in-out infinite}
+    .ac-pmb-planet{transform-origin:200px 200px;transform:rotate(-5deg)}
+    .ac-pmb-surface{animation:ac-pmb-flow 6s ease-in-out infinite}
+    @keyframes ac-pmb-pulse{0%,100%{opacity:.32;transform:scale(.98)}50%{opacity:.48;transform:scale(1.04)}}
+    @keyframes ac-pmb-flow{
+      0%,100%{transform:translateX(-8px)}
+      50%{transform:translateX(8px)}
+    }
+    @media(prefers-reduced-motion:reduce){.ac-pmb-glow,.ac-pmb-surface{animation:none}}
+  </style>
+  <circle class="ac-pmb-glow" cx="200" cy="200" r="127" fill="#5a84c0" filter="url(#ac-pmb-glow)"/>
+  <g class="ac-pmb-planet">
+    <circle cx="200" cy="200" r="116" fill="url(#ac-pmb-body)"/>
+    <g clip-path="url(#ac-pmb-clip)">
+      <g class="ac-pmb-surface" fill="url(#ac-pmb-surface)">
+        <path d="M70 109 C105 77 136 97 139 124 C142 149 119 150 111 170 C101 195 132 211 159 197 C185 184 204 177 227 193 C251 210 277 215 303 198 C324 184 337 212 321 234 C303 260 274 249 260 272 C249 291 261 308 278 324 L83 324 C100 300 123 289 129 270 C137 246 118 228 94 229 C71 229 54 208 67 189 C80 171 103 173 111 156 C120 137 99 120 70 109Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

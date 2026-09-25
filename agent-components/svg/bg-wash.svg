@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Star field with gold and coral wash">
+  <defs>
+    <linearGradient id="ac-bgw-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#15143a"/>
+      <stop offset="42%" stop-color="#1b1a4a"/>
+      <stop offset="74%" stop-color="#3a2350"/>
+      <stop offset="100%" stop-color="#6f2a5a"/>
+    </linearGradient>
+    <radialGradient id="ac-bgw-glow" cx="50%" cy="100%" r="78%">
+      <stop offset="0%" stop-color="#F2C78A" stop-opacity="0.5"/>
+      <stop offset="42%" stop-color="#E85D5E" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#E85D5E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ac-bgw-neb" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8FA8D9" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#8FA8D9" stop-opacity="0"/>
+    </radialGradient>
+    <path id="ac-bgw-star" d="M0 -8 C0.8 -2 2 -0.8 8 0 C2 0.8 0.8 2 0 8 C-0.8 2 -2 0.8 -8 0 C-2 -0.8 -0.8 -2 0 -8 Z"/>
+  </defs>
+  <style>
+    svg{display:block}
+    .ac-bgw-w{fill:#ffffff}
+    .ac-bgw-g{fill:#F2D8A7}
+    .ac-bgw-b{fill:#8FA8D9}
+    .ac-bgw-sp{animation:ac-bgw-tw 4s ease-in-out infinite}
+    .ac-bgw-dt{animation:ac-bgw-tw 3s ease-in-out infinite}
+    @keyframes ac-bgw-tw{0%,100%{opacity:.28}50%{opacity:1}}
+  </style>
+  <rect width="1200" height="600" fill="url(#ac-bgw-sky)"/>
+  <ellipse cx="820" cy="140" rx="340" ry="200" fill="url(#ac-bgw-neb)"/>
+  <rect width="1200" height="600" fill="url(#ac-bgw-glow)"/>
+
+  <g transform="translate(150 90)"><use href="#ac-bgw-star" class="ac-bgw-sp ac-bgw-w" style="animation-delay:0s"/></g>
+  <g transform="translate(340 160) scale(.8)"><use href="#ac-bgw-star" class="ac-bgw-sp ac-bgw-g" style="animation-delay:.7s"/></g>
+  <g transform="translate(520 66) scale(1.1)"><use href="#ac-bgw-star" class="ac-bgw-sp ac-bgw-w" style="animation-delay:1.3s"/></g>
+  <g transform="translate(700 180) scale(.7)"><use href="#ac-bgw-star" class="ac-bgw-sp ac-bgw-b" style="animation-delay:.4s"/></g>
+  <g transform="translate(900 96) scale(.9)"><use href="#ac-bgw-star" class="ac-bgw-sp ac-bgw-g" style="animation-delay:1.7s"/></g>
+  <g transform="translate(1080 170) scale(.8)"><use href="#ac-bgw-star" class="ac-bgw-sp ac-bgw-w" style="animation-delay:1s"/></g>
+  <g transform="translate(240 300) scale(.7)"><use href="#ac-bgw-star" class="ac-bgw-sp ac-bgw-w" style="animation-delay:2.2s"/></g>
+  <g transform="translate(460 360) scale(.6)"><use href="#ac-bgw-star" class="ac-bgw-sp ac-bgw-g" style="animation-delay:1.5s"/></g>
+  <g transform="translate(680 320) scale(.8)"><use href="#ac-bgw-star" class="ac-bgw-sp ac-bgw-w" style="animation-delay:.2s"/></g>
+  <g transform="translate(1020 300) scale(.7)"><use href="#ac-bgw-star" class="ac-bgw-sp ac-bgw-b" style="animation-delay:1.9s"/></g>
+  <g transform="translate(80 400) scale(.6)"><use href="#ac-bgw-star" class="ac-bgw-sp ac-bgw-g" style="animation-delay:2.4s"/></g>
+  <g transform="translate(860 430) scale(.5)"><use href="#ac-bgw-star" class="ac-bgw-sp ac-bgw-w" style="animation-delay:.9s"/></g>
+
+  <circle class="ac-bgw-dt ac-bgw-w" cx="220" cy="210" r="1.6" style="animation-delay:.5s"/>
+  <circle class="ac-bgw-dt ac-bgw-b" cx="420" cy="120" r="1.2" style="animation-delay:1.1s"/>
+  <circle class="ac-bgw-dt ac-bgw-w" cx="600" cy="230" r="1.5" style="animation-delay:.3s"/>
+  <circle class="ac-bgw-dt ac-bgw-g" cx="760" cy="80" r="1.2" style="animation-delay:1.6s"/>
+  <circle class="ac-bgw-dt ac-bgw-w" cx="960" cy="240" r="1.6" style="animation-delay:.8s"/>
+  <circle class="ac-bgw-dt ac-bgw-b" cx="1120" cy="120" r="1.2" style="animation-delay:2s"/>
+  <circle class="ac-bgw-dt ac-bgw-w" cx="320" cy="420" r="1.5" style="animation-delay:1.2s"/>
+  <circle class="ac-bgw-dt ac-bgw-g" cx="560" cy="450" r="1.2" style="animation-delay:.6s"/>
+  <circle class="ac-bgw-dt ac-bgw-w" cx="780" cy="400" r="1.5" style="animation-delay:1.8s"/>
+  <circle class="ac-bgw-dt ac-bgw-b" cx="1040" cy="440" r="1.2" style="animation-delay:.4s"/>
+</svg>

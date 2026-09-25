@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import Navbar from "@/components/Navbar.astro";
+import SiteFrame from "@/components/SiteFrame.astro";
 import { SITE } from "@/consts";
 
 interface Props {
@@ -24,7 +26,11 @@ const {
     <meta name="description" content={description} />
     <title>{title}</title>
   </head>
-  <body>
+  <body
+    class="relative flex min-h-dvh flex-col bg-dark-purple p-[var(--frame-width)] text-frame"
+  >
+    <Navbar />
+    <SiteFrame />
     <slot />
   </body>
 </html>

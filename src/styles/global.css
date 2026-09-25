@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@theme {
+  --color-dark-purple: #181743;
+  --color-frame: #ffffff;
+  --color-accent: #f2d8a7;
+  --frame-width: 20px;
+}

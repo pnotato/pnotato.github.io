@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Blue scout rocket">
+  <defs>
+    <linearGradient id="ac-rs-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a8c8ec"/>
+      <stop offset="100%" stop-color="#5a84c0"/>
+    </linearGradient>
+    <linearGradient id="ac-rs-flame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#eb6db4"/>
+      <stop offset="100%" stop-color="#C62368"/>
+    </linearGradient>
+    <filter id="ac-rs-glow" x="-80%" y="-40%" width="260%" height="220%">
+      <feGaussianBlur stdDeviation="11"/>
+    </filter>
+  </defs>
+  <style>
+    svg{display:block}
+    .ac-rs-rocket{transform-origin:200px 200px;animation:ac-rs-drift 4.8s ease-in-out infinite}
+    .ac-rs-flame{transform-origin:200px 312px;animation:ac-rs-flame .3s ease-in-out infinite alternate}
+    @keyframes ac-rs-drift{0%,100%{transform:translate(-3px,5px) rotate(-4deg)}50%{transform:translate(4px,-7px) rotate(3deg)}}
+    @keyframes ac-rs-flame{from{transform:scaleY(.8)}to{transform:scaleY(1.08)}}
+    @media(prefers-reduced-motion:reduce){.ac-rs-rocket,.ac-rs-flame{animation:none}}
+  </style>
+  <g class="ac-rs-rocket">
+    <path d="M200 48 C162 91 154 142 158 251 H242 C246 142 238 91 200 48Z" fill="url(#ac-rs-body)"/>
+    <path d="M200 48 C184 68 173 89 167 111 H233 C227 89 216 68 200 48Z" fill="#dce9f7"/>
+    <path d="M158 205 C130 223 119 251 120 292 L160 266 Z" fill="#40689f"/>
+    <path d="M242 205 C270 223 281 251 280 292 L240 266 Z" fill="#40689f"/>
+    <circle cx="200" cy="145" r="27" fill="#2e4f80"/>
+    <circle cx="200" cy="145" r="18" fill="#8FA8D9"/>
+    <rect x="158" y="190" width="84" height="13" fill="#730F8E" opacity=".82"/>
+    <rect x="174" y="247" width="52" height="64" rx="10" fill="#2e4f80"/>
+    <ellipse cx="200" cy="335" rx="33" ry="20" fill="#C62368" opacity=".3" filter="url(#ac-rs-glow)"/>
+    <g class="ac-rs-flame">
+      <path d="M178 307 C176 341 187 368 200 386 C213 368 224 341 222 307Z" fill="url(#ac-rs-flame)"/>
+    </g>
+  </g>
+</svg>
