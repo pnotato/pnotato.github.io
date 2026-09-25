@@ -5,25 +5,48 @@ import BarPlanet from "@/components/BarPlanet.astro";
 
 <BaseLayout>
   <section
-    class="flex flex-1 flex-col items-center justify-center gap-14 px-8 py-16 md:flex-row md:gap-16 md:px-16"
+    class="flex min-h-0 flex-1 flex-col items-center justify-center gap-14 px-8 py-16 md:flex-row md:gap-16 md:px-16"
   >
     <div
-      class="flex max-w-2xl flex-col gap-5 text-center md:max-w-[40%] md:text-left"
+      data-starfield-exclude
+      class="flex max-w-2xl flex-col gap-5 bg-dark-purple text-center md:max-w-[40%] md:text-left"
     >
-      <h1 class="text-2xl font-extrabold tracking-tight md:text-4xl">
-        Hi, I'm Nick.
-      </h1>
-      <h2 class="text-xl leading-relaxed font-normal opacity-80 md:text-2xl">
-        I'm a computer science student based in Vancouver, BC. I'm currently
-        interning at <a
-          class="text-accent underline-offset-4 hover:underline"
-          href="https://www.blaisetransit.com/">Blaise Transit</a
-        >!
+      <h1 class="text-h1 font-extrabold">Hi, I'm Nick.</h1>
+      <h2 class="text-h2 font-normal">
+        A final year computer science student at Simon Fraser University.
       </h2>
-      <h3 class="text-xl leading-relaxed font-normal opacity-60 md:text-2xl">
-        I'm interested in backend development, distributed systems, and data
-        engineering.
-      </h3>
+      <h2 class="text-h2 font-normal">
+        I'm a software engineer interested in scalable systems, distributed
+        computing, and machine learning!
+      </h2>
+      <ul
+        class="text-h3 mt-1 flex flex-wrap justify-center gap-x-6 gap-y-2 md:justify-start"
+      >
+        <li>
+          <a
+            class="text-frame/60 transition-colors hover:text-accent"
+            href="https://www.linkedin.com/in/nicholasch-an/">LinkedIn</a
+          >
+        </li>
+        <li>
+          <a
+            class="text-frame/60 transition-colors hover:text-accent"
+            href="https://github.com/pnotato/">Github</a
+          >
+        </li>
+        <li>
+          <a
+            class="text-frame/60 transition-colors hover:text-accent"
+            href="mailto:nicholasch.an@outlook.com">Email</a
+          >
+        </li>
+        <li>
+          <a
+            class="text-frame/60 transition-colors hover:text-accent"
+            href="/assets/Resume_Sept_2025.pdf">Resume</a
+          >
+        </li>
+      </ul>
     </div>
     <div class="flex flex-1 justify-center">
       <div class="planet-scene">

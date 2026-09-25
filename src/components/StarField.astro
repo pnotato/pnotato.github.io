@@ -108,6 +108,15 @@
     return dx * dx + dy * dy <= s.r * s.r;
   }
 
+  function excluded(x: number, y: number) {
+    return [
+      ...document.querySelectorAll<HTMLElement>("[data-starfield-exclude]"),
+    ].some((el) => {
+      const r = el.getBoundingClientRect();
+      return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+    });
+  }
+
   function render() {
     if (!field) return;
 
@@ -165,8 +174,10 @@
   function check() {
     queued = false;
 
+    const blocked = excluded(mx, my);
+
     for (const s of stars) {
-      const inRange = near(s, mx, my);
+      const inRange = !blocked && near(s, mx, my);
 
       if (inRange && !s.inRange) {
         trigger(s);
@@ -189,6 +200,7 @@
   });
 
   window.addEventListener("pointerdown", (event) => {
+    if (excluded(event.clientX, event.clientY)) return;
     for (const s of stars) {
       if (near(s, event.clientX, event.clientY)) {
         trigger(s);

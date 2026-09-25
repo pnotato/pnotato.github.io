@@ -28,12 +28,12 @@ const {
     <title>{title}</title>
   </head>
   <body
-    class="relative flex min-h-dvh flex-col bg-dark-purple p-[var(--frame-width)] text-frame"
+    class="relative flex h-dvh flex-col overflow-hidden bg-dark-purple p-[var(--frame-width)] text-frame"
   >
     <StarField />
     <Navbar />
     <SiteFrame />
-    <main class="flex flex-1 flex-col">
+    <main class="flex min-h-0 flex-1 flex-col">
       <slot />
     </main>
   </body>

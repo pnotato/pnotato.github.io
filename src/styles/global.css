@@ -5,4 +5,14 @@
   --color-frame: #ffffff;
   --color-accent: #f2d8a7;
   --frame-width: 20px;
+
+  --text-h1: clamp(2.25rem, 1.6rem + 3vw, 3.25rem);
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.02em;
+
+  --text-h2: clamp(1.375rem, 1.125rem + 1.1vw, 2rem);
+  --text-h2--line-height: 1.4;
+
+  --text-h3: 1.0625rem;
+  --text-h3--line-height: 1.5;
 }
