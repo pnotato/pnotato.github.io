@@ -22,6 +22,8 @@ npm run deploy     # astro build && write dist/CNAME && gh-pages -d dist
 ```
 
 - Source lives in `src/`: `pages/` (file-based routes), `layouts/`, `components/`, `styles/global.css` (Tailwind entry), `assets/` (imported/bundled assets), `consts.ts` (site metadata).
+- `layouts/BaseLayout.astro` is the shared page template: it renders the document shell, `StarField`, `Navbar`, `SiteFrame`, and a `<main>` slot. Every page wraps its content in `<BaseLayout>` (no page-level `<main>`).
+- The navbar's current-page label is derived from `Astro.url.pathname` via `pageName()` in `src/consts.ts`, so new routes update automatically.
 - Import alias `@/*` maps to `src/*` (configured in `tsconfig.json`).
 - Tailwind v4 is CSS-first: no `tailwind.config.js`. Add design tokens with `@theme` in `src/styles/global.css`.
 - `public/` is served root-absolute (`/favicon.svg`, matching `base: "/"`).
