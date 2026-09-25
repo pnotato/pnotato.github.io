@@ -1,11 +1,17 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import BarPlanet from "@/components/BarPlanet.astro";
+import Volcano from "@/components/Volcano.astro";
+
+const SECTION_HEIGHT = "min-h-[calc(100dvh-2*var(--frame-width))]";
 ---
 
 <BaseLayout>
   <section
-    class="flex min-h-0 flex-1 flex-col items-center justify-center gap-14 px-8 py-16 md:flex-row md:gap-16 md:px-16"
+    class:list={[
+      "relative flex flex-1 flex-col items-center justify-center gap-14 px-8 py-16 md:flex-row md:gap-16 md:px-16",
+      SECTION_HEIGHT,
+    ]}
   >
     <div
       data-starfield-exclude
@@ -67,6 +73,36 @@ import BarPlanet from "@/components/BarPlanet.astro";
         </div>
       </div>
     </div>
+
+    <a href="#next" class="scroll-hint" aria-label="Scroll to next section">
+      <svg
+        viewBox="0 0 24 14"
+        width="30"
+        height="18"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M3 3.5 L12 11.5 L21 3.5"
+          stroke="currentColor"
+          stroke-width="2.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+    </a>
+  </section>
+
+  <section
+    id="next"
+    aria-label="Next section"
+    class:list={[SECTION_HEIGHT, "relative scroll-mt-[var(--frame-width)]"]}
+  >
+    <div
+      class="pointer-events-none absolute -bottom-[var(--frame-width)] left-1/2 w-full max-w-lg -translate-x-1/2"
+      aria-hidden="true"
+    >
+      <Volcano />
+    </div>
   </section>
 </BaseLayout>
 
@@ -88,5 +124,36 @@ import BarPlanet from "@/components/BarPlanet.astro";
     left: -19%;
     top: -29%;
     z-index: 1;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 1.75rem;
+    left: 50%;
+    color: var(--color-frame);
+    opacity: 0.25;
+    transform: translateX(-50%);
+    animation: scroll-hint 1.8s ease-in-out infinite;
+    transition: opacity 0.2s ease;
+  }
+
+  .scroll-hint:hover {
+    opacity: 0.6;
+  }
+
+  @keyframes scroll-hint {
+    0%,
+    100% {
+      transform: translate(-50%, 0);
+    }
+    50% {
+      transform: translate(-50%, 7px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-hint {
+      animation: none;
+    }
   }
 </style>
