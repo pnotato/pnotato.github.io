@@ -4,6 +4,8 @@
   --color-dark-purple: #181743;
   --color-frame: #ffffff;
   --color-accent: #f2d8a7;
+  --color-ember: #bf3a6b;
+  --color-flare: #e39a84;
   --frame-width: 20px;
 
   --text-h1: clamp(2.25rem, 1.6rem + 3vw, 3.25rem);
