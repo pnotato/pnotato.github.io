@@ -191,6 +191,17 @@ function build(side: Side, seed: number) {
 }
 
 const palette = PALETTES[layer];
+const rimStops: { offset: string; color: string }[] =
+  layer === "front"
+    ? [
+        { offset: "0", color: palette.lit.rim },
+        { offset: "0.4", color: palette.dark.rim },
+        { offset: "1", color: mix(palette.dark.rim, "#181743", 0.7) },
+      ]
+    : [
+        { offset: "0", color: palette.lit.rim },
+        { offset: "1", color: palette.dark.rim },
+      ];
 const halves = (["left", "right"] as const).map((side, i) => ({
   side,
   id: `jh-${layer}-${side}`,
@@ -212,8 +223,9 @@ const halves = (["left", "right"] as const).map((side, i) => ({
             <stop offset="1" stop-color={palette.smooth ? palette.dark.face : palette.dark.fill} />
           </linearGradient>
           <linearGradient id={`${id}-rim`} gradientUnits="userSpaceOnUse" x1={gx1} y1="0" x2={gx2} y2="0">
-            <stop offset="0" stop-color={palette.lit.rim} />
-            <stop offset="1" stop-color={palette.dark.rim} />
+            {rimStops.map((s) => (
+              <stop offset={s.offset} stop-color={s.color} />
+            ))}
           </linearGradient>
           <clipPath id={`${id}-clip`}>
             <path d={outline} />
