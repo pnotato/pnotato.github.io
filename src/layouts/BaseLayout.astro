@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Navbar from "@/components/Navbar.astro";
 import SiteFrame from "@/components/SiteFrame.astro";
+import StarField from "@/components/StarField.astro";
 import { SITE } from "@/consts";
 
 interface Props {
@@ -29,6 +30,7 @@ const {
   <body
     class="relative flex min-h-dvh flex-col bg-dark-purple p-[var(--frame-width)] text-frame"
   >
+    <StarField />
     <Navbar />
     <SiteFrame />
     <slot />
