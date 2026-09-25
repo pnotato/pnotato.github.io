@@ -8,7 +8,7 @@
   --color-flare: #e39a84;
   --frame-width: 20px;
 
-  --text-h1: clamp(2.25rem, 1.6rem + 3vw, 3.25rem);
+  --text-h1: clamp(2.05rem, 1.55rem + 2.8vw, 3rem);
   --text-h1--line-height: 1.1;
   --text-h1--letter-spacing: -0.02em;
 
@@ -27,4 +27,24 @@ html {
 
 html::-webkit-scrollbar {
   display: none;
+}
+
+html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase) {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+}
+
+html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase).is-revealed {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  transition:
+    opacity 0.7s ease,
+    clip-path 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase) {
+    opacity: 1;
+    clip-path: none;
+  }
 }
