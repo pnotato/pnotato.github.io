@@ -98,6 +98,10 @@ const SECTION_HEIGHT = "min-h-[calc(100dvh-2*var(--frame-width))]";
     class:list={[SECTION_HEIGHT, "relative scroll-mt-[var(--frame-width)]"]}
   >
     <div
+      class="sunset-glow pointer-events-none absolute inset-x-0 bottom-0"
+      aria-hidden="true"
+    ></div>
+    <div
       class="pointer-events-none absolute inset-x-0 -bottom-[var(--frame-width)]"
       aria-hidden="true"
     >
@@ -119,6 +123,16 @@ const SECTION_HEIGHT = "min-h-[calc(100dvh-2*var(--frame-width))]";
 </BaseLayout>
 
 <style>
+  .sunset-glow {
+    height: 50vh;
+    background: linear-gradient(
+      to top,
+      rgba(242, 168, 94, 0.6) 0%,
+      rgba(229, 115, 56, 0.4) 50%,
+      rgba(229, 115, 56, 0) 100%
+    );
+  }
+
   .planet-scene {
     --planet-size: clamp(200px, 46vmin, 460px);
     position: relative;
