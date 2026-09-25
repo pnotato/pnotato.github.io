@@ -1,10 +1,64 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import BarPlanet from "@/components/BarPlanet.astro";
 ---
 
 <BaseLayout>
-  <div class="flex flex-1 flex-col items-center justify-center gap-6">
-    <h1 class="text-2xl font-semibold tracking-tight">Nicholas Chan</h1>
-    <p class="text-sm opacity-60">Site under construction.</p>
-  </div>
+  <section
+    class="flex flex-1 flex-col items-center justify-center gap-14 px-8 py-16 md:flex-row md:gap-16 md:px-16"
+  >
+    <div
+      class="flex max-w-2xl flex-col gap-5 text-center md:max-w-[40%] md:text-left"
+    >
+      <h1 class="text-2xl font-extrabold tracking-tight md:text-4xl">
+        Hi, I'm Nick.
+      </h1>
+      <h2 class="text-xl leading-relaxed font-normal opacity-80 md:text-2xl">
+        I'm a computer science student based in Vancouver, BC. I'm currently
+        interning at <a
+          class="text-accent underline-offset-4 hover:underline"
+          href="https://www.blaisetransit.com/">Blaise Transit</a
+        >!
+      </h2>
+      <h3 class="text-xl leading-relaxed font-normal opacity-60 md:text-2xl">
+        I'm interested in backend development, distributed systems, and data
+        engineering.
+      </h3>
+    </div>
+    <div class="flex flex-1 justify-center">
+      <div class="planet-scene">
+        <div class="planet-big">
+          <BarPlanet variant="magenta" rotation="-22deg" ring />
+        </div>
+        <div class="planet-mini">
+          <BarPlanet
+            variant="blue"
+            rotation="45deg"
+            size="calc(var(--planet-size) * 0.34)"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .planet-scene {
+    --planet-size: clamp(200px, 46vmin, 460px);
+    position: relative;
+    isolation: isolate;
+    transform: translate(6%, 14%);
+  }
+
+  .planet-big {
+    position: relative;
+    z-index: 2;
+  }
+
+  .planet-mini {
+    position: absolute;
+    left: -19%;
+    top: -29%;
+    z-index: 1;
+  }
+</style>
