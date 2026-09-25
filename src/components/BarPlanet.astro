@@ -15,6 +15,7 @@ type Palette = {
   glowB: string;
   ringA: string;
   ringB: string;
+  ringC: string;
 };
 
 type Variant = "blue" | "magenta" | "green" | "flame";
@@ -29,7 +30,7 @@ const VARIANTS: Record<Variant, { rotation: string; palette: Palette }> = {
       b4: "#478a48", c4: "#35703c",
       b5: "#35703c", c5: "#e6f4cf",
       body: "#4f9150", glowA: "#5fa255", glowB: "#bfe08f",
-      ringA: "#e6f4cf", ringB: "#8fc46d",
+      ringA: "#e6f4cf", ringB: "#8fc46d", ringC: "#a9c98a",
     },
   },
   magenta: {
@@ -41,7 +42,7 @@ const VARIANTS: Record<Variant, { rotation: string; palette: Palette }> = {
       b4: "#a8336e", c4: "#8f2b60",
       b5: "#8f2b60", c5: "#f2dcc6",
       body: "#ad3a6f", glowA: "#bf3a6b", glowB: "#e39a84",
-      ringA: "#f2dcc6", ringB: "#f2d8a7",
+      ringA: "#f2dcc6", ringB: "#f2d8a7", ringC: "#e6cb8a",
     },
   },
   blue: {
@@ -53,7 +54,7 @@ const VARIANTS: Record<Variant, { rotation: string; palette: Palette }> = {
       b4: "#40689f", c4: "#2e4f80",
       b5: "#2e4f80", c5: "#8fb2e2",
       body: "#4f7ab8", glowA: "#4f7ab8", glowB: "#a8c8ec",
-      ringA: "#cfe0f5", ringB: "#5a84c0",
+      ringA: "#cfe0f5", ringB: "#5a84c0", ringC: "#6f8fbf",
     },
   },
   flame: {
@@ -65,7 +66,7 @@ const VARIANTS: Record<Variant, { rotation: string; palette: Palette }> = {
       b4: "#b83a22", c4: "#8f2a18",
       b5: "#8f2a18", c5: "#ffd9a8",
       body: "#d4502a", glowA: "#d4502a", glowB: "#f2a85e",
-      ringA: "#ffd9a8", ringB: "#e57338",
+      ringA: "#ffd9a8", ringB: "#e57338", ringC: "#cc8a4a",
     },
   },
 };
@@ -112,6 +113,7 @@ const paletteStyle = [
   `--glow-b:${p.glowB}`,
   `--ring-a:${p.ringA}`,
   `--ring-b:${p.ringB}`,
+  `--ring-c:${p.ringC}`,
   `--ring-tilt:${ringTilt}`,
 ].join(";");
 ---
@@ -134,11 +136,18 @@ const paletteStyle = [
             ry="26"
           />
           <ellipse
-            class="sun-ring__band sun-ring__band--outer"
+            class="sun-ring__band sun-ring__band--middle"
             cx="100"
             cy="100"
             rx="80"
             ry="28"
+          />
+          <ellipse
+            class="sun-ring__band sun-ring__band--outer"
+            cx="100"
+            cy="100"
+            rx="86"
+            ry="30"
           />
         </svg>
       </div>
@@ -169,11 +178,18 @@ const paletteStyle = [
             ry="26"
           />
           <ellipse
-            class="sun-ring__band sun-ring__band--outer"
+            class="sun-ring__band sun-ring__band--middle"
             cx="100"
             cy="100"
             rx="80"
             ry="28"
+          />
+          <ellipse
+            class="sun-ring__band sun-ring__band--outer"
+            cx="100"
+            cy="100"
+            rx="86"
+            ry="30"
           />
         </svg>
       </div>
@@ -242,11 +258,19 @@ const paletteStyle = [
   .sun-ring__band--outer {
     stroke: var(--ring-a);
     stroke-width: 7;
+    filter: drop-shadow(0 0 3px color-mix(in srgb, var(--ring-a) 50%, transparent));
+  }
+
+  .sun-ring__band--middle {
+    stroke: var(--ring-b);
+    stroke-width: 7;
+    filter: drop-shadow(0 0 3px color-mix(in srgb, var(--ring-b) 50%, transparent));
   }
 
   .sun-ring__band--inner {
-    stroke: var(--ring-b);
-    stroke-width: 8;
+    stroke: var(--ring-c);
+    stroke-width: 7;
+    filter: drop-shadow(0 0 3px color-mix(in srgb, var(--ring-c) 50%, transparent));
   }
 
   .sun__body {
