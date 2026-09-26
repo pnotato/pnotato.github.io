@@ -15,8 +15,14 @@
   --text-h2: clamp(1.375rem, 1.125rem + 1.1vw, 2rem);
   --text-h2--line-height: 1.4;
 
-  --text-h3: 1.0625rem;
-  --text-h3--line-height: 1.5;
+  --text-h3: clamp(1.15rem, 0.95rem + 0.8vw, 1.6rem);
+  --text-h3--line-height: 1.4;
+
+  --text-h4: clamp(1.1rem, 0.95rem + 0.5vw, 1.35rem);
+  --text-h4--line-height: 1.45;
+
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.5;
 }
 
 html {
@@ -29,12 +35,12 @@ html::-webkit-scrollbar {
   display: none;
 }
 
-html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase) {
+html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase, .next-phrase *) {
   opacity: 0;
   clip-path: inset(0 100% 0 0);
 }
 
-html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase).is-revealed {
+html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase, .next-phrase *).is-revealed {
   opacity: 1;
   clip-path: inset(0 0 0 0);
   transition:
@@ -43,7 +49,7 @@ html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase).is-revealed {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase) {
+  html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase, .next-phrase *) {
     opacity: 1;
     clip-path: none;
   }

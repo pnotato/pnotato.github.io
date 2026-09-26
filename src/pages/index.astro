@@ -3,8 +3,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import BarPlanet from "@/components/BarPlanet.astro";
 import Volcano from "@/components/Volcano.astro";
 import JaggedHills from "@/components/JaggedHills.astro";
-import PHRASES from "@/data/phrases.json";
+import EXPERIENCES_DATA from "@/data/experiences.json";
 const SECTION_HEIGHT = "min-h-[calc(100dvh-2*var(--frame-width))]";
+const { title, experiences } = EXPERIENCES_DATA as {
+  title: string;
+  experiences: { left: string; right?: string; subtext?: string }[];
+};
 ---
 
 <BaseLayout>
@@ -32,7 +36,7 @@ const SECTION_HEIGHT = "min-h-[calc(100dvh-2*var(--frame-width))]";
         computing, and machine learning!
       </h2>
       <ul
-        class="text-h3 mt-1 flex flex-wrap justify-center gap-x-6 gap-y-2 md:justify-start"
+        class="text-body mt-1 flex flex-wrap justify-center gap-x-6 gap-y-2 md:justify-start"
       >
         <li>
           <a
@@ -97,7 +101,7 @@ const SECTION_HEIGHT = "min-h-[calc(100dvh-2*var(--frame-width))]";
     id="next"
     aria-label="Next section"
     class="next-pin scroll-mt-[var(--frame-width)]"
-    style={`--next-steps:${PHRASES.length}`}
+    style={`--next-steps:${experiences.length}`}
   >
     <div class="next-stage">
       <div
@@ -105,20 +109,27 @@ const SECTION_HEIGHT = "min-h-[calc(100dvh-2*var(--frame-width))]";
         aria-hidden="true"
       ></div>
       <div class="next-phrases pointer-events-none">
-        {
-          PHRASES.map((parts) => (
-            <h2
-              class:list={[
-                "next-phrase text-h2 font-bold",
-                parts.length === 1 && "next-phrase--center",
-              ]}
-            >
-              {parts.map((part) => (
-                <span>{part}</span>
-              ))}
-            </h2>
-          ))
-        }
+        <h2 class="next-title text-h2">{title}</h2>
+        <div class="next-phrase-list">
+          {
+            experiences.map(({ left, right, subtext }) => (
+              <div
+                class:list={[
+                  "next-phrase text-h3",
+                  !right && "next-phrase--center",
+                ]}
+              >
+                <h2 class="next-phrase-main font-bold">
+                  <span>{left}</span>
+                  {right ? <span>{right}</span> : null}
+                </h2>
+                {subtext ? (
+                  <p class="next-phrase-sub text-h4">{subtext}</p>
+                ) : null}
+              </div>
+            ))
+          }
+        </div>
       </div>
       <div
         class="pointer-events-none absolute inset-x-0 -bottom-[var(--frame-width)]"
@@ -159,34 +170,73 @@ const SECTION_HEIGHT = "min-h-[calc(100dvh-2*var(--frame-width))]";
   }
 
   .next-phrases {
+    --phrase-gap: 6rem;
+    --phrase-top: 34%;
     position: absolute;
     inset: 0;
     z-index: 10;
   }
 
+  .next-phrase-list {
+    position: absolute;
+    inset: 0;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%);
+    mask-image: linear-gradient(to bottom, transparent, #000 30%);
+  }
+
+  .next-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(var(--phrase-top) - var(--phrase-gap) - 5rem);
+    transform: translateY(-50%);
+    text-align: center;
+  }
+
   .next-phrase {
-    --phrase-gap: 3rem;
     position: absolute;
     left: 50%;
-    top: 28%;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 2rem;
+    top: var(--phrase-top);
     width: 100%;
-    padding: 0 2rem;
+    padding: 0 5rem;
     opacity: var(--o, 0);
     transform: translate(-50%, -50%)
       translateY(calc(var(--d, 0) * var(--phrase-gap)));
     will-change: transform, opacity;
   }
 
-  .next-phrase--center {
-    justify-content: center;
-    text-align: center;
+  .next-phrase-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 2rem;
+    width: 100%;
+    line-height: 1.15;
   }
 
-  .next-phrase:first-child {
+  .next-phrase-main > span {
+    flex: 1 1 0;
+  }
+
+  .next-phrase-main > span:last-child {
+    text-align: right;
+  }
+
+  .next-phrase--center .next-phrase-main {
+    justify-content: center;
+  }
+
+  .next-phrase--center .next-phrase-main > span {
+    flex: 0 1 auto;
+  }
+
+  .next-phrase-sub {
+    margin-top: 0.5rem;
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  .next-phrase:nth-child(2) {
     --o: 1;
   }
 

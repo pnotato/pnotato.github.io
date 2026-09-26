@@ -43,7 +43,7 @@ const {
     </main>
     <script>
       const targets = document.querySelectorAll<HTMLElement>(
-        "main :is(h1, h2, h3, p, li):not(.next-phrase)",
+        "main :is(h1, h2, h3, p, li):not(.next-phrase, .next-phrase *)",
       );
 
       if (targets.length && "IntersectionObserver" in window) {
