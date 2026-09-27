@@ -1,7 +1,7 @@
 ---
 ---
 
-<div class="site-frame" aria-hidden="true"></div>
+<div class="site-frame is-at-start no-transition" aria-hidden="true"></div>
 
 <style>
   .site-frame {
@@ -9,13 +9,24 @@
     inset: 0;
     z-index: 2147483647;
     border: var(--frame-width) solid var(--color-frame);
+    border-top-width: 0;
     border-bottom-width: 0;
     pointer-events: none;
-    transition: border-bottom-width 0.15s ease;
+    transition:
+      border-top-width 0.15s ease,
+      border-bottom-width 0.15s ease;
+  }
+
+  .site-frame.is-at-start {
+    border-top-width: var(--frame-width);
   }
 
   .site-frame.is-at-end {
     border-bottom-width: var(--frame-width);
+  }
+
+  .site-frame.no-transition {
+    transition: none;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -30,14 +41,22 @@
 
   if (frame) {
     const update = () => {
+      const atStart = window.scrollY <= 2;
       const atEnd =
         window.innerHeight + window.scrollY >=
         document.documentElement.scrollHeight - 2;
+      frame.classList.toggle("is-at-start", atStart);
       frame.classList.toggle("is-at-end", atEnd);
     };
 
     window.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
     update();
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        frame.classList.remove("no-transition");
+      });
+    });
   }
 </script>
