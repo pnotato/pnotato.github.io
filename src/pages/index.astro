@@ -151,16 +151,41 @@ const { title, experiences } = EXPERIENCES_DATA as {
       </div>
     </div>
   </section>
+
+  <section
+    id="next-2"
+    aria-label="Next section"
+    class:list={["next-final relative", SECTION_HEIGHT]}
+  >
+  </section>
 </BaseLayout>
 
 <style>
   .next-pin {
     --next-step: 70vh;
     position: relative;
+    z-index: 2;
     height: calc(
       100dvh - 2 * var(--frame-width) +
         (var(--next-steps) - 1) * var(--next-step)
     );
+  }
+
+  .next-final {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(34, 39, 95, 0) 0%,
+        rgba(34, 39, 95, 0.55) 55%,
+        #22275f 100%
+      ),
+      linear-gradient(
+        to right,
+        #4f4791 0%,
+        #4f4791 calc(50% - 220px),
+        #22275f calc(50% + 220px),
+        #22275f 100%
+      );
   }
 
   .next-stage {
