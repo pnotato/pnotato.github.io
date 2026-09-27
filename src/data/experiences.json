@@ -1,0 +1,35 @@
+{
+  "title": "What I've worked on",
+  "experiences": [
+    {
+      "left": "SFU MARS Lab",
+      "right": "September 2026 - Present",
+      "subtext": "Undergraduate Researcher"
+    },
+    {
+      "left": "Rivian & Volkswagen Group Technologies",
+      "right": "January - August 2026",
+      "subtext": "Software Engineering Intern"
+    },
+    {
+      "left": "Blaise Transit",
+      "right": "September - December 2025",
+      "subtext": "Software Engineering Intern"
+    },
+    {
+      "left": "SFU Robot Soccer",
+      "right": "May 2025 - Present",
+      "subtext": "Software Developer"
+    },
+    {
+      "left": "BC Cancer Research Centre",
+      "right": "May - December 2024",
+      "subtext": "Computer Systems Intern"
+    },
+    {
+      "left": "AumOui",
+      "right": "October - December 2023",
+      "subtext": "Web Developer"
+    }
+  ]
+}

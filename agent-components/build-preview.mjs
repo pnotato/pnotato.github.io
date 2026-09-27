@@ -90,6 +90,14 @@ const groups = [
     ],
   },
   {
+    id: 'cavern',
+    title: 'Cavern',
+    blurb: 'A jagged cave mouth cut into volcanic rock, with a lava floor and drifting embers. Palette and faceting follow the volcano.',
+    items: [
+      { file: 'land-cavern.svg', title: 'Cavern', note: 'Layered violet rock slabs frame a glowing mouth over an orange lava floor.', ratio: '1200 / 674' },
+    ],
+  },
+  {
     id: 'terrain-fields',
     title: 'Terrain fields',
     blurb: 'Violet ground fields speckled with stars. The hills have a rounded bottom edge; the spires sit on a flat baseline with a transparent sky.',
