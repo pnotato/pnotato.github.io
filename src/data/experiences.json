@@ -4,32 +4,61 @@
     {
       "left": "SFU MARS Lab",
       "right": "September 2026 - Present",
-      "subtext": "Undergraduate Researcher"
+      "subtext": "Undergraduate Researcher",
+      "details": {
+        "technologies": "Python, ROS2, Nav2",
+        "description": "Did X and Y. Did Y and Z."
+      }
     },
     {
       "left": "Rivian & Volkswagen Group Technologies",
       "right": "January - August 2026",
-      "subtext": "Software Engineering Intern"
+      "subtext": "Software Engineering Intern",
+      "details": {
+        "technologies": "C, Python, Databricks, Jenkins, HIL/SIL Testing",
+        "description": "I was an intern on the Battery Management System (BMS) team at Rivian. During this term, I was responsible for overseeing safety critical testing for the Rivian R1 and R2. I also helped develop in-house AI tools, accelerating development."
+      },
+      "url": "https://www.rivianvw.tech/"
     },
     {
       "left": "Blaise Transit",
       "right": "September - December 2025",
-      "subtext": "Software Engineering Intern"
+      "subtext": "Software Engineering Intern",
+      "details": {
+        "technologies": "Python, TypeScript, Next.js, Amazon AWS (S3, DynamoDB, Aurora), MySQL",
+        "description": "Intern on the backend development team. I oversaw the development of the new transit selector and handling there. I also helped with the company's transition from Microsoft Azure to Amazon AWS."
+      },
+      "url": "https://www.blaisetransit.com/"
     },
     {
       "left": "SFU Robot Soccer",
       "right": "May 2025 - Present",
-      "subtext": "Software Developer"
+      "subtext": "Software Developer",
+      "details": {
+        "technologies": "C++, Python, Qt, CMake",
+        "description": "Pathplanning and Analytics team. I contributed to the development of pathplanning algorithms that resulted in quick times in simulations. I also helped build our analytics pipeline and developed our pathplanning benchmarking tools."
+      },
+      "url": "https://www.sfurobotsoccer.com/"
     },
     {
       "left": "BC Cancer Research Centre",
       "right": "May - December 2024",
-      "subtext": "Computer Systems Intern"
+      "subtext": "Computer Systems Intern",
+      "details": {
+        "technologies": "Python, TypeScript, Next.js, Bash, Linux",
+        "description": "Systems intern at Canada's Michael Smith Genome Sciences Centre. I was responsible for maintaining and developing internal tools for the research centre. I also helped with the development of a new internal web application that allowed researchers to easily access and analyze their data."
+      },
+      "url": "https://www.bccrc.ca/"
     },
     {
       "left": "AumOui",
       "right": "October - December 2023",
-      "subtext": "Web Developer"
+      "subtext": "Web Developer",
+      "details": {
+        "technologies": "HTML, CSS, JavaScript",
+        "description": "I helped develop a AumOui's e-commerce website, handling the display of products and the checkout process."
+      },
+      "url": "https://aumoui.com/"
     }
   ]
 }

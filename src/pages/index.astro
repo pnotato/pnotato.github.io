@@ -4,13 +4,35 @@ import BarPlanet from "@/components/BarPlanet.astro";
 import Volcano from "@/components/Volcano.astro";
 import JaggedHills from "@/components/JaggedHills.astro";
 import EXPERIENCES_DATA from "@/data/experiences.json";
-import { SITE } from "@/consts";
 const SECTION_HEIGHT = "min-h-[calc(100dvh-2*var(--frame-width))]";
-const year = new Date().getFullYear();
 const { title, experiences } = EXPERIENCES_DATA as {
   title: string;
-  experiences: { left: string; right?: string; subtext?: string }[];
+  experiences: {
+    left: string;
+    right?: string;
+    subtext?: string;
+    url?: string;
+    details?: {
+      technologies?: string;
+      description?: string;
+      points?: string[];
+    };
+  }[];
 };
+const DETAILS_PLACEHOLDER = {
+  technologies: "Placeholder",
+  description: "Placeholder — describe what you built and the impact it had.",
+};
+// Standalone figures like 250+, 25%, $1.2M, 3x, 1,000 (not digits inside
+// words like S3 or ES6). split() with a capture group puts matches at odd
+// indices.
+const NUMBER_RE =
+  /(?<![\w.$])(\$?\d+(?:[.,]\d+)*(?:%|\+|[xX]\b|[kKMB]\b)?\+?)(?!\w)/;
+const splitNumbers = (text: string) => text.split(NUMBER_RE);
+const jobs = experiences.map((job) => ({
+  ...job,
+  details: job.details ?? DETAILS_PLACEHOLDER,
+}));
 ---
 
 <BaseLayout>
@@ -34,8 +56,16 @@ const { title, experiences } = EXPERIENCES_DATA as {
         A final year computer science student at Simon Fraser University.
       </h2>
       <h2 class="text-h2 font-normal">
-        I'm a software engineer interested in scalable systems, distributed
-        computing, and machine learning!
+        Take a look at <a
+          class="text-cream transition-colors hover:text-frame"
+          href="#">my experiences</a
+        >, check out <a
+          class="text-cream transition-colors hover:text-frame"
+          href="#">my projects</a
+        >, or read about my work on <a
+          class="text-cream transition-colors hover:text-frame"
+          href="#">my blog</a
+        >.
       </h2>
       <ul
         class="text-body mt-1 flex flex-wrap justify-center gap-x-6 gap-y-2 md:justify-start"
@@ -114,20 +144,85 @@ const { title, experiences } = EXPERIENCES_DATA as {
         <h2 class="next-title text-h2">{title}</h2>
         <div class="next-phrase-list">
           {
-            experiences.map(({ left, right, subtext }) => (
+            jobs.map(({ left, right, subtext, url, details }, i) => (
               <div
                 class:list={[
                   "next-phrase text-h3",
                   !right && "next-phrase--center",
                 ]}
+                role="button"
+                tabindex="0"
+                aria-expanded="false"
+                aria-controls={`next-details-${i}`}
               >
                 <h2 class="next-phrase-main font-bold">
                   <span>{left}</span>
                   {right ? <span>{right}</span> : null}
                 </h2>
-                {subtext ? (
-                  <p class="next-phrase-sub text-h4">{subtext}</p>
-                ) : null}
+                <div class="next-phrase-row">
+                  {subtext ? (
+                    <p class="next-phrase-sub text-h4">{subtext}</p>
+                  ) : null}
+                  <span class="next-phrase-more text-h5" aria-hidden="true">
+                    <span class="next-phrase-more-label">
+                      <span>Learn more</span>
+                      <span>Show less</span>
+                    </span>
+                    <svg viewBox="0 0 24 14" width="14" height="8" fill="none">
+                      <path
+                        d="M3 3.5 L12 11.5 L21 3.5"
+                        stroke="currentColor"
+                        stroke-width="2.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  id={`next-details-${i}`}
+                  class="next-phrase-details"
+                  inert
+                >
+                  <div>
+                    <div class="next-phrase-details-body text-body">
+                      {details.technologies ? (
+                        <p class="next-phrase-tech">
+                          Technologies Used: {details.technologies}
+                        </p>
+                      ) : null}
+                      {details.description ? (
+                        <p class="next-phrase-description">
+                          {splitNumbers(details.description).map((part, j) =>
+                            j % 2 ? <strong>{part}</strong> : part,
+                          )}
+                        </p>
+                      ) : null}
+                      {details.points?.length ? (
+                        <ul class="next-phrase-points">
+                          {details.points.map((point) => (
+                            <li>
+                              {splitNumbers(point).map((part, j) =>
+                                j % 2 ? <strong>{part}</strong> : part,
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                      {url ? (
+                        <a
+                          class="next-phrase-link text-h5"
+                          href={url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Visit {left}
+                          <span aria-hidden="true">↗</span>
+                        </a>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
               </div>
             ))
           }
@@ -154,99 +249,6 @@ const { title, experiences } = EXPERIENCES_DATA as {
     </div>
   </section>
 
-  <footer
-    id="next-2"
-    aria-label="Footer"
-    class:list={[
-      "next-final relative flex min-h-[27vh] flex-col justify-between gap-5 px-8 pt-12 pb-6 md:px-16",
-    ]}
-  >
-    <div
-      class="flex flex-col gap-5 md:flex-row md:items-start md:justify-between"
-    >
-      <div class="flex max-w-sm flex-col gap-2">
-        <a
-          href="/"
-          class="text-body font-extrabold text-frame transition-colors hover:text-accent"
-          >{SITE.title}</a
-        >
-        <p class="text-h5 text-frame/60">
-          A final year computer science student at Simon Fraser University.
-        </p>
-      </div>
-      <div class="flex flex-col gap-4 sm:flex-row sm:gap-16">
-        <div class="flex flex-col gap-2">
-          <h3
-            class="text-h5 font-semibold tracking-widest text-frame/40 uppercase"
-          >
-            Connect
-          </h3>
-          <ul class="text-body flex flex-col gap-2">
-            <li>
-              <a
-                class="text-frame/70 transition-colors hover:text-accent"
-                href="https://www.linkedin.com/in/nicholasch-an/">LinkedIn</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-frame/70 transition-colors hover:text-accent"
-                href="mailto:nicholasch.an@outlook.com">Email</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="flex flex-col gap-2">
-          <h3
-            class="text-h5 font-semibold tracking-widest text-frame/40 uppercase"
-          >
-            Explore
-          </h3>
-          <ul class="text-body flex flex-col gap-2">
-            <li>
-              <a
-                class="text-frame/70 transition-colors hover:text-accent"
-                href="/assets/Resume_Sept_2025.pdf">Resume</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-frame/70 transition-colors hover:text-accent"
-                href="https://github.com/pnotato/">Github</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="flex flex-col gap-2">
-          <h3
-            class="text-h5 font-semibold tracking-widest text-frame/40 uppercase"
-          >
-            Site
-          </h3>
-          <ul class="text-body flex flex-col gap-2">
-            <li>
-              <a
-                class="text-frame/70 transition-colors hover:text-accent"
-                href="#">Portfolio</a
-              >
-            </li>
-            <li>
-              <a
-                class="text-frame/70 transition-colors hover:text-accent"
-                href="#">Writing</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div
-      class="text-h5 flex flex-col gap-2 border-t border-frame/15 pt-3 text-frame/50 sm:flex-row sm:items-center sm:justify-between"
-    >
-      <p>© {year} {SITE.title}. All rights reserved.</p>
-      <a class="transition-colors hover:text-accent" href="#">Back to top ↑</a>
-    </div>
-  </footer>
 </BaseLayout>
 
 <style>
@@ -258,23 +260,6 @@ const { title, experiences } = EXPERIENCES_DATA as {
       100dvh - 2 * var(--frame-width) +
         (var(--next-steps) - 1) * var(--next-step)
     );
-  }
-
-  .next-final {
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(34, 39, 95, 0) 0%,
-        rgba(34, 39, 95, 0.55) 55%,
-        #22275f 100%
-      ),
-      linear-gradient(
-        to right,
-        #4f4791 0%,
-        #4f4791 calc(50% - 220px),
-        #22275f calc(50% + 220px),
-        #22275f 100%
-      );
   }
 
   .next-stage {
@@ -344,14 +329,192 @@ const { title, experiences } = EXPERIENCES_DATA as {
     flex: 0 1 auto;
   }
 
-  .next-phrase-sub {
+  .next-phrase-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
     margin-top: 0.5rem;
+  }
+
+  .next-phrase--center .next-phrase-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .next-phrase-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-left: auto;
+    color: var(--color-frame);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+  }
+
+  /* Both labels share one grid cell so the width doesn't jump on toggle. */
+  .next-phrase-more-label {
+    display: inline-grid;
+    justify-items: end;
+  }
+
+  .next-phrase-more-label > span {
+    grid-area: 1 / 1;
+    transition: opacity 0.2s ease;
+  }
+
+  .next-phrase-more-label > span:last-child,
+  .next-phrase.is-open .next-phrase-more-label > span:first-child {
+    opacity: 0;
+  }
+
+  .next-phrase.is-open .next-phrase-more-label > span:last-child {
+    opacity: 1;
+  }
+
+  .next-phrase-more svg {
+    transition: transform 0.3s ease;
+  }
+
+  .next-phrase.is-open .next-phrase-more svg {
+    transform: rotate(180deg);
+  }
+
+  .next-phrase-link {
+    display: inline-flex;
+    align-self: flex-start;
+    gap: 0.35rem;
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-color: color-mix(
+      in srgb,
+      var(--color-accent) 40%,
+      transparent
+    );
+    text-underline-offset: 0.25em;
+    transition:
+      color 0.2s ease,
+      text-decoration-color 0.2s ease;
+  }
+
+  .next-phrase-link:hover {
+    color: var(--color-cream);
+    text-decoration-color: currentColor;
+  }
+
+  .next-phrase--center .next-phrase-more {
+    margin-left: 0;
+  }
+
+  .next-phrase:hover .next-phrase-more,
+  .next-phrase:focus-visible .next-phrase-more {
+    opacity: 0.9;
+  }
+
+  .next-phrase.is-open .next-phrase-more {
+    opacity: 0.9;
+  }
+
+  .next-phrase-sub {
     font-weight: 400;
     line-height: 1.15;
   }
 
   .next-phrase:nth-child(2) {
     --o: 1;
+  }
+
+  .next-phrase {
+    cursor: pointer;
+    pointer-events: auto;
+    outline: none;
+  }
+
+  .next-phrase[data-hidden] {
+    pointer-events: none;
+  }
+
+  .next-phrase:focus-visible .next-phrase-main {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  /* Opacity is scroll-driven every frame; only ease it while toggling. */
+  .next-pin.is-toggling .next-phrase {
+    transition: opacity 0.35s ease;
+  }
+
+  .next-pin.has-open .next-phrase {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .next-pin.has-open .next-phrase.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .next-phrase-details {
+    position: absolute;
+    top: 100%;
+    left: 5rem;
+    right: 5rem;
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    cursor: auto;
+    transition:
+      grid-template-rows 0.4s ease,
+      opacity 0.3s ease;
+  }
+
+  .next-phrase-details > div {
+    overflow: hidden;
+  }
+
+  .next-phrase-details-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 1.25rem;
+    color: color-mix(in srgb, var(--color-frame) 80%, transparent);
+  }
+
+  .next-phrase-tech {
+    font-style: italic;
+  }
+
+  .next-phrase-description strong,
+  .next-phrase-points strong {
+    font-weight: 700;
+    color: var(--color-frame);
+  }
+
+  .next-phrase-points {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-left: 1.25em;
+    list-style: disc;
+  }
+
+  .next-phrase-points li::marker {
+    color: var(--color-accent);
+  }
+
+  .next-phrase.is-open .next-phrase-details {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .next-phrase-details,
+    .next-pin.is-toggling .next-phrase {
+      transition: none;
+    }
   }
 
   .sunset-glow {
@@ -463,8 +626,106 @@ const { title, experiences } = EXPERIENCES_DATA as {
         const opacity = Math.max(0, falloff) ** 2.5;
         phrase.style.setProperty("--d", d.toFixed(4));
         phrase.style.setProperty("--o", opacity.toFixed(4));
+        phrase.toggleAttribute("data-hidden", opacity < 0.05);
       });
     };
+
+    // Click a role to focus it and reveal its details; click anywhere else
+    // (or the role again, Escape, or scroll away) to collapse.
+    let openIndex = -1;
+    let pendingIndex = -1;
+    let openTarget = 0;
+    let seekTimer = 0;
+    let toggleTimer = 0;
+
+    const flashToggling = () => {
+      pin.classList.add("is-toggling");
+      window.clearTimeout(toggleTimer);
+      toggleTimer = window.setTimeout(
+        () => pin.classList.remove("is-toggling"),
+        400,
+      );
+    };
+
+    const close = () => {
+      if (openIndex < 0) return;
+      const phrase = phrases[openIndex];
+      phrase.classList.remove("is-open");
+      phrase.querySelector(".next-phrase-details")?.setAttribute("inert", "");
+      phrase.setAttribute("aria-expanded", "false");
+      pin.classList.remove("has-open");
+      openIndex = -1;
+      flashToggling();
+    };
+
+    const reveal = (i: number) => {
+      pendingIndex = -1;
+      window.clearTimeout(seekTimer);
+      openIndex = i;
+      phrases[i].classList.add("is-open");
+      phrases[i]
+        .querySelector(".next-phrase-details")
+        ?.removeAttribute("inert");
+      phrases[i].setAttribute("aria-expanded", "true");
+      pin.classList.add("has-open");
+      flashToggling();
+    };
+
+    // A role that isn't in focus scrolls into focus first, then opens once
+    // the scroll lands (see arrive()).
+    const open = (i: number) => {
+      close();
+      window.clearTimeout(settleTimer);
+      openTarget = start + i * step;
+
+      if (Math.abs(window.scrollY - openTarget) < 2) {
+        reveal(i);
+        return;
+      }
+
+      pendingIndex = i;
+      window.scrollTo({
+        top: openTarget,
+        behavior: reduce ? "auto" : "smooth",
+      });
+      window.clearTimeout(seekTimer);
+      seekTimer = window.setTimeout(arrive, 1500);
+    };
+
+    const arrive = () => {
+      if (pendingIndex < 0) return;
+      if (Math.abs(window.scrollY - openTarget) < 40) reveal(pendingIndex);
+      else pendingIndex = -1;
+    };
+
+    phrases.forEach((phrase, i) => {
+      phrase.addEventListener("click", (e) => {
+        if ((e.target as Element).closest(".next-phrase-details")) return;
+        e.stopPropagation();
+        if (openIndex === i) close();
+        else open(i);
+      });
+      phrase.addEventListener("keydown", (e) => {
+        if (e.target !== phrase) return;
+        if (e.key !== "Enter" && e.key !== " ") return;
+        e.preventDefault();
+        if (openIndex === i) close();
+        else open(i);
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      pendingIndex = -1;
+      if (openIndex < 0) return;
+      if (phrases[openIndex].contains(e.target as Node)) return;
+      close();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      pendingIndex = -1;
+      close();
+    });
 
     const schedule = () => {
       if (queued) return;
@@ -493,11 +754,22 @@ const { title, experiences } = EXPERIENCES_DATA as {
       else if (y < lastY) dir = -1;
       lastY = y;
 
+      if (pendingIndex >= 0) {
+        if (Math.abs(y - openTarget) < 2) arrive();
+        return;
+      }
+
+      if (openIndex >= 0) {
+        if (Math.abs(y - openTarget) > 40) close();
+        else return;
+      }
+
       window.clearTimeout(settleTimer);
       settleTimer = window.setTimeout(settle, 140);
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scrollend", arrive);
     window.addEventListener("resize", () => {
       measure();
       schedule();
