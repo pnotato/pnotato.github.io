@@ -4,7 +4,9 @@ import BarPlanet from "@/components/BarPlanet.astro";
 import Volcano from "@/components/Volcano.astro";
 import JaggedHills from "@/components/JaggedHills.astro";
 import EXPERIENCES_DATA from "@/data/experiences.json";
+import { SITE } from "@/consts";
 const SECTION_HEIGHT = "min-h-[calc(100dvh-2*var(--frame-width))]";
+const year = new Date().getFullYear();
 const { title, experiences } = EXPERIENCES_DATA as {
   title: string;
   experiences: { left: string; right?: string; subtext?: string }[];
@@ -152,12 +154,99 @@ const { title, experiences } = EXPERIENCES_DATA as {
     </div>
   </section>
 
-  <section
+  <footer
     id="next-2"
-    aria-label="Next section"
-    class:list={["next-final relative", SECTION_HEIGHT]}
+    aria-label="Footer"
+    class:list={[
+      "next-final relative flex min-h-[27vh] flex-col justify-between gap-5 px-8 pt-12 pb-6 md:px-16",
+    ]}
   >
-  </section>
+    <div
+      class="flex flex-col gap-5 md:flex-row md:items-start md:justify-between"
+    >
+      <div class="flex max-w-sm flex-col gap-2">
+        <a
+          href="/"
+          class="text-body font-extrabold text-frame transition-colors hover:text-accent"
+          >{SITE.title}</a
+        >
+        <p class="text-h5 text-frame/60">
+          A final year computer science student at Simon Fraser University.
+        </p>
+      </div>
+      <div class="flex flex-col gap-4 sm:flex-row sm:gap-16">
+        <div class="flex flex-col gap-2">
+          <h3
+            class="text-h5 font-semibold tracking-widest text-frame/40 uppercase"
+          >
+            Connect
+          </h3>
+          <ul class="text-body flex flex-col gap-2">
+            <li>
+              <a
+                class="text-frame/70 transition-colors hover:text-accent"
+                href="https://www.linkedin.com/in/nicholasch-an/">LinkedIn</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-frame/70 transition-colors hover:text-accent"
+                href="mailto:nicholasch.an@outlook.com">Email</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h3
+            class="text-h5 font-semibold tracking-widest text-frame/40 uppercase"
+          >
+            Explore
+          </h3>
+          <ul class="text-body flex flex-col gap-2">
+            <li>
+              <a
+                class="text-frame/70 transition-colors hover:text-accent"
+                href="/assets/Resume_Sept_2025.pdf">Resume</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-frame/70 transition-colors hover:text-accent"
+                href="https://github.com/pnotato/">Github</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h3
+            class="text-h5 font-semibold tracking-widest text-frame/40 uppercase"
+          >
+            Site
+          </h3>
+          <ul class="text-body flex flex-col gap-2">
+            <li>
+              <a
+                class="text-frame/70 transition-colors hover:text-accent"
+                href="#">Portfolio</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-frame/70 transition-colors hover:text-accent"
+                href="#">Writing</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div
+      class="text-h5 flex flex-col gap-2 border-t border-frame/15 pt-3 text-frame/50 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>© {year} {SITE.title}. All rights reserved.</p>
+      <a class="transition-colors hover:text-accent" href="#">Back to top ↑</a>
+    </div>
+  </footer>
 </BaseLayout>
 
 <style>

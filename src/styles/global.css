@@ -23,6 +23,9 @@
 
   --text-body: 1.0625rem;
   --text-body--line-height: 1.5;
+
+  --text-h5: 0.9375rem;
+  --text-h5--line-height: 1.5;
 }
 
 html {
