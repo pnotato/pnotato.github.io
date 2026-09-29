@@ -27,17 +27,17 @@ const formatDate = (date: Date) =>
     </h1>
     {
       posts.length ? (
-        <ul class="flex w-full max-w-[min(760px,92vw)] flex-col gap-6">
+        <ul class="flex w-full max-w-[min(760px,92vw)] flex-col">
           {posts.map((post) => (
             <li>
               <a
                 href={`/writing/${post.id}`}
-                class="flex flex-col gap-1 transition-colors hover:text-accent sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
+                class="post-link flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
               >
                 <span class="text-h3 font-bold">{post.data.title}</span>
                 <time
                   datetime={post.data.date.toISOString()}
-                  class="shrink-0 text-h5 text-cream"
+                  class="shrink-0 text-h3 font-normal text-cream"
                 >
                   {formatDate(post.data.date)}
                 </time>
@@ -51,3 +51,23 @@ const formatDate = (date: Date) =>
     }
   </section>
 </BaseLayout>
+
+<style>
+  /* Faint card on hover, matching the experience rows on the homepage.
+     The padding lives inside the link (not a pseudo-element bleeding out)
+     because the scroll-reveal clip-path on <li> would crop anything drawn
+     outside the item's box. */
+  .post-link {
+    padding: 1.5rem 2rem;
+    border: 1px solid transparent;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .post-link:hover,
+  .post-link:focus-visible {
+    background-color: rgb(255 255 255 / 0.04);
+    border-color: rgb(255 255 255 / 0.08);
+  }
+</style>

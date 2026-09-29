@@ -261,7 +261,7 @@ const jobs = experiences.map((job) => ({
     <h2
       class="w-full max-w-[min(1100px,92vw)] text-center text-h2 font-bold"
     >
-      Things I've Made
+      What I've Worked On
     </h2>
     <WorkGrid projects={PROJECTS_DATA.projects} />
     <div class="-mt-8 flex w-full max-w-[min(1100px,92vw)] justify-end">
@@ -269,7 +269,7 @@ const jobs = experiences.map((job) => ({
         href="/portfolio"
         class="text-h3 inline-flex items-center gap-2 font-bold text-frame transition-colors hover:text-accent"
       >
-        See whole portfolio
+        See Full Portfolio
         <span aria-hidden="true">→</span>
       </a>
     </div>
@@ -293,12 +293,21 @@ const jobs = experiences.map((job) => ({
     height: calc(100dvh - 2 * var(--frame-width));
   }
 
+  /* Match the WorkGrid below: min(1100px, 92vw) inside the section's
+     px-8 / md:px-16 padding. */
   .next-phrases {
     --phrase-gap: 6rem;
     --phrase-top: 34%;
+    --phrase-width: min(1100px, 92vw, 100% - 4rem);
     position: absolute;
     inset: 0;
     z-index: 10;
+  }
+
+  @media (min-width: 48rem) {
+    .next-phrases {
+      --phrase-width: min(1100px, 92vw, 100% - 8rem);
+    }
   }
 
   .next-phrase-list {
@@ -322,8 +331,7 @@ const jobs = experiences.map((job) => ({
     position: absolute;
     left: 50%;
     top: var(--phrase-top);
-    width: 100%;
-    padding: 0 5rem;
+    width: var(--phrase-width);
     opacity: var(--o, 0);
     transform: translate(-50%, -50%)
       translateY(calc(var(--d, 0) * var(--phrase-gap) + var(--shift, 0px)));
@@ -471,6 +479,40 @@ const jobs = experiences.map((job) => ({
     outline: none;
   }
 
+  /* Faint card behind the role in focus, drawn outside the text box so the
+     text stays aligned with the grid below. --open-h (set in JS) stretches
+     it over the details while open. */
+  .next-phrase::before {
+    content: "";
+    position: absolute;
+    inset: -1.25rem -1.5rem calc(-1.25rem - var(--open-h, 0px));
+    z-index: -1;
+    background: rgb(255 255 255 / 0.04);
+    border: 1px solid rgb(255 255 255 / 0.08);
+    opacity: 0;
+    transition:
+      opacity 0.2s ease,
+      bottom 0.4s ease;
+    pointer-events: none;
+  }
+
+  .next-phrase[data-current]:hover::before,
+  .next-phrase:focus-visible::before,
+  .next-phrase.is-open::before {
+    opacity: 1;
+  }
+
+  .next-phrase-more svg {
+    translate: 0 0;
+    transition:
+      transform 0.3s ease,
+      translate 0.2s ease;
+  }
+
+  .next-phrase[data-current]:hover:not(.is-open) .next-phrase-more svg {
+    translate: 0 2px;
+  }
+
   .next-phrase[data-hidden] {
     pointer-events: none;
   }
@@ -500,8 +542,8 @@ const jobs = experiences.map((job) => ({
   .next-phrase-details {
     position: absolute;
     top: 100%;
-    left: 5rem;
-    right: 5rem;
+    left: 0;
+    right: 0;
     display: grid;
     grid-template-rows: 0fr;
     opacity: 0;
@@ -713,6 +755,8 @@ const jobs = experiences.map((job) => ({
       phrases.forEach((phrase, j) => {
         if (j > i && h) phrase.style.setProperty("--shift", `${h}px`);
         else phrase.style.removeProperty("--shift");
+        if (j === i && h) phrase.style.setProperty("--open-h", `${h}px`);
+        else phrase.style.removeProperty("--open-h");
       });
     };
 

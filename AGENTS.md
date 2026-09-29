@@ -26,7 +26,7 @@ npm run deploy     # astro build && write dist/CNAME && gh-pages -d dist
 - The navbar's current-page label is derived from `Astro.url.pathname` via `pageName()` in `src/consts.ts`, so new routes update automatically.
 - Import alias `@/*` maps to `src/*` (configured in `tsconfig.json`).
 - Tailwind v4 is CSS-first: no `tailwind.config.js`. Add design tokens with `@theme` in `src/styles/global.css`.
-- `public/` is served root-absolute (`/favicon.svg`, matching `base: "/"`).
+- `public/` is served root-absolute (`/favicon.png`, matching `base: "/"`).
 
 ## Branch layout
 

@@ -1,62 +1,62 @@
 {
-  "title": "What I've Worked On",
+  "title": "Where I've Worked",
   "experiences": [
     {
       "left": "SFU MARS Lab",
-      "right": "September 2026 - Present",
+      "right": "Sep 2026 – Present",
       "subtext": "Undergraduate Researcher",
       "details": {
         "technologies": "Python, ROS2, Nav2",
-        "description": "Undergraduate researcher as part of SFU's UR2PHD program. Currently working under a graduate student researching learning-based safety filters on autonomous robotoic systems."
+        "description": "Researching learning-based safety filters for autonomous robotic systems through SFU's UR2PHD program, working alongside a graduate researcher."
       }
     },
     {
       "left": "Rivian & Volkswagen Group Technologies",
-      "right": "January - August 2026",
+      "right": "Jan – Aug 2026",
       "subtext": "Software Engineering Intern",
       "details": {
         "technologies": "C, Python, Databricks, Jenkins, HIL/SIL Testing",
-        "description": "I was an intern on the Battery Management System (BMS) team at Rivian. During this term, I was responsible for overseeing safety critical testing for the Rivian R1 and R2. I also helped develop in-house AI tools, accelerating development."
+        "description": "Intern on the High Voltage Energy Storage and Distribution team. Developed and validated software for safety-critical systems in Rivian's electric vehicles, and engineered AI-assisted tooling that sped up hardware-in-the-loop testing."
       },
       "url": "https://www.rivianvw.tech/"
     },
     {
       "left": "Blaise Transit",
-      "right": "September - December 2025",
+      "right": "Sep – Dec 2025",
       "subtext": "Software Engineering Intern",
       "details": {
-        "technologies": "Python, TypeScript, Next.js, Amazon AWS (S3, DynamoDB, Aurora), MySQL",
-        "description": "Intern on the backend development team. I oversaw the development of the new transit selector and handling there. I also helped with the company's transition from Microsoft Azure to Amazon AWS."
+        "technologies": "Python, TypeScript, Next.js, AWS (S3, DynamoDB, Aurora), MySQL",
+        "description": "Intern on the Backend team. Engineered systems across APIs, databases, and cloud infrastructure, supported the company's Azure-to-AWS migration, and introduced AI developer tooling to our engineers."
       },
       "url": "https://www.blaisetransit.com/"
     },
     {
       "left": "SFU Robot Soccer",
-      "right": "May 2025 - Present",
+      "right": "May 2025 – Present",
       "subtext": "Software Developer",
       "details": {
         "technologies": "C++, Python, Qt, CMake",
-        "description": "Pathplanning and Analytics team. I contributed to the development of pathplanning algorithms that resulted in quick times in simulations. I also helped build our analytics pipeline and developed our pathplanning benchmarking tools."
+        "description": "Developed path planning software for autonomous soccer robots, reaching sub-50ms replan times in simulation, along with benchmarking and analytics tools to measure performance."
       },
       "url": "https://www.sfurobotsoccer.com/"
     },
     {
       "left": "BC Cancer Research Centre",
-      "right": "May - December 2024",
+      "right": "May – Dec 2024",
       "subtext": "Computer Systems Intern",
       "details": {
         "technologies": "Python, TypeScript, Next.js, Bash, Linux",
-        "description": "Systems intern at Canada's Michael Smith Genome Sciences Centre. I was responsible for maintaining and developing internal tools for the research centre. I also helped with the development of a new internal web application that allowed researchers to easily access and analyze their data."
+        "description": "Intern on the Systems team. Supported research infrastructure, developing internal tools for securely handling sensitive patient data and automating operations on our big data cluster."
       },
       "url": "https://www.bccrc.ca/"
     },
     {
       "left": "AumOui",
-      "right": "October - December 2023",
+      "right": "Oct – Dec 2023",
       "subtext": "Web Developer",
       "details": {
         "technologies": "HTML, CSS, JavaScript",
-        "description": "I helped develop a AumOui's e-commerce website, handling the display of products and the checkout process."
+        "description": "Designed and developed the front end of AumOui's e-commerce storefront, from product pages to checkout."
       },
       "url": "https://aumoui.com/"
     }

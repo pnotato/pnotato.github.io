@@ -1065,7 +1065,7 @@ const { class: className } = Astro.props;
     const puff = [plume, highlights[index]];
     const duration = gsap.utils.random(1.8, 3.2);
     const size = gsap.utils.random(0.8, 2);
-    const drift = gsap.utils.random(-160, 160);
+    const drift = gsap.utils.random(-230, 230);
     const svgOrigin = "646.9 915.1";
 
     gsap.set(puff, { opacity: 0, svgOrigin });
@@ -1099,10 +1099,10 @@ const { class: className } = Astro.props;
       { opacity: 0 },
       {
         keyframes: [
-          { opacity: 0.9, duration: duration * 0.08, ease: "none" },
-          { opacity: 0.8, duration: duration * 0.12, ease: "none" },
-          { opacity: 0, duration: duration * 0.15, ease: "power1.in" },
-          { opacity: 0, duration: duration * 0.65, ease: "none" },
+          { opacity: 0.9, duration: duration * 0.05, ease: "none" },
+          { opacity: 0.8, duration: duration * 0.085, ease: "none" },
+          { opacity: 0, duration: duration * 0.085, ease: "power1.in" },
+          { opacity: 0, duration: duration * 0.78, ease: "none" },
         ],
       },
       0,

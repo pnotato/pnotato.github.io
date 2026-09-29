@@ -22,7 +22,7 @@
   --text-h4: clamp(1.1rem, 0.95rem + 0.5vw, 1.35rem);
   --text-h4--line-height: 1.45;
 
-  --text-body: 1.0625rem;
+  --text-body: 1.275rem;
   --text-body--line-height: 1.5;
 
   --text-h5: 0.9375rem;
