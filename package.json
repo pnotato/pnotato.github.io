@@ -12,7 +12,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro",
-    "deploy": "astro build && echo 'nickchan.ca' > ./dist/CNAME && gh-pages -d dist"
+    "deploy": "astro build && gh-pages -d dist --nojekyll --cname nickchan.ca"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
