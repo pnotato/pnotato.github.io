@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Original shooting stars</title>
+<style>
+  *{box-sizing:content-box}
+  html,body{margin:0;width:100%;height:100%;overflow:hidden}
+  body{
+    display:flex;align-items:center;justify-content:center;
+    background:#181743;font-size:clamp(16px,5vmin,28px);
+  }
+  
+  :root{--u:.069444444vw;--purple2:#730F8E;--fuscia:#f9026d;--meteor-yellow:#fedc01}
+  .meteor{
+    position:absolute;width:auto;height:auto;opacity:0;
+    transform:rotate(40deg);
+  }
+  .meteor-one{animation:meteor-drop 2s ease 2s infinite}
+  .meteor-two{animation:meteor-drop2 2.5s ease 3s infinite;transform:rotate(40deg) scale(.9)}
+  .meteor div{transition:all .3s ease}
+  .meteor div:nth-child(1){
+    position:absolute;width:calc(20 * var(--u));height:calc(150 * var(--u));
+    left:calc(-5.5 * var(--u));top:calc(-96 * var(--u));z-index:-2;
+    border-radius:calc(100 * var(--u));opacity:.8;
+    background:linear-gradient(to top,var(--purple2),transparent);
+  }
+  .meteor div:nth-child(2){
+    position:absolute;width:calc(12 * var(--u));height:calc(100 * var(--u));
+    left:calc(-1.5 * var(--u));top:calc(-53 * var(--u));
+    border-radius:calc(500 * var(--u));opacity:.8;
+    background:linear-gradient(to top,var(--fuscia),transparent);
+  }
+  .meteor div:nth-child(3){
+    position:absolute;width:calc(8 * var(--u));height:calc(8 * var(--u));
+    top:calc(35 * var(--u));z-index:2;
+    border-radius:calc(100 * var(--u));background:var(--meteor-yellow);
+  }
+  .meteor div:nth-child(4){
+    position:absolute;width:0;height:0;top:calc(8 * var(--u));z-index:1;
+    border-left:calc(4 * var(--u)) solid transparent;
+    border-right:calc(5 * var(--u)) solid transparent;
+    border-bottom:calc(30 * var(--u)) solid var(--meteor-yellow);
+  }
+  @keyframes meteor-drop{
+    0%{opacity:0;top:calc(50 * var(--u));left:calc(1250 * var(--u))}
+    50%{opacity:1}
+    100%{opacity:0;top:calc(550 * var(--u));left:calc(800 * var(--u))}
+  }
+  @keyframes meteor-drop2{
+    0%{opacity:0;top:calc(150 * var(--u));left:calc(1350 * var(--u))}
+    50%{opacity:1}
+    100%{opacity:0;top:calc(650 * var(--u));left:calc(900 * var(--u))}
+  }
+  
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+  <div class="meteor meteor-one" role="img" aria-label="Shooting star">
+    <div></div><div></div><div></div><div></div>
+  </div>
+  <div class="meteor meteor-two" role="img" aria-label="Shooting star">
+    <div></div><div></div><div></div><div></div>
+  </div>
+</body>
+</html>

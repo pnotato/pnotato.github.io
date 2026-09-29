@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" role="img" aria-label="Jagged violet rock spires with pink crystals">
+  <defs>
+    <pattern id="ac-js-stars" width="96" height="84" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="10" r="2" fill="#ffffff"/>
+      <circle cx="54" cy="24" r="1.4" fill="#ffffff" opacity=".8"/>
+      <circle cx="30" cy="46" r="1.8" fill="#ffffff" opacity=".9"/>
+      <circle cx="78" cy="56" r="2.2" fill="#ffffff"/>
+      <circle cx="16" cy="72" r="1.3" fill="#ffffff" opacity=".7"/>
+      <circle cx="62" cy="78" r="1.6" fill="#ffffff" opacity=".85"/>
+      <circle cx="88" cy="16" r="1.2" fill="#ffffff" opacity=".7"/>
+    </pattern>
+    <g id="ac-js-shard">
+      <polygon points="0,-24 -6,-16 -6,0 0,5" fill="#f5a9ec"/>
+      <polygon points="0,-24 6,-16 6,0 0,5" fill="#c94bb8"/>
+      <polygon points="0,-24 -6,-16 0,-13 6,-16" fill="#ffd6f7"/>
+    </g>
+    <g id="ac-js-cluster">
+      <use href="#ac-js-shard" transform="translate(-13 2) rotate(-28) scale(.6)"/>
+      <use href="#ac-js-shard" transform="translate(12 2) rotate(26) scale(.65)"/>
+      <use href="#ac-js-shard" transform="translate(-4 0) rotate(-8) scale(1)"/>
+      <use href="#ac-js-shard" transform="translate(6 1) rotate(12) scale(.78)"/>
+    </g>
+    <g id="ac-js-gem">
+      <polygon points="0,-16 -8,0 0,16" fill="#f39ae8"/>
+      <polygon points="0,-16 8,0 0,16" fill="#b8409f"/>
+      <polygon points="0,-16 -4,-2 0,8 4,-2" fill="#ffc6f4"/>
+    </g>
+    <polygon id="ac-js-a" points="112,380 122,200 142,120 170,74 190,64 206,92 214,150 236,196 246,380"/>
+    <polygon id="ac-js-b" points="424,380 432,190 446,110 470,36 498,8 530,2 548,26 566,96 580,170 598,380"/>
+    <polygon id="ac-js-c" points="654,380 664,190 680,110 704,68 740,56 764,84 778,150 792,176 814,196 836,380"/>
+    <polygon id="ac-js-d" points="852,380 862,190 874,110 890,50 948,36 978,54 986,120 994,200 1006,380"/>
+  </defs>
+  <style>
+    svg{display:block}
+    .ac-js-glow{animation:ac-js-glow 4.2s ease-in-out infinite}
+    .ac-js-tw{animation:ac-js-tw 5s ease-in-out infinite}
+    @keyframes ac-js-glow{0%,100%{opacity:.82}50%{opacity:1}}
+    @keyframes ac-js-tw{0%,100%{opacity:.55}50%{opacity:1}}
+  </style>
+
+  <!-- back spires -->
+  <polygon points="214,380 222,160 240,120 256,112 270,140 278,380" fill="#4a3499"/>
+  <polygon points="214,380 222,160 240,120 248,134 234,380" fill="#8057c8"/>
+  <polygon points="240,120 256,112 262,122 248,134" fill="#b88af2"/>
+  <polygon points="256,112 270,140 278,380 262,380 260,150 262,122" fill="#30236f"/>
+
+  <use href="#ac-js-a" fill="#3a2a80"/>
+  <use href="#ac-js-a" fill="url(#ac-js-stars)" class="ac-js-tw" style="animation-delay:1.2s"/>
+  <polygon points="112,380 122,200 142,120 170,74 180,96 162,170 156,380" fill="#7b52c6"/>
+  <polygon points="170,74 190,64 198,76 180,96" fill="#b88af2"/>
+  <polygon points="190,64 206,92 214,150 236,196 246,380 208,380 202,170 198,76" fill="#2e2168"/>
+  <polygon points="112,380 118,280 150,258 170,268 154,380" fill="#6546b4"/>
+  <polygon points="118,280 150,258 170,268 138,290" fill="#a67be8"/>
+
+  <use href="#ac-js-b" fill="#30236f"/>
+  <use href="#ac-js-b" fill="url(#ac-js-stars)" class="ac-js-tw"/>
+  <polygon points="424,380 432,190 446,110 470,36 484,58 468,140 460,380" fill="#8a5ed4"/>
+  <polygon points="470,36 498,8 530,2 518,20 484,58" fill="#b98cf3"/>
+  <polygon points="530,2 548,26 566,96 580,170 598,380 574,380 562,176 550,64 518,20" fill="#3f2d88"/>
+  <polygon points="424,380 430,286 470,254 494,266 470,380" fill="#6a4ab8"/>
+  <polygon points="430,286 470,254 494,266 454,296" fill="#b085f0"/>
+
+  <use href="#ac-js-c" fill="#34267a"/>
+  <use href="#ac-js-c" fill="url(#ac-js-stars)" class="ac-js-tw" style="animation-delay:2.4s"/>
+  <polygon points="654,380 664,190 680,110 704,68 716,88 698,170 688,380" fill="#7b52c6"/>
+  <polygon points="704,68 740,56 752,72 716,88" fill="#b88af2"/>
+  <polygon points="740,56 764,84 778,150 792,176 814,196 836,380 800,380 786,204 766,132 752,72" fill="#2c2066"/>
+
+  <use href="#ac-js-d" fill="#30236f"/>
+  <use href="#ac-js-d" fill="url(#ac-js-stars)" class="ac-js-tw" style="animation-delay:3.4s"/>
+  <polygon points="852,380 862,190 874,110 890,50 904,70 888,160 880,380" fill="#8a5ed4"/>
+  <polygon points="890,50 948,36 978,54 962,66 904,70" fill="#b98cf3"/>
+  <polygon points="978,54 986,120 994,200 1006,380 982,380 976,190 970,110 962,66" fill="#4a3499"/>
+
+  <polygon points="1078,380 1088,210 1100,172 1110,150 1134,142 1152,166 1160,230 1174,380" fill="#4a3499"/>
+  <polygon points="1078,380 1088,210 1100,172 1110,150 1120,172 1106,240 1104,380" fill="#7b52c6"/>
+  <polygon points="1110,150 1134,142 1142,156 1120,172" fill="#b88af2"/>
+  <polygon points="1134,142 1152,166 1160,230 1174,380 1150,380 1146,230 1142,156" fill="#30236f"/>
+
+  <!-- mid rocks -->
+  <polygon points="288,380 298,212 312,172 338,130 378,116 404,140 412,220 422,380" fill="#4a3499"/>
+  <polygon points="288,380 298,212 312,172 338,130 352,150 330,262 318,380" fill="#9468dc"/>
+  <polygon points="338,130 378,116 390,128 352,150" fill="#bb90f4"/>
+  <polygon points="378,116 404,140 412,220 422,380 396,380 394,220 390,128" fill="#33256f"/>
+
+  <polygon points="570,380 580,200 596,158 622,154 638,190 648,380" fill="#4f389f"/>
+  <polygon points="570,380 580,200 596,158 606,176 598,380" fill="#8057c8"/>
+  <polygon points="596,158 622,154 630,166 606,176" fill="#b88af2"/>
+  <polygon points="622,154 638,190 648,380 630,380 628,192 630,166" fill="#33256f"/>
+
+  <polygon points="1000,380 1010,238 1028,200 1054,192 1068,224 1080,380" fill="#4f389f"/>
+  <polygon points="1000,380 1010,238 1028,200 1038,214 1028,380" fill="#8057c8"/>
+  <polygon points="1028,200 1054,192 1062,204 1038,214" fill="#b88af2"/>
+  <polygon points="1054,192 1068,224 1080,380 1060,380 1056,228 1062,204" fill="#33256f"/>
+
+  <!-- foreground boulders -->
+  <polygon points="0,332 40,312 96,322 58,344" fill="#a67be8"/>
+  <polygon points="0,332 58,344 56,380 0,380" fill="#5c40ac"/>
+  <polygon points="58,344 96,322 104,380 56,380" fill="#35277a"/>
+
+  <polygon points="92,300 150,272 206,292 146,322" fill="#b085f0"/>
+  <polygon points="92,300 146,322 142,380 86,380" fill="#6546b4"/>
+  <polygon points="146,322 206,292 214,380 142,380" fill="#3d2d86"/>
+
+  <polygon points="210,338 256,318 300,330 252,352" fill="#9a6fe2"/>
+  <polygon points="210,338 252,352 250,380 204,380" fill="#5a3fa9"/>
+  <polygon points="252,352 300,330 306,380 250,380" fill="#30236f"/>
+
+  <polygon points="312,318 372,272 432,300 426,380 318,380" fill="#6a4ab8"/>
+  <polygon points="286,306 352,262 372,272 312,318" fill="#c096f6"/>
+  <polygon points="286,306 312,318 318,380 280,380" fill="#8a5ed4"/>
+  <polygon points="372,272 432,300 426,380 410,380 414,306" fill="#3d2d86"/>
+
+  <polygon points="430,330 486,302 548,314 494,344" fill="#a67be8"/>
+  <polygon points="430,330 494,344 490,380 424,380" fill="#5c40ac"/>
+  <polygon points="494,344 548,314 560,380 490,380" fill="#35277a"/>
+
+  <polygon points="556,296 620,272 700,288 636,314" fill="#b085f0"/>
+  <polygon points="556,296 636,314 632,380 550,380" fill="#6546b4"/>
+  <polygon points="636,314 700,288 708,380 632,380" fill="#3d2d86"/>
+
+  <polygon points="690,262 770,238 842,256 764,284" fill="#b98cf3"/>
+  <polygon points="690,262 764,284 760,380 684,380" fill="#6a4ab8"/>
+  <polygon points="764,284 842,256 852,380 760,380" fill="#3a2a80"/>
+
+  <polygon points="850,318 900,296 972,308 918,334" fill="#9a6fe2"/>
+  <polygon points="850,318 918,334 916,380 844,380" fill="#5a3fa9"/>
+  <polygon points="918,334 972,308 980,380 916,380" fill="#30236f"/>
+
+  <polygon points="968,292 1032,268 1090,284 1030,312" fill="#b085f0"/>
+  <polygon points="968,292 1030,312 1028,380 962,380" fill="#6546b4"/>
+  <polygon points="1030,312 1090,284 1098,380 1028,380" fill="#3d2d86"/>
+
+  <polygon points="1086,326 1146,306 1200,316 1150,344" fill="#a67be8"/>
+  <polygon points="1086,326 1150,344 1148,380 1080,380" fill="#5c40ac"/>
+  <polygon points="1150,344 1200,316 1200,380 1148,380" fill="#35277a"/>
+
+  <!-- crystals -->
+  <g class="ac-js-glow">
+    <use href="#ac-js-gem" transform="translate(551 128) scale(1.15)"/>
+    <use href="#ac-js-gem" transform="translate(190 206) rotate(-8) scale(1.25)"/>
+    <use href="#ac-js-gem" transform="translate(462 350) rotate(8) scale(1.3)"/>
+    <use href="#ac-js-gem" transform="translate(712 196) rotate(-6) scale(.95)"/>
+  </g>
+  <g class="ac-js-glow" style="animation-delay:1.4s">
+    <use href="#ac-js-cluster" transform="translate(106 298) scale(1.1)"/>
+    <use href="#ac-js-cluster" transform="translate(262 346) scale(.8)"/>
+    <use href="#ac-js-cluster" transform="translate(528 334) scale(1.2)"/>
+    <use href="#ac-js-cluster" transform="translate(830 278) scale(1.3)"/>
+    <use href="#ac-js-cluster" transform="translate(1024 212) scale(.9)"/>
+    <use href="#ac-js-cluster" transform="translate(1162 336) scale(1.05)"/>
+    <use href="#ac-js-cluster" transform="translate(940 314) scale(.7)"/>
+  </g>
+</svg>

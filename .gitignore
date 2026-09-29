@@ -1,4 +1,14 @@
-# Logs
+# build output
+dist/
+dist-ssr/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
 logs
 *.log
 npm-debug.log*
@@ -7,19 +17,25 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# environment variables
+.env
+.env.production
 *.local
 
-# Editor directories and files
+# macOS-specific files
+.DS_Store
+
+# editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
+# agent research cache
+.agents/research/
+
+# legacy site kept for reference only

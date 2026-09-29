@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Teal planet</title>
+<style>
+  *{box-sizing:content-box}
+  html,body{margin:0;width:100%;height:100%;overflow:hidden}
+  body{
+    display:flex;align-items:center;justify-content:center;
+    background:#181743;font-size:clamp(16px,5vmin,28px);
+  }
+  
+  :root{
+    --planet-accent:#16b8a6;--planet-middle:#147f8b;
+    --planet-dark:#153b59;--planet-shine:#8ce4d5;
+    --planet-shine-deep:#20a596;
+  }
+  .planet-container{
+    width:10em;height:10em;padding:1em;border-radius:10em;
+    position:relative;
+    background:linear-gradient(150deg,var(--planet-accent),transparent,transparent);
+    animation:planet-moving 2s ease infinite;
+  }
+  .planet{
+    position:relative;z-index:1;width:10em;height:10em;border-radius:5em;
+    background:linear-gradient(150deg,var(--planet-accent),var(--planet-middle),transparent);
+  }
+  .shine{
+    width:0;height:0;position:absolute;z-index:2;
+    border-left:1.75em solid transparent;border-right:1.75em solid transparent;
+    border-top:1.4em solid var(--planet-shine);border-radius:50%;
+    transform:rotate(-40deg);top:2.25em;left:1.9em;
+  }
+  .shine::after{
+    content:"";position:absolute;width:8em;height:8em;border-radius:5em;
+    left:-3.9em;top:-.8em;
+    background:linear-gradient(190deg,var(--planet-shine-deep),var(--planet-middle),var(--planet-dark));
+  }
+  .shine-2,.shine-2::after{
+    position:absolute;width:.65em;height:.55em;
+    border-radius:5em;background:var(--planet-shine);
+  }
+  .shine-2{z-index:2;top:3.25em;left:2.275em;transform:rotate(-55deg)}
+  .shine-2::after{
+    content:"";width:.6em;height:.5em;top:.45em;left:2.175em;
+    transform:rotate(206deg);
+  }
+  .shine-2::before{
+    content:"";position:absolute;width:.7em;height:.5em;
+    border-radius:10em;background:var(--planet-shine);
+    top:1.2em;left:3em;transform:rotate(40deg);
+  }
+  .planet-ring,.planet-ring2{
+    width:15em;height:2em;position:absolute;left:-2em;top:4em;
+    border:.5em solid var(--planet-accent);border-top-color:transparent;
+    border-radius:100%;transform:rotate(-30deg);
+  }
+  .planet-ring{z-index:3}
+  .planet-ring2{z-index:0;border-top-color:var(--planet-accent)}
+  @keyframes planet-moving{
+    0%,100%{transform:translateY(-.1em)}
+    50%{transform:translateY(.1em)}
+  }
+  
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+  <div class="planet-container" role="img" aria-label="Teal planet">
+    <div class="planet-ring2"></div>
+    <div class="planet"></div>
+    <div class="shine"></div>
+    <div class="shine-2"></div>
+    <div class="planet-ring"></div>
+  </div>
+</body>
+</html>

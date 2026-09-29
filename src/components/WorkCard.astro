@@ -1,0 +1,98 @@
+---
+interface Props {
+  title?: string;
+  url?: string;
+  image?: string;
+  wide?: boolean;
+}
+
+const { title, url, image, wide = false } = Astro.props;
+const external = url && /^https?:\/\//.test(url);
+---
+
+<article class:list={["work-card", wide && "work-card--wide"]}>
+  <div class="work-card-inner">
+    {
+      image ? (
+        <img class="work-card-image" src={image} alt="" loading="lazy" />
+      ) : null
+    }
+    {
+      title ? (
+        <div class="work-card-caption">
+          <h3 class="work-card-title text-h4 font-bold">
+            {url ? (
+              <a
+                href={url}
+                {...(external && {
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                })}
+              >
+                {title}
+              </a>
+            ) : (
+              title
+            )}
+          </h3>
+        </div>
+      ) : null
+    }
+  </div>
+</article>
+
+<style>
+  /* The white card is a frame; the image and caption sit inset within it. */
+  .work-card {
+    display: flex;
+    aspect-ratio: 1 / 1;
+    padding: clamp(0.4rem, 0.8vw, 0.625rem);
+    background: #fff;
+  }
+
+  .work-card-inner {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    background: var(--color-dark-purple);
+  }
+
+  .work-card-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Spans two squares; height comes from the square beside it. */
+  .work-card--wide {
+    grid-column: span 2;
+    aspect-ratio: auto;
+  }
+
+  .work-card-caption {
+    position: relative;
+    padding: 3rem 1.25rem 1rem;
+    background: linear-gradient(to top, rgb(0 0 0 / 0.5), transparent);
+  }
+
+  .work-card-title {
+    color: var(--color-frame);
+    line-height: 1.2;
+  }
+
+  .work-card-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .work-card-title a:hover,
+  .work-card-title a:focus-visible {
+    color: var(--color-accent);
+  }
+</style>

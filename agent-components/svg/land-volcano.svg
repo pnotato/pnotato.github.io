@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Volcano at dusk with rising bubbles">
+  <defs>
+    <radialGradient id="ac-lv-sky" cx="50%" cy="84%" r="88%">
+      <stop offset="0%" stop-color="#F2C78A"/>
+      <stop offset="20%" stop-color="#E85D5E"/>
+      <stop offset="48%" stop-color="#7a2a63"/>
+      <stop offset="76%" stop-color="#2a1c4d"/>
+      <stop offset="100%" stop-color="#181743"/>
+    </radialGradient>
+    <radialGradient id="ac-lv-sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF0CF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#F2C78A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ac-lv-plume" cx="50%" cy="100%" r="80%">
+      <stop offset="0%" stop-color="#B3AEF5" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#B3AEF5" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <style>
+    svg{display:block}
+    .ac-lv-cloud{animation:ac-lv-drift 30s ease-in-out infinite}
+    @keyframes ac-lv-drift{0%,100%{transform:translateX(-16px)}50%{transform:translateX(16px)}}
+    .ac-lv-bub{transform-box:fill-box;animation:ac-lv-rise 5s ease-in infinite}
+    @keyframes ac-lv-rise{
+      0%{transform:translateY(0) scale(.4);opacity:0}
+      12%{opacity:.9}
+      70%{opacity:.75}
+      100%{transform:translateY(-240px) scale(1.15);opacity:0}
+    }
+  </style>
+
+  <rect width="1200" height="600" fill="url(#ac-lv-sky)"/>
+  <circle cx="300" cy="300" r="150" fill="url(#ac-lv-sun)"/>
+  <circle cx="300" cy="300" r="56" fill="#F2D8A7" opacity=".85"/>
+
+  <g class="ac-lv-cloud">
+    <path d="M180 120 C220 100 280 104 306 126 C328 146 296 162 250 158 C204 154 160 140 180 120 Z" fill="#F2D8A7" opacity=".85"/>
+    <path d="M560 88 C600 68 660 72 684 96 C706 116 674 132 628 128 C582 124 540 108 560 88 Z" fill="#F2D8A7" opacity=".8"/>
+    <path d="M900 140 C940 120 1000 124 1024 146 C1046 166 1014 182 968 178 C922 174 880 160 900 140 Z" fill="#F2D8A7" opacity=".8"/>
+  </g>
+
+  <path d="M540 270 C510 180 555 110 600 78 C645 110 690 180 660 270 Z" fill="url(#ac-lv-plume)"/>
+
+  <path d="M300 560 C420 380 500 300 600 250 C700 300 780 380 900 560 Z" fill="#7164BE"/>
+  <path d="M360 560 C460 400 530 330 600 292 C670 330 740 400 840 560 Z" fill="#4F4791"/>
+  <path d="M430 560 C500 430 555 372 600 344 C645 372 700 430 770 560 Z" fill="#353273"/>
+  <path d="M540 262 C565 246 635 246 660 262 C635 274 565 274 540 262 Z" fill="#9F99FF" opacity=".8"/>
+
+  <g>
+    <g class="ac-lv-bub" style="animation-delay:0s;animation-duration:5s"><circle cx="596" cy="250" r="14" fill="#946EB5"/><circle cx="591" cy="245" r="5" fill="#BF7AB3" opacity=".9"/></g>
+    <g class="ac-lv-bub" style="animation-delay:.5s;animation-duration:5.6s"><circle cx="612" cy="252" r="11" fill="#946EB5"/><circle cx="608" cy="248" r="4" fill="#BF7AB3" opacity=".9"/></g>
+    <g class="ac-lv-bub" style="animation-delay:1s;animation-duration:4.6s"><circle cx="586" cy="248" r="16" fill="#946EB5"/><circle cx="580" cy="242" r="6" fill="#BF7AB3" opacity=".9"/></g>
+    <g class="ac-lv-bub" style="animation-delay:1.5s;animation-duration:5.2s"><circle cx="604" cy="250" r="10" fill="#946EB5"/><circle cx="600" cy="246" r="3.6" fill="#BF7AB3" opacity=".9"/></g>
+    <g class="ac-lv-bub" style="animation-delay:2s;animation-duration:6s"><circle cx="620" cy="252" r="13" fill="#946EB5"/><circle cx="615" cy="247" r="4.6" fill="#BF7AB3" opacity=".9"/></g>
+    <g class="ac-lv-bub" style="animation-delay:2.5s;animation-duration:4.8s"><circle cx="578" cy="248" r="9" fill="#946EB5"/><circle cx="575" cy="245" r="3.2" fill="#BF7AB3" opacity=".9"/></g>
+    <g class="ac-lv-bub" style="animation-delay:3s;animation-duration:5.4s"><circle cx="600" cy="250" r="15" fill="#946EB5"/><circle cx="594" cy="244" r="5.4" fill="#BF7AB3" opacity=".9"/></g>
+    <g class="ac-lv-bub" style="animation-delay:3.5s;animation-duration:5s"><circle cx="614" cy="251" r="10" fill="#946EB5"/><circle cx="610" cy="247" r="3.6" fill="#BF7AB3" opacity=".9"/></g>
+    <g class="ac-lv-bub" style="animation-delay:4s;animation-duration:5.8s"><circle cx="590" cy="249" r="12" fill="#946EB5"/><circle cx="586" cy="245" r="4.3" fill="#BF7AB3" opacity=".9"/></g>
+    <g class="ac-lv-bub" style="animation-delay:4.5s;animation-duration:4.4s"><circle cx="606" cy="250" r="17" fill="#946EB5"/><circle cx="600" cy="243" r="6.2" fill="#BF7AB3" opacity=".9"/></g>
+  </g>
+
+  <path d="M0 520 C200 496 380 508 600 508 C820 508 1000 496 1200 520 L1200 600 L0 600 Z" fill="#241a45"/>
+</svg>

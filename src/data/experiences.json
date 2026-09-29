@@ -1,0 +1,64 @@
+{
+  "title": "Where I've Worked",
+  "experiences": [
+    {
+      "left": "SFU MARS Lab",
+      "right": "Sep 2026 – Present",
+      "subtext": "Undergraduate Researcher",
+      "details": {
+        "technologies": "Python, ROS2, Nav2",
+        "description": "Researching learning-based safety filters for autonomous robotic systems through SFU's UR2PHD program, working alongside a graduate researcher."
+      }
+    },
+    {
+      "left": "Rivian & Volkswagen Group Technologies",
+      "right": "Jan – Aug 2026",
+      "subtext": "Software Engineering Intern",
+      "details": {
+        "technologies": "C, Python, Databricks, Jenkins, HIL/SIL Testing",
+        "description": "Intern on the High Voltage Energy Storage and Distribution team. Developed and validated software for safety-critical systems in Rivian's electric vehicles, and engineered AI-assisted tooling that sped up hardware-in-the-loop testing."
+      },
+      "url": "https://www.rivianvw.tech/"
+    },
+    {
+      "left": "Blaise Transit",
+      "right": "Sep – Dec 2025",
+      "subtext": "Software Engineering Intern",
+      "details": {
+        "technologies": "Python, TypeScript, Next.js, AWS (S3, DynamoDB, Aurora), MySQL",
+        "description": "Intern on the Backend team. Engineered systems across APIs, databases, and cloud infrastructure, supported the company's Azure-to-AWS migration, and introduced AI developer tooling to our engineers."
+      },
+      "url": "https://www.blaisetransit.com/"
+    },
+    {
+      "left": "SFU Robot Soccer",
+      "right": "May 2025 – Present",
+      "subtext": "Software Developer",
+      "details": {
+        "technologies": "C++, Python, Qt, CMake",
+        "description": "Developed path planning software for autonomous soccer robots, reaching sub-50ms replan times in simulation, along with benchmarking and analytics tools to measure performance."
+      },
+      "url": "https://www.sfurobotsoccer.com/"
+    },
+    {
+      "left": "BC Cancer Research Centre",
+      "right": "May – Dec 2024",
+      "subtext": "Computer Systems Intern",
+      "details": {
+        "technologies": "Python, TypeScript, Next.js, Bash, Linux",
+        "description": "Intern on the Systems team. Supported research infrastructure, developing internal tools for securely handling sensitive patient data and automating operations on our big data cluster."
+      },
+      "url": "https://www.bccrc.ca/"
+    },
+    {
+      "left": "AumOui",
+      "right": "Oct – Dec 2023",
+      "subtext": "Web Developer",
+      "details": {
+        "technologies": "HTML, CSS, JavaScript",
+        "description": "Designed and developed the front end of AumOui's e-commerce storefront, from product pages to checkout."
+      },
+      "url": "https://aumoui.com/"
+    }
+  ]
+}

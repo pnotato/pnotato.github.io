@@ -1,0 +1,56 @@
+{
+  "projects": [
+    {
+      "title": "VisuDocs",
+      "url": "https://github.com/pnotato/VisuDocs",
+      "image": "/assets/projects/wide/visudocs.jpg"
+    },
+    {
+      "title": "Shell",
+      "url": "https://github.com/pnotato/shell",
+      "image": "/assets/projects/square/shell.png"
+    },
+    {
+      "title": "Blue Prince Journal",
+      "url": "https://nickchan.ca/blue-prince",
+      "image": "/assets/projects/square/blue-prince.png"
+    },
+    {
+      "title": "uniVerse",
+      "url": "https://github.com/SahirSood/UniVerse",
+      "image": "/assets/projects/wide/universe.png"
+    },
+    {
+      "title": "HireHigher",
+      "url": "https://github.com/Jordan-SFU/HireHigher",
+      "image": "/assets/projects/wide/hirehigher.jpg"
+    },
+    {
+      "title": "Wikilosophy",
+      "url": "https://github.com/pnotato/WikipediaFoundations",
+      "image": "/assets/projects/square/wikipedia.png"
+    },
+    {
+      "title": "TCP Load Balancer",
+      "url": "https://github.com/pnotato/cpp-loadbalancer",
+      "image": "/assets/projects/square/loadbalancer.png"
+    },
+    {
+      "title": "Quackii",
+      "url": "https://github.com/pnotato/Quackii",
+      "image": "/assets/projects/wide/quackii.jpg"
+    },
+    {
+      "title": "CredEat",
+      "url": "https://github.com/pnotato/CredEat"
+    },
+    {
+      "title": "Bitmap Editor",
+      "url": "https://github.com/pnotato/BitmapEditor"
+    },
+    {
+      "title": "ASLingo",
+      "url": "https://github.com/Jordan-SFU/ASLingo"
+    }
+  ]
+}

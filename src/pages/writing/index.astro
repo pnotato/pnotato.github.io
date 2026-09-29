@@ -1,0 +1,73 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { SITE } from "@/consts";
+
+const posts = (await getCollection("writing")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const formatDate = (date: Date) =>
+  date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+---
+
+<BaseLayout title={`Writing | ${SITE.title}`}>
+  <section
+    aria-label="Writing"
+    class="flex flex-col items-center gap-12 px-8 pt-32 pb-24 md:px-16"
+  >
+    <h1
+      class="w-full max-w-[min(1100px,92vw)] text-center text-h1 font-extrabold"
+    >
+      Writing
+    </h1>
+    {
+      posts.length ? (
+        <ul class="flex w-full max-w-[min(760px,92vw)] flex-col">
+          {posts.map((post) => (
+            <li>
+              <a
+                href={`/writing/${post.id}`}
+                class="post-link flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
+              >
+                <span class="text-h3 font-bold">{post.data.title}</span>
+                <time
+                  datetime={post.data.date.toISOString()}
+                  class="shrink-0 text-h3 font-normal text-cream"
+                >
+                  {formatDate(post.data.date)}
+                </time>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-center text-h4">Nothing here yet...?</p>
+      )
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  /* Faint card on hover, matching the experience rows on the homepage.
+     The padding lives inside the link (not a pseudo-element bleeding out)
+     because the scroll-reveal clip-path on <li> would crop anything drawn
+     outside the item's box. */
+  .post-link {
+    padding: 1.5rem 2rem;
+    border: 1px solid transparent;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .post-link:hover,
+  .post-link:focus-visible {
+    background-color: rgb(255 255 255 / 0.04);
+    border-color: rgb(255 255 255 / 0.08);
+  }
+</style>

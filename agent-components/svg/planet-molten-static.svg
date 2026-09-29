@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Floating coral molten planet">
+  <defs>
+    <linearGradient id="ac-pm-body" x1="18%" y1="8%" x2="82%" y2="92%">
+      <stop offset="0%" stop-color="#f08a8b"/>
+      <stop offset="52%" stop-color="#E85D5E"/>
+      <stop offset="100%" stop-color="#a8336e"/>
+    </linearGradient>
+    <linearGradient id="ac-pm-lava" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5a0a0"/>
+      <stop offset="55%" stop-color="#eb6d85"/>
+      <stop offset="100%" stop-color="#C62368"/>
+    </linearGradient>
+    <clipPath id="ac-pm-clip"><circle cx="200" cy="200" r="116"/></clipPath>
+    <filter id="ac-pm-glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+  </defs>
+  <style>
+    svg{display:block}
+    .ac-pm-float{animation:ac-pm-float 4.5s ease-in-out infinite}
+    @keyframes ac-pm-float{0%,100%{transform:translateY(3px)}50%{transform:translateY(-5px)}}
+    @media(prefers-reduced-motion:reduce){.ac-pm-float{animation:none}}
+  </style>
+  <g class="ac-pm-float">
+    <circle cx="200" cy="200" r="127" fill="#C62368" opacity=".4" filter="url(#ac-pm-glow)"/>
+    <circle cx="200" cy="200" r="116" fill="url(#ac-pm-body)"/>
+    <g clip-path="url(#ac-pm-clip)" fill="url(#ac-pm-lava)">
+      <path d="M70 109 C105 77 136 97 139 124 C142 149 119 150 111 170 C101 195 132 211 159 197 C185 184 204 177 227 193 C251 210 277 215 303 198 C324 184 337 212 321 234 C303 260 274 249 260 272 C249 291 261 308 278 324 L83 324 C100 300 123 289 129 270 C137 246 118 228 94 229 C71 229 54 208 67 189 C80 171 103 173 111 156 C120 137 99 120 70 109Z"/>
+    </g>
+  </g>
+</svg>

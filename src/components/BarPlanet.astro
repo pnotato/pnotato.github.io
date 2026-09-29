@@ -1,0 +1,437 @@
+---
+type Palette = {
+  b1: string;
+  c1: string;
+  b2: string;
+  c2: string;
+  b3: string;
+  c3: string;
+  b4: string;
+  c4: string;
+  b5: string;
+  c5: string;
+  body: string;
+  glowA: string;
+  glowB: string;
+  ringA: string;
+  ringB: string;
+  ringC: string;
+};
+
+type Variant = "blue" | "magenta" | "green" | "flame";
+
+const VARIANTS: Record<Variant, { rotation: string; palette: Palette }> = {
+  green: {
+    rotation: "-25deg",
+    palette: {
+      b1: "#bfe08f", c1: "#8fc46d",
+      b2: "#8fc46d", c2: "#5fa255",
+      b3: "#5fa255", c3: "#478a48",
+      b4: "#478a48", c4: "#35703c",
+      b5: "#35703c", c5: "#e6f4cf",
+      body: "#4f9150", glowA: "#5fa255", glowB: "#bfe08f",
+      ringA: "#e6f4cf", ringB: "#8fc46d", ringC: "#a9c98a",
+    },
+  },
+  magenta: {
+    rotation: "18deg",
+    palette: {
+      b1: "#e39a84", c1: "#cf6478",
+      b2: "#cf6478", c2: "#bf3a6b",
+      b3: "#bf3a6b", c3: "#a8336e",
+      b4: "#a8336e", c4: "#8f2b60",
+      b5: "#8f2b60", c5: "#f2dcc6",
+      body: "#ad3a6f", glowA: "#bf3a6b", glowB: "#e39a84",
+      ringA: "#f2dcc6", ringB: "#f2d8a7", ringC: "#e6cb8a",
+    },
+  },
+  blue: {
+    rotation: "-62deg",
+    palette: {
+      b1: "#a8c8ec", c1: "#7fa6dc",
+      b2: "#7fa6dc", c2: "#5a84c0",
+      b3: "#5a84c0", c3: "#40689f",
+      b4: "#40689f", c4: "#2e4f80",
+      b5: "#2e4f80", c5: "#8fb2e2",
+      body: "#4f7ab8", glowA: "#4f7ab8", glowB: "#a8c8ec",
+      ringA: "#cfe0f5", ringB: "#5a84c0", ringC: "#6f8fbf",
+    },
+  },
+  flame: {
+    rotation: "7deg",
+    palette: {
+      b1: "#f2a85e", c1: "#e57338",
+      b2: "#e57338", c2: "#d4502a",
+      b3: "#d4502a", c3: "#b83a22",
+      b4: "#b83a22", c4: "#8f2a18",
+      b5: "#8f2a18", c5: "#ffd9a8",
+      body: "#d4502a", glowA: "#d4502a", glowB: "#f2a85e",
+      ringA: "#ffd9a8", ringB: "#e57338", ringC: "#cc8a4a",
+    },
+  },
+};
+
+interface Props {
+  variant?: Variant;
+  size?: string;
+  rotation?: string;
+  glow?: number;
+  ring?: boolean;
+  ringTilt?: string;
+}
+
+const {
+  variant = "magenta",
+  size = "var(--planet-size, clamp(200px, 46vmin, 460px))",
+  rotation,
+  glow = 0.25,
+  ring = false,
+  ringTilt = "-22deg",
+} = Astro.props;
+const { rotation: variantRotation, palette: p } = VARIANTS[variant];
+const rotationValue = rotation ?? variantRotation;
+
+const LINE_COUNT = 30;
+const LINES = [1, 2, 3, 4, 5];
+
+const paletteStyle = [
+  `--sun-size:${size}`,
+  `--rotation:${rotationValue}`,
+  `--glow-strength:${glow}`,
+  `--b1:${p.b1}`,
+  `--c1:${p.c1}`,
+  `--b2:${p.b2}`,
+  `--c2:${p.c2}`,
+  `--b3:${p.b3}`,
+  `--c3:${p.c3}`,
+  `--b4:${p.b4}`,
+  `--c4:${p.c4}`,
+  `--b5:${p.b5}`,
+  `--c5:${p.c5}`,
+  `--body:${p.body}`,
+  `--glow-a:${p.glowA}`,
+  `--glow-b:${p.glowB}`,
+  `--ring-a:${p.ringA}`,
+  `--ring-b:${p.ringB}`,
+  `--ring-c:${p.ringC}`,
+  `--ring-tilt:${ringTilt}`,
+].join(";");
+---
+
+<div
+  class="sun-stage"
+  style={paletteStyle}
+  role="img"
+  aria-label={`${variant} bar planet`}
+>
+  {
+    ring && (
+      <div class="sun-ring sun-ring--back" aria-hidden="true">
+        <svg class="sun-ring__svg" viewBox="0 0 200 200">
+          <ellipse
+            class="sun-ring__band sun-ring__band--inner"
+            cx="100"
+            cy="100"
+            rx="74"
+            ry="26"
+          />
+          <ellipse
+            class="sun-ring__band sun-ring__band--middle"
+            cx="100"
+            cy="100"
+            rx="80"
+            ry="28"
+          />
+          <ellipse
+            class="sun-ring__band sun-ring__band--outer"
+            cx="100"
+            cy="100"
+            rx="86"
+            ry="30"
+          />
+        </svg>
+      </div>
+    )
+  }
+  <div class="sun">
+    <div class="sun__body">
+      {
+        LINES.map((n) => (
+          <ul class={`sun__body--line-${n}`}>
+            {Array.from({ length: LINE_COUNT }, () => (
+              <li class={`sun__body--line-${n}__line`} />
+            ))}
+          </ul>
+        ))
+      }
+    </div>
+  </div>
+  {
+    ring && (
+      <div class="sun-ring sun-ring--front" aria-hidden="true">
+        <svg class="sun-ring__svg" viewBox="0 0 200 200">
+          <ellipse
+            class="sun-ring__band sun-ring__band--inner"
+            cx="100"
+            cy="100"
+            rx="74"
+            ry="26"
+          />
+          <ellipse
+            class="sun-ring__band sun-ring__band--middle"
+            cx="100"
+            cy="100"
+            rx="80"
+            ry="28"
+          />
+          <ellipse
+            class="sun-ring__band sun-ring__band--outer"
+            cx="100"
+            cy="100"
+            rx="86"
+            ry="30"
+          />
+        </svg>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .sun-stage {
+    --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    width: var(--sun-size);
+    height: var(--sun-size);
+  }
+
+  .sun {
+    position: absolute;
+    width: var(--sun-size);
+    height: var(--sun-size);
+    top: 45%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    animation: float 4s var(--ease-out-quad) infinite;
+    box-shadow:
+      calc(var(--sun-size) * -0.1 * var(--glow-strength, 0.25)) 0
+      calc(var(--sun-size) * 0.26 * var(--glow-strength, 0.25))
+      calc(var(--sun-size) * -0.03 * var(--glow-strength, 0.25)) var(--glow-a),
+      calc(var(--sun-size) * 0.1 * var(--glow-strength, 0.25)) 0
+      calc(var(--sun-size) * 0.26 * var(--glow-strength, 0.25))
+      calc(var(--sun-size) * -0.09 * var(--glow-strength, 0.25)) var(--glow-b);
+  }
+
+  .sun-ring {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: calc(var(--sun-size) * 1.75);
+    height: calc(var(--sun-size) * 1.75);
+    transform: translate(-50%, -50%) rotate(var(--ring-tilt, -22deg));
+    animation: float-ring 4s var(--ease-out-quad) infinite;
+    pointer-events: none;
+  }
+
+  .sun-ring--back {
+    z-index: 0;
+  }
+
+  .sun-ring--front {
+    z-index: 2;
+    clip-path: inset(50% 0 0 0);
+  }
+
+  .sun-ring__svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .sun-ring__band {
+    fill: none;
+  }
+
+  .sun-ring__band--outer {
+    stroke: var(--ring-a);
+    stroke-width: 7;
+    filter: drop-shadow(0 0 3px color-mix(in srgb, var(--ring-a) 50%, transparent));
+  }
+
+  .sun-ring__band--middle {
+    stroke: var(--ring-b);
+    stroke-width: 7;
+    filter: drop-shadow(0 0 3px color-mix(in srgb, var(--ring-b) 50%, transparent));
+  }
+
+  .sun-ring__band--inner {
+    stroke: var(--ring-c);
+    stroke-width: 7;
+    filter: drop-shadow(0 0 3px color-mix(in srgb, var(--ring-c) 50%, transparent));
+  }
+
+  .sun__body {
+    width: 100%;
+    height: 100%;
+    clip-path: circle(50%);
+    transform: rotate(var(--rotation));
+    background: var(--body);
+    z-index: 1;
+    position: absolute;
+  }
+
+  .sun__body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    position: relative;
+  }
+
+  .sun__body li {
+    width: 100%;
+    height: calc(var(--sun-size) / 30 + 1px);
+    margin-bottom: -1px;
+    border-radius: calc(var(--sun-size) * 0.04);
+  }
+
+  .sun__body li:nth-of-type(odd)::before {
+    content: "";
+    position: absolute;
+    width: calc(var(--sun-size) / 20);
+    height: calc(var(--sun-size) / 30 + 1px);
+    border-radius: 0 calc(var(--sun-size) * 0.02) calc(var(--sun-size) * 0.02) 0;
+  }
+
+  .sun__body li:nth-of-type(1),
+  .sun__body li:nth-of-type(7),
+  .sun__body li:nth-of-type(13),
+  .sun__body li:nth-of-type(19),
+  .sun__body li:nth-of-type(25) {
+    transform: translateX(calc(var(--sun-size) * 0.11));
+  }
+  .sun__body li:nth-of-type(5),
+  .sun__body li:nth-of-type(9),
+  .sun__body li:nth-of-type(17),
+  .sun__body li:nth-of-type(21),
+  .sun__body li:nth-of-type(27) {
+    transform: translateX(calc(var(--sun-size) * 0.06));
+  }
+  .sun__body li:nth-of-type(8),
+  .sun__body li:nth-of-type(14),
+  .sun__body li:nth-of-type(18),
+  .sun__body li:nth-of-type(24) {
+    transform: translateX(calc(var(--sun-size) * -0.08));
+  }
+  .sun__body li:nth-of-type(4),
+  .sun__body li:nth-of-type(10),
+  .sun__body li:nth-of-type(16),
+  .sun__body li:nth-of-type(22) {
+    transform: translateX(calc(var(--sun-size) * -0.12));
+  }
+
+  .sun__body--line-1 {
+    left: 85%;
+    z-index: 0;
+    animation: line-movement 10s var(--ease-out-quad) infinite;
+  }
+  .sun__body--line-1__line {
+    background: var(--b1);
+  }
+  .sun__body--line-1 li:nth-of-type(odd)::before {
+    background: var(--c1);
+  }
+
+  .sun__body--line-2 {
+    left: 65%;
+    bottom: 100%;
+    z-index: -1;
+    animation: line-movement 8s var(--ease-out-quad) infinite;
+  }
+  .sun__body--line-2__line {
+    background: var(--b2);
+  }
+  .sun__body--line-2 li:nth-of-type(odd)::before {
+    background: var(--c2);
+  }
+
+  .sun__body--line-3 {
+    left: 30%;
+    bottom: 200%;
+    z-index: -2;
+    animation: line-movement 6s var(--ease-out-quad) infinite;
+  }
+  .sun__body--line-3__line {
+    background: var(--b3);
+  }
+  .sun__body--line-3 li:nth-of-type(odd)::before {
+    background: var(--c3);
+  }
+
+  .sun__body--line-4 {
+    left: 10%;
+    bottom: 300%;
+    z-index: -3;
+    animation: line-movement 4s var(--ease-out-quad) infinite;
+  }
+  .sun__body--line-4__line {
+    background: var(--b4);
+  }
+  .sun__body--line-4 li:nth-of-type(odd)::before {
+    background: var(--c4);
+  }
+
+  .sun__body--line-5 {
+    left: -20%;
+    bottom: 400%;
+    z-index: -4;
+  }
+  .sun__body--line-5__line {
+    background: var(--b5);
+  }
+  .sun__body--line-5 li:nth-of-type(odd)::before {
+    background: var(--c5);
+  }
+
+  @keyframes float {
+    0% {
+      transform: translate(-50%, -50%);
+    }
+    60% {
+      transform: translate(-50%, -47%);
+    }
+    100% {
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  @keyframes float-ring {
+    0% {
+      transform: translate(-50%, -50%) rotate(var(--ring-tilt, -22deg));
+    }
+    60% {
+      transform: translate(-50%, -47%) rotate(var(--ring-tilt, -22deg));
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(var(--ring-tilt, -22deg));
+    }
+  }
+
+  @keyframes line-movement {
+    0% {
+      transform: translateX(0);
+    }
+    60% {
+      transform: translateX(-10px);
+    }
+    80% {
+      transform: translateX(10px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+</style>

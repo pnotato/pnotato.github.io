@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Magenta bar planet</title>
+<style>
+  :root{
+    --sun-size: clamp(200px, 68vmin, 500px);
+    --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --b1:#e39a84; --c1:#cf6478;
+    --b2:#cf6478; --c2:#bf3a6b;
+    --b3:#bf3a6b; --c3:#a8336e;
+    --b4:#a8336e; --c4:#8f2b60;
+    --b5:#8f2b60; --c5:#f2dcc6;
+    --body:#ad3a6f; --glow-a:#bf3a6b; --glow-b:#e39a84;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#181743;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+    font-family:Inter,system-ui,-apple-system,sans-serif;
+  }
+  .sun-stage{position:relative;width:var(--sun-size);height:var(--sun-size)}
+  .sun{
+    position:absolute;
+    width:var(--sun-size);height:var(--sun-size);
+    top:45%;left:50%;
+    transform:translate(-50%,-50%);
+    animation:float 4s var(--ease-out-quad) infinite;
+  }
+  .sun__body{
+    width:100%;height:100%;border-radius:50%;
+    transform:rotate(18deg);
+    background:var(--body);
+    z-index:1;overflow:hidden;position:absolute;
+    box-shadow: calc(var(--sun-size) * -0.1) 0 calc(var(--sun-size) * 0.26) calc(var(--sun-size) * -0.03) var(--glow-a),
+                calc(var(--sun-size) * 0.1) 0 calc(var(--sun-size) * 0.26) calc(var(--sun-size) * -0.09) var(--glow-b);
+  }
+  .sun__body ul{list-style:none;padding:0;margin:0;font-size:0;position:relative}
+  .sun__body li{
+    width:100%;
+    height:calc(var(--sun-size) / 30 + 1px);
+    margin-bottom:-1px;
+    border-radius:calc(var(--sun-size) * 0.04);
+  }
+  .sun__body li:nth-of-type(odd)::before{
+    content:'';
+    position:absolute;
+    width:calc(var(--sun-size) / 20);
+    height:calc(var(--sun-size) / 30 + 1px);
+    border-radius:0 calc(var(--sun-size) * 0.02) calc(var(--sun-size) * 0.02) 0;
+  }
+  .sun__body li:nth-of-type(1),
+  .sun__body li:nth-of-type(7),
+  .sun__body li:nth-of-type(13),
+  .sun__body li:nth-of-type(19),
+  .sun__body li:nth-of-type(25){transform:translateX(calc(var(--sun-size) * 0.11))}
+  .sun__body li:nth-of-type(5),
+  .sun__body li:nth-of-type(9),
+  .sun__body li:nth-of-type(17),
+  .sun__body li:nth-of-type(21),
+  .sun__body li:nth-of-type(27){transform:translateX(calc(var(--sun-size) * 0.06))}
+  .sun__body li:nth-of-type(8),
+  .sun__body li:nth-of-type(14),
+  .sun__body li:nth-of-type(18),
+  .sun__body li:nth-of-type(24){transform:translateX(calc(var(--sun-size) * -0.08))}
+  .sun__body li:nth-of-type(4),
+  .sun__body li:nth-of-type(10),
+  .sun__body li:nth-of-type(16),
+  .sun__body li:nth-of-type(22){transform:translateX(calc(var(--sun-size) * -0.12))}
+
+  .sun__body--line-1{left:85%;z-index:0;animation:line-movement 10s var(--ease-out-quad) infinite}
+  .sun__body--line-1__line{background:var(--b1)}
+  .sun__body--line-1 li:nth-of-type(odd)::before{background:var(--c1)}
+
+  .sun__body--line-2{left:65%;bottom:100%;z-index:-1;animation:line-movement 8s var(--ease-out-quad) infinite}
+  .sun__body--line-2__line{background:var(--b2)}
+  .sun__body--line-2 li:nth-of-type(odd)::before{background:var(--c2)}
+
+  .sun__body--line-3{left:30%;bottom:200%;z-index:-2;animation:line-movement 6s var(--ease-out-quad) infinite}
+  .sun__body--line-3__line{background:var(--b3)}
+  .sun__body--line-3 li:nth-of-type(odd)::before{background:var(--c3)}
+
+  .sun__body--line-4{left:10%;bottom:300%;z-index:-3;animation:line-movement 4s var(--ease-out-quad) infinite}
+  .sun__body--line-4__line{background:var(--b4)}
+  .sun__body--line-4 li:nth-of-type(odd)::before{background:var(--c4)}
+
+  .sun__body--line-5{left:-20%;bottom:400%;z-index:-4;animation:line-movement 2s var(--ease-out-quad) infinite}
+  .sun__body--line-5__line{background:var(--b5)}
+  .sun__body--line-5 li:nth-of-type(odd)::before{background:var(--c5)}
+
+  @keyframes float{
+    0%{transform:translate(-50%,-50%)}
+    60%{transform:translate(-50%,-30%)}
+    100%{transform:translate(-50%,-50%)}
+  }
+  @keyframes line-movement{
+    0%{transform:translateX(0)}
+    60%{transform:translateX(-10px)}
+    80%{transform:translateX(10px)}
+    100%{transform:translateX(0)}
+  }
+</style>
+</head>
+<body>
+  <div class="sun-stage" role="img" aria-label="Magenta bar planet">
+    <div class="sun">
+      <div class="sun__body">
+      <ul class="sun__body--line-1">
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+        <li class="sun__body--line-1__line"></li>
+      </ul>
+      <ul class="sun__body--line-2">
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+        <li class="sun__body--line-2__line"></li>
+      </ul>
+      <ul class="sun__body--line-3">
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+        <li class="sun__body--line-3__line"></li>
+      </ul>
+      <ul class="sun__body--line-4">
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+        <li class="sun__body--line-4__line"></li>
+      </ul>
+      <ul class="sun__body--line-5">
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+        <li class="sun__body--line-5__line"></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

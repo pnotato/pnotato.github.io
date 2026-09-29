@@ -1,0 +1,20 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import WorkGrid from "@/components/WorkGrid.astro";
+import { SITE } from "@/consts";
+import PROJECTS_DATA from "@/data/projects.json";
+---
+
+<BaseLayout title={`Portfolio | ${SITE.title}`}>
+  <section
+    aria-label="Portfolio"
+    class="flex flex-col items-center gap-12 px-8 pt-32 pb-24 md:px-16"
+  >
+    <h1
+      class="w-full max-w-[min(1100px,92vw)] text-center text-h1 font-extrabold"
+    >
+      Portfolio
+    </h1>
+    <WorkGrid rows={4} projects={PROJECTS_DATA.projects} />
+  </section>
+</BaseLayout>

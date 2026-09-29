@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Animated pink planet with orbiting gold moon">
+  <defs>
+    <linearGradient id="ac-po-body" x1="18%" y1="8%" x2="82%" y2="92%">
+      <stop offset="0%" stop-color="#eb6db4"/>
+      <stop offset="48%" stop-color="#C62368"/>
+      <stop offset="100%" stop-color="#8f2b60"/>
+    </linearGradient>
+    <linearGradient id="ac-po-moon" x1="20%" y1="10%" x2="80%" y2="90%">
+      <stop offset="0%" stop-color="#f5a6cf"/>
+      <stop offset="100%" stop-color="#C62368"/>
+    </linearGradient>
+    <clipPath id="ac-po-clip"><circle cx="200" cy="210" r="116"/></clipPath>
+    <filter id="ac-po-glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="21"/>
+    </filter>
+  </defs>
+  <style>
+    svg{display:block}
+    .ac-po-float{animation:ac-po-float 4.5s ease-in-out infinite}
+    .ac-po-orbit{transform-origin:200px 210px;animation:ac-po-orbit 8s linear infinite}
+    .ac-po-pulse{transform-origin:200px 210px;animation:ac-po-pulse 3s ease-in-out infinite}
+    @keyframes ac-po-float{0%,100%{transform:translateY(4px)}50%{transform:translateY(-5px)}}
+    @keyframes ac-po-orbit{to{transform:rotate(360deg)}}
+    @keyframes ac-po-pulse{0%,100%{opacity:.5;transform:scale(.98)}50%{opacity:.82;transform:scale(1.03)}}
+    @media(prefers-reduced-motion:reduce){.ac-po-float,.ac-po-orbit,.ac-po-pulse{animation:none}}
+  </style>
+  <circle class="ac-po-pulse" cx="200" cy="210" r="127" fill="#C62368" opacity=".42" filter="url(#ac-po-glow)"/>
+  <g class="ac-po-float">
+    <circle cx="200" cy="210" r="116" fill="url(#ac-po-body)"/>
+    <g clip-path="url(#ac-po-clip)">
+      <ellipse cx="210" cy="270" rx="58" ry="40" fill="#eb6db4" opacity=".22"/>
+    </g>
+    <g class="ac-po-orbit">
+      <circle cx="200" cy="57" r="36" fill="#C62368" opacity=".35" filter="url(#ac-po-glow)"/>
+      <circle cx="200" cy="52" r="32" fill="url(#ac-po-moon)"/>
+    </g>
+  </g>
+</svg>

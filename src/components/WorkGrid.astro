@@ -1,0 +1,37 @@
+---
+import WorkCard from "@/components/WorkCard.astro";
+
+interface Project {
+  title: string;
+  url?: string;
+  image?: string;
+}
+
+interface Props {
+  rows?: number;
+  projects?: Project[];
+}
+
+const { rows = 2, projects = [] } = Astro.props;
+
+// Rows alternate: rectangle (2 squares) + square, then square + rectangle.
+// Tiles beyond the supplied projects render as empty placeholders.
+const tiles = Array.from({ length: rows * 2 }, (_, i) => ({
+  ...projects[i],
+  wide: Math.floor(i / 2) % 2 === 0 ? i % 2 === 0 : i % 2 === 1,
+}));
+---
+
+<div class="work-grid">
+  {tiles.map((tile) => <WorkCard {...tile} />)}
+</div>
+
+<style>
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(0.75rem, 2vw, 1.75rem);
+    width: 100%;
+    max-width: min(1100px, 92vw);
+  }
+</style>

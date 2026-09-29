@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Gold and coral capsule rocket">
+  <defs>
+    <linearGradient id="ac-rc-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2D8A7"/>
+      <stop offset="100%" stop-color="#F2C78A"/>
+    </linearGradient>
+    <linearGradient id="ac-rc-flame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F2D8A7"/>
+      <stop offset="50%" stop-color="#E85D5E"/>
+      <stop offset="100%" stop-color="#C62368"/>
+    </linearGradient>
+  </defs>
+  <style>
+    svg{display:block}
+    .ac-rc-rocket{transform-origin:200px 210px;animation:ac-rc-hover 5s ease-in-out infinite}
+    .ac-rc-fire{transform-origin:200px 309px;animation:ac-rc-fire .35s ease-in-out infinite alternate}
+    @keyframes ac-rc-hover{0%,100%{transform:translateY(5px) rotate(-2deg)}50%{transform:translateY(-6px) rotate(2deg)}}
+    @keyframes ac-rc-fire{from{transform:scaleY(.84)}to{transform:scaleY(1.06)}}
+    @media(prefers-reduced-motion:reduce){.ac-rc-rocket,.ac-rc-fire{animation:none}}
+  </style>
+  <g class="ac-rc-rocket">
+    <path d="M200 42 C151 80 138 138 142 236 Q144 267 169 285 H231 Q256 267 258 236 C262 138 249 80 200 42Z" fill="url(#ac-rc-body)"/>
+    <path d="M200 42 C180 60 165 81 156 108 H244 C235 81 220 60 200 42Z" fill="#E85D5E"/>
+    <circle cx="200" cy="150" r="34" fill="#181743"/>
+    <circle cx="200" cy="150" r="24" fill="#8FA8D9"/>
+    <path d="M144 210 C112 236 101 273 104 311 L169 276 Z" fill="#E85D5E"/>
+    <path d="M256 210 C288 236 299 273 296 311 L231 276 Z" fill="#E85D5E"/>
+    <rect x="170" y="271" width="60" height="38" rx="10" fill="#730F8E"/>
+    <g class="ac-rc-fire">
+      <path d="M179 307 C165 337 179 369 200 389 C221 369 235 337 221 307Z" fill="url(#ac-rc-flame)"/>
+      <path d="M190 307 C185 332 192 350 200 362 C208 350 215 332 210 307Z" fill="#F2D8A7"/>
+    </g>
+  </g>
+</svg>
