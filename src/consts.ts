@@ -5,9 +5,9 @@ export const SITE = {
 } as const;
 
 export const NAV_LINKS = [
-  { href: "#", label: "About" },
-  { href: "#", label: "Portfolio" },
-  { href: "#", label: "Blog" },
+  { href: "/writing/about-me", label: "About" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/writing", label: "Blog" },
 ] as const;
 
 export function pageName(pathname: string): string {

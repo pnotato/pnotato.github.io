@@ -1,0 +1,93 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+import { SITE } from "@/consts";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("writing");
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const date = post.data.date.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
+});
+---
+
+<BaseLayout title={`${post.data.title} | ${SITE.title}`}>
+  <article
+    class="mx-auto flex w-full max-w-[min(760px,92vw)] flex-col gap-10 pt-32 pb-24"
+  >
+    <a
+      href="/writing"
+      class="self-start text-h5 text-cream transition-colors hover:text-accent"
+      >&larr; All writing</a
+    >
+    <header class="flex flex-col gap-2">
+      <h1 class="text-h1 font-extrabold">{post.data.title}</h1>
+      <time
+        datetime={post.data.date.toISOString()}
+        class="text-h5 text-cream"
+      >
+        {date}
+      </time>
+    </header>
+    <div class="post-body text-body">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  /* Markdown headings match the site's h1/h2/h3 treatment. */
+  .post-body :global(h1) {
+    font-size: var(--text-h1);
+    line-height: var(--text-h1--line-height);
+    letter-spacing: var(--text-h1--letter-spacing);
+    font-weight: 800;
+  }
+
+  .post-body :global(h2) {
+    font-size: var(--text-h2);
+    line-height: var(--text-h2--line-height);
+    font-weight: 700;
+  }
+
+  .post-body :global(h3) {
+    font-size: var(--text-h3);
+    line-height: var(--text-h3--line-height);
+    font-weight: 700;
+  }
+
+  .post-body :global(:is(h1, h2, h3)) {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .post-body :global(:is(h1, h2, h3):first-child) {
+    margin-top: 0;
+  }
+
+  .post-body :global(p + p) {
+    margin-top: 1.25em;
+  }
+
+  .post-body :global(a) {
+    color: var(--color-cream);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+  }
+
+  .post-body :global(a:hover) {
+    color: var(--color-accent);
+  }
+
+  .post-body :global(code) {
+    font-size: 0.9em;
+    color: var(--color-accent);
+  }
+</style>

@@ -1,5 +1,5 @@
 {
-  "title": "What I've worked on",
+  "title": "What I've Worked On",
   "experiences": [
     {
       "left": "SFU MARS Lab",
@@ -7,7 +7,7 @@
       "subtext": "Undergraduate Researcher",
       "details": {
         "technologies": "Python, ROS2, Nav2",
-        "description": "Did X and Y. Did Y and Z."
+        "description": "Undergraduate researcher as part of SFU's UR2PHD program. Currently working under a graduate student researching learning-based safety filters on autonomous robotoic systems."
       }
     },
     {

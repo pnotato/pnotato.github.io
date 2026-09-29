@@ -3,7 +3,9 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import BarPlanet from "@/components/BarPlanet.astro";
 import Volcano from "@/components/Volcano.astro";
 import JaggedHills from "@/components/JaggedHills.astro";
+import WorkGrid from "@/components/WorkGrid.astro";
 import EXPERIENCES_DATA from "@/data/experiences.json";
+import PROJECTS_DATA from "@/data/projects.json";
 const SECTION_HEIGHT = "min-h-[calc(100dvh-2*var(--frame-width))]";
 const { title, experiences } = EXPERIENCES_DATA as {
   title: string;
@@ -53,18 +55,18 @@ const jobs = experiences.map((job) => ({
         >.
       </h1>
       <h2 class="text-h2 font-normal">
-        A final year computer science student at Simon Fraser University.
+        I'm a final year computer science and statistics student at Simon Fraser University.
       </h2>
       <h2 class="text-h2 font-normal">
         Take a look at <a
-          class="text-cream transition-colors hover:text-frame"
-          href="#">my experiences</a
+          class="text-cream transition-colors hover:text-accent"
+          href="#next">my experiences</a
         >, check out <a
-          class="text-cream transition-colors hover:text-frame"
-          href="#">my projects</a
+          class="text-cream transition-colors hover:text-accent"
+          href="/portfolio">my projects</a
         >, or read about my work on <a
-          class="text-cream transition-colors hover:text-frame"
-          href="#">my blog</a
+          class="text-cream transition-colors hover:text-accent"
+          href="/writing">my blog</a
         >.
       </h2>
       <ul
@@ -141,7 +143,7 @@ const jobs = experiences.map((job) => ({
         aria-hidden="true"
       ></div>
       <div class="next-phrases pointer-events-none">
-        <h2 class="next-title text-h2">{title}</h2>
+        <h2 class="next-title text-h2 font-bold">{title}</h2>
         <div class="next-phrase-list">
           {
             jobs.map(({ left, right, subtext, url, details }, i) => (
@@ -157,7 +159,9 @@ const jobs = experiences.map((job) => ({
               >
                 <h2 class="next-phrase-main font-bold">
                   <span>{left}</span>
-                  {right ? <span>{right}</span> : null}
+                  {right ? (
+                    <span class="next-phrase-date text-h4">{right}</span>
+                  ) : null}
                 </h2>
                 <div class="next-phrase-row">
                   {subtext ? (
@@ -249,6 +253,27 @@ const jobs = experiences.map((job) => ({
     </div>
   </section>
 
+  <section
+    id="portfolio"
+    aria-label="Projects"
+    class="hills-ground flex flex-col items-center justify-center gap-12 px-8 py-24 md:px-16"
+  >
+    <h2
+      class="w-full max-w-[min(1100px,92vw)] text-center text-h2 font-bold"
+    >
+      Things I've Made
+    </h2>
+    <WorkGrid projects={PROJECTS_DATA.projects} />
+    <div class="-mt-8 flex w-full max-w-[min(1100px,92vw)] justify-end">
+      <a
+        href="/portfolio"
+        class="text-h3 inline-flex items-center gap-2 font-bold text-frame transition-colors hover:text-accent"
+      >
+        See whole portfolio
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
@@ -288,6 +313,7 @@ const jobs = experiences.map((job) => ({
     left: 0;
     right: 0;
     top: calc(var(--phrase-top) - var(--phrase-gap) - 5rem);
+    padding: 0 5rem;
     transform: translateY(-50%);
     text-align: center;
   }
@@ -300,7 +326,7 @@ const jobs = experiences.map((job) => ({
     padding: 0 5rem;
     opacity: var(--o, 0);
     transform: translate(-50%, -50%)
-      translateY(calc(var(--d, 0) * var(--phrase-gap)));
+      translateY(calc(var(--d, 0) * var(--phrase-gap) + var(--shift, 0px)));
     will-change: transform, opacity;
   }
 
@@ -319,6 +345,13 @@ const jobs = experiences.map((job) => ({
 
   .next-phrase-main > span:last-child {
     text-align: right;
+  }
+
+  /* Secondary to the company name: same weight and tone as the role line. */
+  .next-phrase-date {
+    font-weight: 400;
+    color: color-mix(in srgb, var(--color-frame) 65%, transparent);
+    font-variant-numeric: tabular-nums;
   }
 
   .next-phrase--center .next-phrase-main {
@@ -351,8 +384,13 @@ const jobs = experiences.map((job) => ({
     font-weight: 400;
     letter-spacing: 0.02em;
     white-space: nowrap;
-    opacity: 0.5;
+    opacity: 0;
     transition: opacity 0.2s ease;
+  }
+
+  /* Only the role in focus advertises "Learn more" (brighter on hover). */
+  .next-phrase[data-current] .next-phrase-more {
+    opacity: 0.5;
   }
 
   /* Both labels share one grid cell so the width doesn't jump on toggle. */
@@ -409,7 +447,7 @@ const jobs = experiences.map((job) => ({
     margin-left: 0;
   }
 
-  .next-phrase:hover .next-phrase-more,
+  .next-phrase[data-current]:hover .next-phrase-more,
   .next-phrase:focus-visible .next-phrase-more {
     opacity: 0.9;
   }
@@ -444,17 +482,19 @@ const jobs = experiences.map((job) => ({
 
   /* Opacity is scroll-driven every frame; only ease it while toggling. */
   .next-pin.is-toggling .next-phrase {
-    transition: opacity 0.35s ease;
+    transition:
+      opacity 0.35s ease,
+      transform 0.4s ease;
   }
 
+  /* While a role is open its neighbours stay in place, dimmed, so the list
+     keeps its context; roles below are pushed down by --shift (set in JS). */
   .next-pin.has-open .next-phrase {
-    opacity: 0;
-    pointer-events: none;
+    opacity: calc(var(--o, 0) * 0.35);
   }
 
   .next-pin.has-open .next-phrase.is-open {
     opacity: 1;
-    pointer-events: auto;
   }
 
   .next-phrase-details {
@@ -515,6 +555,22 @@ const jobs = experiences.map((job) => ({
     .next-pin.is-toggling .next-phrase {
       transition: none;
     }
+  }
+
+  /* Continues the front hills' base fill below the volcano: lit.fill to
+     dark.fill across the centre over SPAN (220px at full size), scaled with
+     the hills (see JaggedHills.astro). */
+  .hills-ground {
+    --ground-span: min(
+      220px,
+      (100vw - 2 * var(--frame-width)) * 220 / 576
+    );
+    min-height: 100vh;
+    background: linear-gradient(
+      to right,
+      #4f4791 calc(50% - var(--ground-span)),
+      #22275f calc(50% + var(--ground-span))
+    );
   }
 
   .sunset-glow {
@@ -627,15 +683,15 @@ const jobs = experiences.map((job) => ({
         phrase.style.setProperty("--d", d.toFixed(4));
         phrase.style.setProperty("--o", opacity.toFixed(4));
         phrase.toggleAttribute("data-hidden", opacity < 0.05);
+        phrase.toggleAttribute("data-current", Math.abs(d) < 0.5);
       });
     };
 
-    // Click a role to focus it and reveal its details; click anywhere else
-    // (or the role again, Escape, or scroll away) to collapse.
+    // Click the role in focus to reveal its details; click a faded role to
+    // scroll it into focus. Click anywhere else (or the role again, Escape,
+    // or scroll away) to collapse.
     let openIndex = -1;
-    let pendingIndex = -1;
     let openTarget = 0;
-    let seekTimer = 0;
     let toggleTimer = 0;
 
     const flashToggling = () => {
@@ -647,8 +703,22 @@ const jobs = experiences.map((job) => ({
       );
     };
 
+    // Push the roles below the open one down by its details' height so the
+    // details expand in place instead of overlapping the next role.
+    const shiftBelow = (i: number) => {
+      const body = phrases[i]?.querySelector<HTMLElement>(
+        ".next-phrase-details > div",
+      );
+      const h = i >= 0 && body ? body.scrollHeight : 0;
+      phrases.forEach((phrase, j) => {
+        if (j > i && h) phrase.style.setProperty("--shift", `${h}px`);
+        else phrase.style.removeProperty("--shift");
+      });
+    };
+
     const close = () => {
       if (openIndex < 0) return;
+      shiftBelow(-1);
       const phrase = phrases[openIndex];
       phrase.classList.remove("is-open");
       phrase.querySelector(".next-phrase-details")?.setAttribute("inert", "");
@@ -659,43 +729,31 @@ const jobs = experiences.map((job) => ({
     };
 
     const reveal = (i: number) => {
-      pendingIndex = -1;
-      window.clearTimeout(seekTimer);
       openIndex = i;
       phrases[i].classList.add("is-open");
       phrases[i]
         .querySelector(".next-phrase-details")
         ?.removeAttribute("inert");
       phrases[i].setAttribute("aria-expanded", "true");
+      shiftBelow(i);
       pin.classList.add("has-open");
       flashToggling();
     };
 
-    // A role that isn't in focus scrolls into focus first, then opens once
-    // the scroll lands (see arrive()).
+    // A role that isn't in focus only scrolls into focus; a second click
+    // opens it.
     const open = (i: number) => {
       close();
       window.clearTimeout(settleTimer);
-      openTarget = start + i * step;
+      const target = start + i * step;
 
-      if (Math.abs(window.scrollY - openTarget) < 2) {
+      if (Math.abs(window.scrollY - target) < 2) {
+        openTarget = target;
         reveal(i);
         return;
       }
 
-      pendingIndex = i;
-      window.scrollTo({
-        top: openTarget,
-        behavior: reduce ? "auto" : "smooth",
-      });
-      window.clearTimeout(seekTimer);
-      seekTimer = window.setTimeout(arrive, 1500);
-    };
-
-    const arrive = () => {
-      if (pendingIndex < 0) return;
-      if (Math.abs(window.scrollY - openTarget) < 40) reveal(pendingIndex);
-      else pendingIndex = -1;
+      window.scrollTo({ top: target, behavior: reduce ? "auto" : "smooth" });
     };
 
     phrases.forEach((phrase, i) => {
@@ -715,7 +773,6 @@ const jobs = experiences.map((job) => ({
     });
 
     document.addEventListener("click", (e) => {
-      pendingIndex = -1;
       if (openIndex < 0) return;
       if (phrases[openIndex].contains(e.target as Node)) return;
       close();
@@ -723,7 +780,6 @@ const jobs = experiences.map((job) => ({
 
     document.addEventListener("keydown", (e) => {
       if (e.key !== "Escape") return;
-      pendingIndex = -1;
       close();
     });
 
@@ -754,11 +810,6 @@ const jobs = experiences.map((job) => ({
       else if (y < lastY) dir = -1;
       lastY = y;
 
-      if (pendingIndex >= 0) {
-        if (Math.abs(y - openTarget) < 2) arrive();
-        return;
-      }
-
       if (openIndex >= 0) {
         if (Math.abs(y - openTarget) > 40) close();
         else return;
@@ -769,9 +820,9 @@ const jobs = experiences.map((job) => ({
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("scrollend", arrive);
     window.addEventListener("resize", () => {
       measure();
+      if (openIndex >= 0) shiftBelow(openIndex);
       schedule();
     });
     window.addEventListener("load", () => {
