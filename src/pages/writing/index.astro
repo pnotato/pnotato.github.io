@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import BarPlanet from "@/components/BarPlanet.astro";
 import { getCollection } from "astro:content";
 import { SITE } from "@/consts";
 
@@ -9,38 +10,56 @@ const posts = (await getCollection("writing")).sort(
 const formatDate = (date: Date) =>
   date.toLocaleDateString("en-US", {
     year: "numeric",
-    month: "long",
+    month: "short",
     day: "numeric",
     timeZone: "UTC",
   });
+
+// First real sentence or two of the post, stripped of markdown, as a teaser.
+const excerpt = (body = "") => {
+  const text = body
+    .replace(/[*_`#>\[\]]/g, "")
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter((p) => p.length > 40)[0];
+  if (!text) return "";
+  return text.length > 160 ? `${text.slice(0, 157).trimEnd()}…` : text;
+};
 ---
 
 <BaseLayout title={`Writing | ${SITE.title}`}>
   <section
     aria-label="Writing"
-    class="flex flex-col items-center gap-12 px-8 pt-32 pb-24 md:px-16"
+    class="mx-auto flex w-full max-w-[min(760px,100%)] flex-col gap-12 px-6 pt-32 pb-24 sm:px-8"
   >
-    <h1
-      class="w-full max-w-[min(1100px,92vw)] text-center text-h1 font-extrabold"
-    >
-      Writing
-    </h1>
+    <header class="writing-header">
+      <div class="writing-planet" aria-hidden="true">
+        <BarPlanet variant="blue" size="clamp(88px, 18vw, 130px)" rotation="35deg" ring ringTilt="-18deg" glow={0.35} />
+      </div>
+      <div class="flex flex-col gap-2">
+        <h1 class="text-h1 font-bold">Writing</h1>
+        <p class="text-h4 text-frame/70">
+          Write-ups on what I'm building, what I'm learning at work, and whatever rabbit hole I fell into this month.
+        </p>
+      </div>
+    </header>
+
     {
       posts.length ? (
-        <ul class="flex w-full max-w-[min(760px,92vw)] flex-col">
-          {posts.map((post) => (
+        <ul class="flex flex-col gap-5">
+          {posts.map((post, i) => (
             <li>
-              <a
-                href={`/writing/${post.id}`}
-                class="post-link flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
-              >
-                <span class="text-h3 font-bold">{post.data.title}</span>
-                <time
-                  datetime={post.data.date.toISOString()}
-                  class="shrink-0 text-h3 font-normal text-cream"
-                >
+              <a href={`/writing/${post.id}`} class="post-card" style={`--accent: ${["#e39a84", "#6f9ce0", "#8fc46d", "#f2d8a7"][i % 4]}`}>
+                <time datetime={post.data.date.toISOString()} class="post-date text-h5">
                   {formatDate(post.data.date)}
                 </time>
+                <h2 class="text-h3 font-semibold">{post.data.title}</h2>
+                {excerpt(post.body) && (
+                  <p class="text-frame/70">{excerpt(post.body)}</p>
+                )}
+                <span class="post-read text-h5" aria-hidden="true">
+                  Read <span class="arrow">→</span>
+                </span>
               </a>
             </li>
           ))}
@@ -53,21 +72,76 @@ const formatDate = (date: Date) =>
 </BaseLayout>
 
 <style>
-  /* Faint card on hover, matching the experience rows on the homepage.
-     The padding lives inside the link (not a pseudo-element bleeding out)
-     because the scroll-reveal clip-path on <li> would crop anything drawn
-     outside the item's box. */
-  .post-link {
-    padding: 1.5rem 2rem;
-    border: 1px solid transparent;
+  .writing-header {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  .writing-planet {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: clamp(110px, 22vw, 170px);
+    aspect-ratio: 1;
+  }
+
+  /* Padding lives inside the link so the scroll-reveal mask on <li> never
+     crops it. */
+  .post-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.5rem 1.75rem 1.4rem 2rem;
+    border-radius: 20px;
+    background: rgb(255 255 255 / 0.05);
+    border: 1px solid rgb(255 255 255 / 0.08);
+    overflow: hidden;
     transition:
+      transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
       background-color 0.2s ease,
       border-color 0.2s ease;
   }
 
-  .post-link:hover,
-  .post-link:focus-visible {
-    background-color: rgb(255 255 255 / 0.04);
-    border-color: rgb(255 255 255 / 0.08);
+  .post-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 6px;
+    background: var(--accent);
+  }
+
+  .post-card:hover,
+  .post-card:focus-visible {
+    transform: translateY(-3px);
+    background: rgb(255 255 255 / 0.08);
+    border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  }
+
+  .post-date {
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .post-read {
+    align-self: flex-start;
+    margin-top: 0.4rem;
+    background-image: var(--gradient-link);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+  }
+
+  .post-read .arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .post-card:hover .post-read .arrow {
+    transform: translateX(4px);
   }
 </style>

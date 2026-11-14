@@ -8,37 +8,44 @@ interface Props {
 
 const { title, url, image, wide = false } = Astro.props;
 const external = url && /^https?:\/\//.test(url);
+const host = url
+  ? /github\.com/.test(url)
+    ? "GitHub"
+    : external
+      ? "Live site"
+      : "Read more"
+  : undefined;
+
+const Tag = url ? "a" : "div";
 ---
 
-<article class:list={["work-card", wide && "work-card--wide"]}>
-  <div class="work-card-inner">
-    {
-      image ? (
-        <img class="work-card-image" src={image} alt="" loading="lazy" />
-      ) : null
-    }
+<article
+  class:list={[
+    "work-card",
+    wide && "work-card--wide",
+    !title && "work-card--empty",
+    title && !image && "work-card--no-image",
+  ]}
+>
+  <Tag
+    class="work-card-inner"
+    {...(url && { href: url })}
+    {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+  >
+    {image ? <img class="work-card-image" src={image} alt="" loading="lazy" /> : null}
     {
       title ? (
         <div class="work-card-caption">
-          <h3 class="work-card-title text-h4 font-bold">
-            {url ? (
-              <a
-                href={url}
-                {...(external && {
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                })}
-              >
-                {title}
-              </a>
-            ) : (
-              title
-            )}
-          </h3>
+          <h3 class="work-card-title text-h4 font-semibold">{title}</h3>
+          {host ? (
+            <span class="work-card-host text-h5">
+              {host} <span aria-hidden="true">↗</span>
+            </span>
+          ) : null}
         </div>
       ) : null
     }
-  </div>
+  </Tag>
 </article>
 
 <style>
@@ -47,7 +54,17 @@ const external = url && /^https?:\/\//.test(url);
     display: flex;
     aspect-ratio: 1 / 1;
     padding: clamp(0.4rem, 0.8vw, 0.625rem);
-    background: #fff;
+    background: var(--color-frame);
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .work-card:hover,
+  .work-card:focus-within {
+    transform: translateY(-4px);
+  }
+
+  .work-card--empty {
+    background: rgb(255 255 255 / 0.08);
   }
 
   .work-card-inner {
@@ -58,6 +75,16 @@ const external = url && /^https?:\/\//.test(url);
     justify-content: flex-end;
     overflow: hidden;
     background: var(--color-dark-purple);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Projects without a screenshot get a sunset sky from the volcano scene. */
+  .work-card--no-image .work-card-inner {
+    background:
+      radial-gradient(circle at 78% 30%, #f2d8a7 0 7%, transparent 7.5%),
+      radial-gradient(120% 90% at 50% 110%, #e39a84 0%, #bf3a6b 35%, transparent 70%),
+      linear-gradient(to bottom, #22275f, #4f4791);
   }
 
   .work-card-image {
@@ -66,6 +93,11 @@ const external = url && /^https?:\/\//.test(url);
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .work-card:hover .work-card-image {
+    transform: scale(1.04);
   }
 
   /* Spans two squares; height comes from the square beside it. */
@@ -76,23 +108,43 @@ const external = url && /^https?:\/\//.test(url);
 
   .work-card-caption {
     position: relative;
-    padding: 3rem 1.25rem 1rem;
-    background: linear-gradient(to top, rgb(0 0 0 / 0.5), transparent);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 3.5rem 1.1rem 0.9rem;
+    background: linear-gradient(to top, rgb(13 12 43 / 0.85), transparent);
   }
 
   .work-card-title {
     color: var(--color-frame);
-    line-height: 1.2;
+    line-height: 1.15;
   }
 
-  .work-card-title a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.2s ease;
+  .work-card-host {
+    flex-shrink: 0;
+    padding: 0.15rem 0.65rem;
+    border-radius: 999px;
+    background: var(--color-frame);
+    color: var(--color-dark-purple);
+    font-weight: 600;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
   }
 
-  .work-card-title a:hover,
-  .work-card-title a:focus-visible {
-    color: var(--color-accent);
+  .work-card:hover .work-card-host {
+    background: var(--color-dark-purple);
+    color: var(--color-frame);
+  }
+
+  @media (max-width: 640px) {
+    .work-card-host {
+      display: none;
+    }
+
+    .work-card-caption {
+      padding: 2.5rem 0.7rem 0.6rem;
+    }
   }
 </style>

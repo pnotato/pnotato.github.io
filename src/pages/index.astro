@@ -40,7 +40,7 @@ const jobs = experiences.map((job) => ({
 <BaseLayout>
   <section
     class:list={[
-      "relative flex flex-1 flex-col items-center justify-center gap-14 px-8 py-16 md:flex-row md:gap-16 md:px-16",
+      "relative flex flex-1 flex-col items-center justify-center gap-14 overflow-x-clip px-8 py-16 md:flex-row md:gap-16 md:px-16",
       SECTION_HEIGHT,
     ]}
   >
@@ -59,13 +59,13 @@ const jobs = experiences.map((job) => ({
       </h2>
       <h2 class="text-h2 font-normal">
         Take a look at <a
-          class="text-cream transition-colors hover:text-accent"
+          class="link-gradient"
           href="#next">my experiences</a
         >, check out <a
-          class="text-cream transition-colors hover:text-accent"
+          class="link-gradient"
           href="/portfolio">my projects</a
         >, or read about my work on <a
-          class="text-cream transition-colors hover:text-accent"
+          class="link-gradient"
           href="/writing">my blog</a
         >.
       </h2>
