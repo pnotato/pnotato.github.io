@@ -74,25 +74,25 @@ const jobs = experiences.map((job) => ({
       >
         <li>
           <a
-            class="text-frame/60 transition-colors hover:text-accent"
+            class="hover-gradient text-frame/60"
             href="https://www.linkedin.com/in/nicholasch-an/">LinkedIn</a
           >
         </li>
         <li>
           <a
-            class="text-frame/60 transition-colors hover:text-accent"
+            class="hover-gradient text-frame/60"
             href="https://github.com/pnotato/">Github</a
           >
         </li>
         <li>
           <a
-            class="text-frame/60 transition-colors hover:text-accent"
+            class="hover-gradient text-frame/60"
             href="mailto:nicholasch.an@outlook.com">Email</a
           >
         </li>
         <li>
           <a
-            class="text-frame/60 transition-colors hover:text-accent"
+            class="hover-gradient text-frame/60"
             href="/assets/Resume_Sept_2025.pdf">Resume</a
           >
         </li>
@@ -267,7 +267,7 @@ const jobs = experiences.map((job) => ({
     <div class="-mt-8 flex w-full max-w-[min(1100px,92vw)] justify-end">
       <a
         href="/portfolio"
-        class="text-h3 inline-flex items-center gap-2 font-bold text-frame transition-colors hover:text-accent"
+        class="hover-gradient text-h3 inline-flex items-center gap-2 font-bold text-frame"
       >
         See Full Portfolio
         <span aria-hidden="true">→</span>
@@ -296,8 +296,8 @@ const jobs = experiences.map((job) => ({
   /* Match the WorkGrid below: min(1100px, 92vw) inside the section's
      px-8 / md:px-16 padding. */
   .next-phrases {
-    --phrase-gap: 6rem;
-    --phrase-top: 34%;
+    --phrase-gap: 8.5rem;
+    --phrase-top: 38%;
     --phrase-width: min(1100px, 92vw, 100% - 4rem);
     position: absolute;
     inset: 0;
@@ -447,8 +447,11 @@ const jobs = experiences.map((job) => ({
   }
 
   .next-phrase-link:hover {
-    color: var(--color-cream);
-    text-decoration-color: currentColor;
+    background-image: var(--gradient-nick);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-decoration-color: var(--color-flare);
   }
 
   .next-phrase--center .next-phrase-more {

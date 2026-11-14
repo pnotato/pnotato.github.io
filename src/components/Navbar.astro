@@ -55,8 +55,14 @@ const currentPage = pageName(Astro.url.pathname);
     text-decoration: none;
   }
 
-  .name:hover {
-    color: var(--color-accent);
+  /* Scoped under .navbar so it outranks the `.navbar a` colour above. */
+  .navbar .name:hover,
+  .navbar .link:hover,
+  .navbar a:focus-visible {
+    background-image: var(--gradient-nick);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .divider {
@@ -75,10 +81,6 @@ const currentPage = pageName(Astro.url.pathname);
 
   .link {
     text-decoration: none;
-  }
-
-  .link:hover {
-    color: var(--color-accent);
   }
 
   .name {

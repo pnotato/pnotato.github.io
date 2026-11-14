@@ -4,9 +4,13 @@ interface Props {
   url?: string;
   image?: string;
   wide?: boolean;
+  /** "contain" shows the whole image (e.g. a logo) centred with padding. */
+  fit?: "cover" | "contain";
+  /** Card background behind a contained image. */
+  background?: string;
 }
 
-const { title, url, image, wide = false } = Astro.props;
+const { title, url, image, wide = false, fit = "cover", background } = Astro.props;
 const external = url && /^https?:\/\//.test(url);
 const host = url
   ? /github\.com/.test(url)
@@ -31,8 +35,14 @@ const Tag = url ? "a" : "div";
     class="work-card-inner"
     {...(url && { href: url })}
     {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+    style={background ? `background: ${background}` : undefined}
   >
-    {image ? <img class="work-card-image" src={image} alt="" loading="lazy" /> : null}
+    {image ? <img
+          class:list={["work-card-image", fit === "contain" && "work-card-image--contain"]}
+          src={image}
+          alt=""
+          loading="lazy"
+        /> : null}
     {
       title ? (
         <div class="work-card-caption">
@@ -94,6 +104,11 @@ const Tag = url ? "a" : "div";
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .work-card-image--contain {
+    object-fit: contain;
+    padding: 18% 18% 28%;
   }
 
   .work-card:hover .work-card-image {
