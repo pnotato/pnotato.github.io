@@ -25,7 +25,7 @@ const date = post.data.date.toLocaleDateString("en-US", {
   >
     <a
       href="/writing"
-      class="self-start text-h5 text-cream transition-colors hover:text-accent"
+      class="link-gradient self-start text-h5"
       >&larr; All writing</a
     >
     <header class="post-header">
@@ -115,14 +115,26 @@ const date = post.data.date.toLocaleDateString("en-US", {
     margin-top: 1.25em;
   }
 
+  /* Same sunset gradient as .link-gradient in global.css. */
   .post-body :global(a) {
-    color: var(--color-cream);
-    text-decoration: underline;
-    transition: color 0.2s ease;
+    background-image: linear-gradient(
+      to bottom,
+      var(--color-ember),
+      var(--color-flare),
+      var(--color-accent)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    font-weight: 600;
+    text-decoration: none;
+    transition: filter 0.2s ease;
   }
 
   .post-body :global(a:hover) {
-    color: var(--color-accent);
+    filter: brightness(1.25) saturate(1.1);
   }
 
   .post-body :global(code) {
