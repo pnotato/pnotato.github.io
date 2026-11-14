@@ -42,12 +42,7 @@ html::-webkit-scrollbar {
 
 /* Display face for headings; body copy stays in the default sans. */
 :root {
-  --gradient-link: linear-gradient(
-    to bottom,
-    color-mix(in oklab, var(--color-ember) 50%, var(--color-cream)),
-    color-mix(in oklab, var(--color-flare) 50%, var(--color-cream)),
-    color-mix(in oklab, var(--color-accent) 50%, var(--color-cream))
-  );
+  --gradient-link: linear-gradient(to bottom, #f0b8a4, var(--color-cream));
 }
 
 :where(h1, h2, h3, .display) {
@@ -86,8 +81,8 @@ html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase, .next-phrase *).
   }
 }
 
-/* Hyperlinks use a softer version of the "Nick" sunset gradient: the same
-   ember -> flare -> accent stops, each mixed halfway toward cream. box-decoration-break keeps the
+/* Hyperlinks use a soft peach -> cream gradient, a quieter echo of the
+   "Nick" sunset gradient. box-decoration-break keeps the
    gradient intact on every line when a link wraps. */
 .link-gradient {
   background-image: var(--gradient-link);
