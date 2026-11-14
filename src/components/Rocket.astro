@@ -1,0 +1,239 @@
+---
+/**
+ * A small rocket that drifts across its (positioned) parent on a curved,
+ * wobbly path, then waits off-screen before flying again. Drawn in the same
+ * flat style as BarPlanet: solid shapes, rounded "bar" streaks, soft glow.
+ * Pure CSS/SVG; hidden for prefers-reduced-motion.
+ *
+ * The flight path is in container units (cqw/cqh), so it scales with
+ * whatever box the rocket is placed in.
+ */
+interface Props {
+  /** Seconds for one full cycle (flight + rest off-screen). */
+  duration?: number;
+  /** Seconds before the first flight. */
+  delay?: number;
+}
+
+const { duration = 28, delay = 2 } = Astro.props;
+---
+
+<div
+  class="rocket-track"
+  aria-hidden="true"
+  style={`--rocket-duration:${duration}s;--rocket-delay:${delay}s`}
+>
+  <div class="rocket-flight">
+    <div class="rocket-bob">
+      <svg class="rocket" viewBox="0 0 200 100" width="200" height="100">
+        <defs>
+          <!-- Plump, egg-like hull: round tail, full belly, soft nose. -->
+          <clipPath id="rocket-body-clip">
+            <path
+              d="M74 18 C140 14 190 34 196 50 C190 66 140 86 74 82 C54 81 46 68 46 50 C46 32 54 19 74 18 Z"
+            ></path>
+          </clipPath>
+        </defs>
+
+        <!-- Flame: three nested teardrops, flickering from the nozzle. -->
+        <g class="rocket-flame">
+          <path
+            fill="#e39a84"
+            d="M44 50 C30 28 12 36 0 50 C12 64 30 72 44 50 Z"></path>
+          <path
+            fill="#f2d8a7"
+            d="M44 50 C34 36 22 40 11 50 C22 60 34 64 44 50 Z"></path>
+          <path
+            fill="#fff6ea"
+            d="M44 50 C38 43 31 44 24 50 C31 56 38 57 44 50 Z"></path>
+        </g>
+
+        <!-- Back fins, rounded, behind the hull. -->
+        <path
+          fill="#bf3a6b"
+          d="M72 24 C64 14 58 6 62 3 C68 0 84 6 104 22 Z"></path>
+        <path
+          fill="#bf3a6b"
+          d="M72 76 C64 86 58 94 62 97 C68 100 84 94 104 78 Z"></path>
+
+        <!-- Nozzle. -->
+        <rect x="38" y="37" width="14" height="26" rx="6" fill="#4f4791"
+        ></rect>
+
+        <!-- Hull, with a shaded belly, nose cone and bar streaks. -->
+        <g clip-path="url(#rocket-body-clip)">
+          <rect x="40" y="10" width="160" height="80" fill="#f7e7d6"></rect>
+          <rect x="40" y="52" width="160" height="38" fill="#e8cbb4"></rect>
+          <rect x="160" y="10" width="40" height="80" fill="#bf3a6b"></rect>
+          <rect x="160" y="52" width="40" height="38" fill="#a3305c"></rect>
+          <rect x="151" y="10" width="9" height="80" fill="#e39a84"></rect>
+          <g stroke-linecap="round" stroke-width="5" fill="none">
+            <line x1="64" y1="32" x2="90" y2="30" stroke="#ffffff" opacity="0.7"
+            ></line>
+            <line x1="98" y1="29" x2="106" y2="29" stroke="#ffffff" opacity="0.7"
+            ></line>
+            <line x1="60" y1="66" x2="80" y2="68" stroke="#d4ae96"></line>
+            <line x1="88" y1="69" x2="138" y2="68" stroke="#d4ae96"></line>
+            <line x1="166" y1="63" x2="182" y2="60" stroke="#8a2650"></line>
+          </g>
+        </g>
+
+        <!-- Porthole. -->
+        <circle cx="122" cy="47" r="15" fill="#4f4791"></circle>
+        <circle cx="122" cy="47" r="10" fill="#6f9ce0"></circle>
+        <path
+          d="M116 44 Q118 38 125 38"
+          stroke="#cfe0ff"
+          stroke-width="3"
+          stroke-linecap="round"
+          fill="none"></path>
+
+        <!-- Centre fin, in front of the hull. -->
+        <path
+          fill="#e39a84"
+          d="M68 50 C62 44 52 41 48 43 C45 45 46 55 48 57 C52 59 62 56 68 50 Z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<style>
+  .rocket-track {
+    position: absolute;
+    inset: 0;
+    container-type: size;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rocket-flight {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: clamp(80px, 8.5cqw, 140px);
+    /* Start parked off-screen bottom-left so nothing shows before the delay. */
+    transform: translate(-30cqw, 100cqh);
+    animation: rocket-fly var(--rocket-duration) var(--rocket-delay) infinite
+      both;
+  }
+
+  .rocket-bob {
+    animation:
+      rocket-bob 2.7s ease-in-out infinite alternate,
+      rocket-sway 5.3s ease-in-out infinite alternate;
+  }
+
+  .rocket {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    filter: drop-shadow(0 0 10px rgb(242 216 167 / 0.35));
+  }
+
+  .rocket-flame {
+    transform-origin: 44px 50px;
+    animation: rocket-flame 0.18s ease-in-out infinite alternate;
+  }
+
+  /* The flight takes the first ~46% of the cycle; the rest is a pause
+     off-screen. The legs trace an S: climb in from the bottom-left, level
+     off and dip under the hero text, then pitch up hard past the planet and
+     flatten out as it leaves. Legs are linear so speed stays continuous, but
+     they get shorter in time while covering similar distance, so the rocket
+     accelerates as it climbs. Each heading follows the path's tangent. */
+  @keyframes rocket-fly {
+    0% {
+      transform: translate(-14cqw, 96cqh) rotate(-19deg);
+    }
+    9% {
+      transform: translate(8cqw, 84cqh) rotate(-13deg);
+    }
+    17% {
+      transform: translate(26cqw, 80cqh) rotate(0deg);
+    }
+    24% {
+      transform: translate(42cqw, 84cqh) rotate(-6deg);
+    }
+    30% {
+      transform: translate(57cqw, 74cqh) rotate(-38deg);
+    }
+    35% {
+      transform: translate(67cqw, 52cqh) rotate(-50deg);
+    }
+    40% {
+      transform: translate(83cqw, 30cqh) rotate(-28deg);
+    }
+    46%,
+    100% {
+      transform: translate(118cqw, 17cqh) rotate(-12deg);
+    }
+  }
+
+  /* Phones: the hero stacks the text above the planets, leaving a thin gap
+     between them. The rocket weaves a gentle S through that gap, slipping
+     behind the small moon on the left. */
+  @keyframes rocket-fly-narrow {
+    0% {
+      transform: translate(-30cqw, 71cqh) rotate(-6deg);
+    }
+    12% {
+      transform: translate(8cqw, 68cqh) rotate(-4deg);
+    }
+    22% {
+      transform: translate(34cqw, 66.5cqh) rotate(-2deg);
+    }
+    30% {
+      transform: translate(56cqw, 64.5cqh) rotate(-6deg);
+    }
+    37% {
+      transform: translate(78cqw, 65.5cqh) rotate(4deg);
+    }
+    46%,
+    100% {
+      transform: translate(120cqw, 62cqh) rotate(-5deg);
+    }
+  }
+
+  @media (max-width: 48rem) {
+    .rocket-flight {
+      width: 60px;
+      animation-name: rocket-fly-narrow;
+    }
+  }
+
+  /* Two out-of-phase wobbles on top of the flight path. */
+  @keyframes rocket-bob {
+    from {
+      transform: translateY(-0.8cqh) rotate(-3deg);
+    }
+    to {
+      transform: translateY(0.8cqh) rotate(3deg);
+    }
+  }
+
+  @keyframes rocket-sway {
+    from {
+      translate: -0.6cqw 0;
+    }
+    to {
+      translate: 0.6cqw 0;
+    }
+  }
+
+  @keyframes rocket-flame {
+    from {
+      transform: scaleX(0.82) scaleY(0.92);
+    }
+    to {
+      transform: scaleX(1.08) scaleY(1.04);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rocket-track {
+      display: none;
+    }
+  }
+</style>
