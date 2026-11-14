@@ -235,8 +235,12 @@ const paletteStyle = [
     pointer-events: none;
   }
 
+  /* Each ring half is drawn exactly once: back = top half, front = bottom
+     half. A full back ellipse under the front half would draw the front's
+     glow twice, making the back half look dim by comparison. */
   .sun-ring--back {
     z-index: 0;
+    clip-path: inset(0 0 50% 0);
   }
 
   .sun-ring--front {
