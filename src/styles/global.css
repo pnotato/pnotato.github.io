@@ -76,3 +76,27 @@ html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase, .next-phrase *).
     mask-image: none;
   }
 }
+
+/* Hyperlinks share the sunset gradient used on "Nick" in the hero
+   (ember -> flare -> accent, top to bottom). box-decoration-break keeps the
+   gradient intact on every line when a link wraps. */
+.link-gradient {
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-ember),
+    var(--color-flare),
+    var(--color-accent)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  text-decoration: none;
+  transition: filter 0.2s ease;
+}
+
+.link-gradient:hover,
+.link-gradient:focus-visible {
+  filter: brightness(1.25) saturate(1.1);
+}
