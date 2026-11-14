@@ -65,12 +65,6 @@ const Tag = url ? "a" : "div";
     aspect-ratio: 1 / 1;
     padding: clamp(0.4rem, 0.8vw, 0.625rem);
     background: var(--color-frame);
-    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .work-card:hover,
-  .work-card:focus-within {
-    transform: translateY(-4px);
   }
 
   .work-card--empty {
@@ -110,7 +104,6 @@ const Tag = url ? "a" : "div";
     padding: 18% 18% 28%;
   }
 
-
   /* Spans two squares; height comes from the square beside it. */
   .work-card--wide {
     grid-column: span 2;
@@ -144,10 +137,9 @@ const Tag = url ? "a" : "div";
       color 0.2s ease;
   }
 
-  /* Same "Nick" sunset gradient every hyperlink takes on hover. */
   .work-card:hover .work-card-host,
   .work-card:focus-within .work-card-host {
-    background: var(--gradient-nick);
+    background: var(--color-accent);
     color: var(--color-dark-purple);
   }
 

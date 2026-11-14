@@ -43,16 +43,9 @@ html::-webkit-scrollbar {
   display: none;
 }
 
-/* --gradient-nick is the sunset gradient on "Nick" in the hero; every
-   hyperlink switches to it on hover. --gradient-link is the softer resting
-   state for in-text links. */
+/* Resting colour for in-text links; every hyperlink turns solid cream
+   (--color-accent) on hover. */
 :root {
-  --gradient-nick: linear-gradient(
-    to bottom,
-    var(--color-ember),
-    var(--color-flare),
-    var(--color-accent)
-  );
   --gradient-link: linear-gradient(to bottom, #f0b8a4, var(--color-cream));
 }
 
@@ -107,19 +100,8 @@ html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase, .next-phrase *).
   text-decoration: none;
 }
 
-/* Any hyperlink that is plain-coloured at rest (socials, nav, "See Full
-   Portfolio") takes the "Nick" gradient on hover. */
-.hover-gradient {
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-
 .link-gradient:hover,
-.link-gradient:focus-visible,
-.hover-gradient:hover,
-.hover-gradient:focus-visible {
-  background-image: var(--gradient-nick);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.link-gradient:focus-visible {
+  background-image: none;
+  color: var(--color-accent);
 }

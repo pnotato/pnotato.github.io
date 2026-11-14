@@ -77,25 +77,25 @@ const jobs = experiences.map((job) => ({
       >
         <li>
           <a
-            class="hover-gradient text-frame/60"
+            class="text-frame/60 transition-colors hover:text-accent"
             href="https://www.linkedin.com/in/nicholasch-an/">LinkedIn</a
           >
         </li>
         <li>
           <a
-            class="hover-gradient text-frame/60"
+            class="text-frame/60 transition-colors hover:text-accent"
             href="https://github.com/pnotato/">Github</a
           >
         </li>
         <li>
           <a
-            class="hover-gradient text-frame/60"
+            class="text-frame/60 transition-colors hover:text-accent"
             href="mailto:nicholasch.an@outlook.com">Email</a
           >
         </li>
         <li>
           <a
-            class="hover-gradient text-frame/60"
+            class="text-frame/60 transition-colors hover:text-accent"
             href="/assets/Resume_Sept_2025.pdf">Resume</a
           >
         </li>
@@ -270,7 +270,7 @@ const jobs = experiences.map((job) => ({
     <div class="-mt-8 flex w-full max-w-[min(1100px,92vw)] justify-end">
       <a
         href="/portfolio"
-        class="hover-gradient text-h3 inline-flex items-center gap-2 font-bold text-frame"
+        class="text-h3 inline-flex items-center gap-2 font-bold text-frame transition-colors hover:text-accent"
       >
         See Full Portfolio
         <span aria-hidden="true">→</span>
@@ -450,11 +450,8 @@ const jobs = experiences.map((job) => ({
   }
 
   .next-phrase-link:hover {
-    background-image: var(--gradient-nick);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-decoration-color: var(--color-flare);
+    color: var(--color-cream);
+    text-decoration-color: currentColor;
   }
 
   .next-phrase--center .next-phrase-more {

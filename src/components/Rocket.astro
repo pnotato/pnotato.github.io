@@ -137,62 +137,244 @@ const { duration = 28, delay = 2 } = Astro.props;
     animation: rocket-flame 0.18s ease-in-out infinite alternate;
   }
 
-  /* The flight takes the first ~46% of the cycle; the rest is a pause
-     off-screen. The legs trace an S: climb in from the bottom-left, level
-     off and dip under the hero text, then pitch up hard past the planet and
-     flatten out as it leaves. Legs are linear so speed stays continuous, but
-     they get shorter in time while covering similar distance, so the rocket
-     accelerates as it climbs. Each heading follows the path's tangent. */
+  /* The flight takes the first 46% of the cycle; the rest is a pause
+     off-screen. Desktop: an S-curve that climbs in from the bottom-left,
+     dips beneath the hero text, then pitches up behind the planet. Phones:
+     a gentle S through the gap between the text and the planets.
+
+     These keyframes are generated, not hand-placed: a smooth spline through
+     a few waypoints, sampled at even distances so the speed stays nearly
+     constant (with a gentle build-up) and the nose follows the curve.
+     Waypoints (cqw, cqh):
+       desktop: (-14,99) (8,87) (26,83) (42,87) (57,77) (67,55) (83,33) (118,20)
+       phones:  (-30,71) (8,68) (34,66.5) (56,64.5) (78,65.5) (120,62) */
   @keyframes rocket-fly {
-    0% {
-      transform: translate(-14cqw, 96cqh) rotate(-19deg);
+    0.00% {
+      transform: translate(-14.00cqw, 99.00cqh) rotate(-18.7deg);
     }
-    9% {
-      transform: translate(8cqw, 84cqh) rotate(-13deg);
+    1.28% {
+      transform: translate(-10.87cqw, 97.23cqh) rotate(-19.6deg);
     }
-    17% {
-      transform: translate(26cqw, 80cqh) rotate(0deg);
+    2.56% {
+      transform: translate(-7.71cqw, 95.37cqh) rotate(-20.1deg);
     }
-    24% {
-      transform: translate(42cqw, 84cqh) rotate(-6deg);
+    3.83% {
+      transform: translate(-4.52cqw, 93.46cqh) rotate(-20.0deg);
     }
-    30% {
-      transform: translate(57cqw, 74cqh) rotate(-38deg);
+    5.11% {
+      transform: translate(-1.27cqw, 91.57cqh) rotate(-19.3deg);
     }
-    35% {
-      transform: translate(67cqw, 52cqh) rotate(-50deg);
+    6.39% {
+      transform: translate(2.04cqw, 89.75cqh) rotate(-17.9deg);
     }
-    40% {
-      transform: translate(83cqw, 30cqh) rotate(-28deg);
+    7.67% {
+      transform: translate(5.43cqw, 88.08cqh) rotate(-15.6deg);
     }
-    46%,
+    8.94% {
+      transform: translate(8.91cqw, 86.66cqh) rotate(-12.8deg);
+    }
+    10.22% {
+      transform: translate(12.46cqw, 85.42cqh) rotate(-11.3deg);
+    }
+    11.50% {
+      transform: translate(16.08cqw, 84.35cqh) rotate(-9.1deg);
+    }
+    12.78% {
+      transform: translate(19.77cqw, 83.54cqh) rotate(-6.2deg);
+    }
+    14.06% {
+      transform: translate(23.53cqw, 83.07cqh) rotate(-2.4deg);
+    }
+    15.33% {
+      transform: translate(27.34cqw, 83.11cqh) rotate(5.0deg);
+    }
+    16.61% {
+      transform: translate(31.14cqw, 84.18cqh) rotate(13.2deg);
+    }
+    17.89% {
+      transform: translate(34.93cqw, 85.73cqh) rotate(13.9deg);
+    }
+    19.17% {
+      transform: translate(38.81cqw, 86.96cqh) rotate(6.5deg);
+    }
+    20.44% {
+      transform: translate(42.79cqw, 86.83cqh) rotate(-8.5deg);
+    }
+    21.72% {
+      transform: translate(46.73cqw, 85.39cqh) rotate(-16.4deg);
+    }
+    23.00% {
+      transform: translate(50.58cqw, 83.12cqh) rotate(-23.5deg);
+    }
+    24.28% {
+      transform: translate(54.25cqw, 80.05cqh) rotate(-30.9deg);
+    }
+    25.56% {
+      transform: translate(57.65cqw, 76.11cqh) rotate(-41.8deg);
+    }
+    26.83% {
+      transform: translate(60.40cqw, 70.90cqh) rotate(-55.2deg);
+    }
+    28.11% {
+      transform: translate(62.67cqw, 65.01cqh) rotate(-59.0deg);
+    }
+    29.39% {
+      transform: translate(64.98cqw, 59.08cqh) rotate(-54.8deg);
+    }
+    30.67% {
+      transform: translate(67.78cqw, 53.64cqh) rotate(-47.0deg);
+    }
+    31.94% {
+      transform: translate(70.81cqw, 48.41cqh) rotate(-45.9deg);
+    }
+    33.22% {
+      transform: translate(73.99cqw, 43.34cqh) rotate(-42.5deg);
+    }
+    34.50% {
+      transform: translate(77.44cqw, 38.64cqh) rotate(-37.0deg);
+    }
+    35.78% {
+      transform: translate(81.23cqw, 34.55cqh) rotate(-29.9deg);
+    }
+    37.06% {
+      transform: translate(85.35cqw, 31.29cqh) rotate(-21.8deg);
+    }
+    38.33% {
+      transform: translate(89.75cqw, 28.89cqh) rotate(-15.9deg);
+    }
+    39.61% {
+      transform: translate(94.29cqw, 27.05cqh) rotate(-12.4deg);
+    }
+    40.89% {
+      transform: translate(98.93cqw, 25.55cqh) rotate(-10.3deg);
+    }
+    42.17% {
+      transform: translate(103.64cqw, 24.23cqh) rotate(-9.4deg);
+    }
+    43.44% {
+      transform: translate(108.39cqw, 22.96cqh) rotate(-9.4deg);
+    }
+    44.72% {
+      transform: translate(113.19cqw, 21.60cqh) rotate(-10.5deg);
+    }
+    46.00%,
     100% {
-      transform: translate(118cqw, 17cqh) rotate(-12deg);
+      transform: translate(118.00cqw, 20.00cqh) rotate(-12.7deg);
     }
   }
 
-  /* Phones: the hero stacks the text above the planets, leaving a thin gap
-     between them. The rocket weaves a gentle S through that gap, slipping
-     behind the small moon on the left. */
   @keyframes rocket-fly-narrow {
-    0% {
-      transform: translate(-30cqw, 71cqh) rotate(-6deg);
+    0.00% {
+      transform: translate(-30.00cqw, 71.00cqh) rotate(-10.2deg);
     }
-    12% {
-      transform: translate(8cqw, 68cqh) rotate(-4deg);
+    1.28% {
+      transform: translate(-26.65cqw, 70.73cqh) rotate(-10.4deg);
     }
-    22% {
-      transform: translate(34cqw, 66.5cqh) rotate(-2deg);
+    2.56% {
+      transform: translate(-23.25cqw, 70.46cqh) rotate(-10.5deg);
     }
-    30% {
-      transform: translate(56cqw, 64.5cqh) rotate(-6deg);
+    3.83% {
+      transform: translate(-19.81cqw, 70.18cqh) rotate(-10.6deg);
     }
-    37% {
-      transform: translate(78cqw, 65.5cqh) rotate(4deg);
+    5.11% {
+      transform: translate(-16.32cqw, 69.89cqh) rotate(-10.6deg);
     }
-    46%,
+    6.39% {
+      transform: translate(-12.78cqw, 69.60cqh) rotate(-10.6deg);
+    }
+    7.67% {
+      transform: translate(-9.20cqw, 69.31cqh) rotate(-10.5deg);
+    }
+    8.94% {
+      transform: translate(-5.57cqw, 69.02cqh) rotate(-10.3deg);
+    }
+    10.22% {
+      transform: translate(-1.89cqw, 68.73cqh) rotate(-10.1deg);
+    }
+    11.50% {
+      transform: translate(1.84cqw, 68.44cqh) rotate(-9.7deg);
+    }
+    12.78% {
+      transform: translate(5.61cqw, 68.17cqh) rotate(-9.2deg);
+    }
+    14.06% {
+      transform: translate(9.45cqw, 67.90cqh) rotate(-8.4deg);
+    }
+    15.33% {
+      transform: translate(13.33cqw, 67.67cqh) rotate(-7.5deg);
+    }
+    16.61% {
+      transform: translate(17.28cqw, 67.45cqh) rotate(-6.8deg);
+    }
+    17.89% {
+      transform: translate(21.27cqw, 67.25cqh) rotate(-6.6deg);
+    }
+    19.17% {
+      transform: translate(25.31cqw, 67.04cqh) rotate(-6.9deg);
+    }
+    20.44% {
+      transform: translate(29.39cqw, 66.81cqh) rotate(-7.9deg);
+    }
+    21.72% {
+      transform: translate(33.50cqw, 66.54cqh) rotate(-9.4deg);
+    }
+    23.00% {
+      transform: translate(37.63cqw, 66.18cqh) rotate(-12.9deg);
+    }
+    24.28% {
+      transform: translate(41.76cqw, 65.73cqh) rotate(-14.6deg);
+    }
+    25.56% {
+      transform: translate(45.92cqw, 65.26cqh) rotate(-14.2deg);
+    }
+    26.83% {
+      transform: translate(50.16cqw, 64.83cqh) rotate(-11.2deg);
+    }
+    28.11% {
+      transform: translate(54.50cqw, 64.55cqh) rotate(-5.4deg);
+    }
+    29.39% {
+      transform: translate(58.94cqw, 64.51cqh) rotate(3.4deg);
+    }
+    30.67% {
+      transform: translate(63.39cqw, 64.75cqh) rotate(9.5deg);
+    }
+    31.94% {
+      transform: translate(67.86cqw, 65.10cqh) rotate(10.3deg);
+    }
+    33.22% {
+      transform: translate(72.39cqw, 65.41cqh) rotate(6.4deg);
+    }
+    34.50% {
+      transform: translate(77.01cqw, 65.51cqh) rotate(-0.7deg);
+    }
+    35.78% {
+      transform: translate(81.68cqw, 65.38cqh) rotate(-5.9deg);
+    }
+    37.06% {
+      transform: translate(86.36cqw, 65.11cqh) rotate(-8.9deg);
+    }
+    38.33% {
+      transform: translate(91.06cqw, 64.75cqh) rotate(-10.8deg);
+    }
+    39.61% {
+      transform: translate(95.78cqw, 64.33cqh) rotate(-12.0deg);
+    }
+    40.89% {
+      transform: translate(100.53cqw, 63.87cqh) rotate(-12.7deg);
+    }
+    42.17% {
+      transform: translate(105.32cqw, 63.40cqh) rotate(-12.9deg);
+    }
+    43.44% {
+      transform: translate(110.16cqw, 62.91cqh) rotate(-12.7deg);
+    }
+    44.72% {
+      transform: translate(115.05cqw, 62.44cqh) rotate(-12.1deg);
+    }
+    46.00%,
     100% {
-      transform: translate(120cqw, 62cqh) rotate(-5deg);
+      transform: translate(120.00cqw, 62.00cqh) rotate(-10.9deg);
     }
   }
 
