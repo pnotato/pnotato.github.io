@@ -94,7 +94,6 @@ const excerpt = (body = "") => {
     flex-direction: column;
     gap: 0.4rem;
     padding: 1.5rem 1.75rem 1.4rem 2rem;
-    border-radius: 20px;
     background: rgb(255 255 255 / 0.05);
     border: 1px solid rgb(255 255 255 / 0.08);
     overflow: hidden;
@@ -138,7 +137,14 @@ const excerpt = (body = "") => {
 
   .post-read .arrow {
     display: inline-block;
+    background-image: inherit;
+    -webkit-background-clip: text;
+    background-clip: text;
     transition: transform 0.2s ease;
+  }
+
+  .post-card:hover .post-read {
+    background-image: var(--gradient-nick);
   }
 
   .post-card:hover .post-read .arrow {

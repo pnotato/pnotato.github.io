@@ -28,12 +28,12 @@
     {
       "title": "Wikilosophy",
       "url": "https://github.com/pnotato/WikipediaFoundations",
-      "image": "/assets/projects/square/wikipedia.png"
+      "image": "/assets/projects/square/wikilosophy.png"
     },
     {
       "title": "TCP Load Balancer",
       "url": "https://github.com/pnotato/cpp-loadbalancer",
-      "image": "/assets/projects/square/loadbalancer.png"
+      "image": "/assets/projects/square/tcp-load-balancer.png"
     },
     {
       "title": "Quackii",
@@ -42,11 +42,15 @@
     },
     {
       "title": "Mooch",
-      "url": "https://github.com/gurjas-s/moochai"
+      "url": "https://github.com/gurjas-s/moochai",
+      "image": "/assets/projects/wide/mooch.jpg"
     },
     {
       "title": "CredEat",
-      "url": "https://github.com/pnotato/CredEat"
+      "url": "https://github.com/pnotato/CredEat",
+      "image": "/assets/projects/square/credeat.svg",
+      "fit": "contain",
+      "background": "#f7e7d6"
     },
     {
       "title": "Bitmap Editor",

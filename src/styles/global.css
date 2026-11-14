@@ -31,6 +31,9 @@
 }
 
 html {
+  /* No rubber-band overscroll: dragging past the top or bottom used to pull
+     the page away and show the dark body colour behind the last section. */
+  overscroll-behavior-y: none;
   overflow-x: hidden;
   scroll-behavior: smooth;
   scrollbar-width: none;
@@ -40,10 +43,20 @@ html::-webkit-scrollbar {
   display: none;
 }
 
-/* Display face for headings; body copy stays in the default sans. */
+/* --gradient-nick is the sunset gradient on "Nick" in the hero; every
+   hyperlink switches to it on hover. --gradient-link is the softer resting
+   state for in-text links. */
 :root {
+  --gradient-nick: linear-gradient(
+    to bottom,
+    var(--color-ember),
+    var(--color-flare),
+    var(--color-accent)
+  );
   --gradient-link: linear-gradient(to bottom, #f0b8a4, var(--color-cream));
 }
+
+/* Display face for headings; body copy stays in the default sans. */
 
 :where(h1, h2, h3, .display) {
   font-family: var(--font-display);
@@ -92,10 +105,21 @@ html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase, .next-phrase *).
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   text-decoration: none;
-  transition: filter 0.2s ease;
+}
+
+/* Any hyperlink that is plain-coloured at rest (socials, nav, "See Full
+   Portfolio") takes the "Nick" gradient on hover. */
+.hover-gradient {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .link-gradient:hover,
-.link-gradient:focus-visible {
-  filter: brightness(1.25) saturate(1.1);
+.link-gradient:focus-visible,
+.hover-gradient:hover,
+.hover-gradient:focus-visible {
+  background-image: var(--gradient-nick);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
