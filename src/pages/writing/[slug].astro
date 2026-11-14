@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import BarPlanet from "@/components/BarPlanet.astro";
 import { getCollection, render } from "astro:content";
 import { SITE } from "@/consts";
 
@@ -20,21 +21,26 @@ const date = post.data.date.toLocaleDateString("en-US", {
 
 <BaseLayout title={`${post.data.title} | ${SITE.title}`}>
   <article
-    class="mx-auto flex w-full max-w-[min(760px,92vw)] flex-col gap-10 pt-32 pb-24"
+    class="mx-auto flex w-full max-w-[min(760px,100%)] flex-col gap-10 px-6 pt-32 pb-24 sm:px-8"
   >
     <a
       href="/writing"
       class="self-start text-h5 text-cream transition-colors hover:text-accent"
       >&larr; All writing</a
     >
-    <header class="flex flex-col gap-2">
-      <h1 class="text-h1 font-extrabold">{post.data.title}</h1>
-      <time
-        datetime={post.data.date.toISOString()}
-        class="text-h5 text-cream"
-      >
-        {date}
-      </time>
+    <header class="post-header">
+      <div class="flex flex-col gap-3">
+        <time
+          datetime={post.data.date.toISOString()}
+          class="post-date text-h5"
+        >
+          {date}
+        </time>
+        <h1 class="text-h1 font-bold">{post.data.title}</h1>
+      </div>
+      <div class="post-planet" aria-hidden="true">
+        <BarPlanet variant="green" size="clamp(70px, 14vw, 110px)" glow={0.3} />
+      </div>
     </header>
     <div class="post-body text-body">
       <Content />
@@ -43,6 +49,39 @@ const date = post.data.date.toLocaleDateString("en-US", {
 </BaseLayout>
 
 <style>
+  .post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px dashed rgb(255 255 255 / 0.12);
+  }
+
+  .post-planet {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: clamp(90px, 18vw, 140px);
+    aspect-ratio: 1;
+  }
+
+  .post-date {
+    color: var(--color-flare);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .post-body {
+    color: rgb(255 255 255 / 0.88);
+  }
+
+  .post-body :global(strong) {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
   /* Markdown headings match the site's h1/h2/h3 treatment. */
   .post-body :global(h1) {
     font-size: var(--text-h1);
