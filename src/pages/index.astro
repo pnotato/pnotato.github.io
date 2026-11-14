@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import BarPlanet from "@/components/BarPlanet.astro";
+import Rocket from "@/components/Rocket.astro";
 import Volcano from "@/components/Volcano.astro";
 import JaggedHills from "@/components/JaggedHills.astro";
 import WorkGrid from "@/components/WorkGrid.astro";
@@ -44,6 +45,8 @@ const jobs = experiences.map((job) => ({
       SECTION_HEIGHT,
     ]}
   >
+    <!-- First in the hero so the planets always paint over it. -->
+    <Rocket />
     <div
       data-starfield-exclude
       class="flex max-w-2xl flex-col gap-5 bg-dark-purple text-center md:max-w-[40%] md:text-left"
