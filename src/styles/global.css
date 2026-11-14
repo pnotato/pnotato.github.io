@@ -31,6 +31,9 @@
 }
 
 html {
+  /* No rubber-band overscroll: dragging past the top or bottom used to pull
+     the page away and show the dark body colour behind the last section. */
+  overscroll-behavior-y: none;
   overflow-x: hidden;
   scroll-behavior: smooth;
   scrollbar-width: none;

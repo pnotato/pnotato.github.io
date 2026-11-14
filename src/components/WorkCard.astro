@@ -148,9 +148,11 @@ const Tag = url ? "a" : "div";
       color 0.2s ease;
   }
 
-  .work-card:hover .work-card-host {
-    background: var(--color-dark-purple);
-    color: var(--color-frame);
+  /* Same "Nick" sunset gradient every hyperlink takes on hover. */
+  .work-card:hover .work-card-host,
+  .work-card:focus-within .work-card-host {
+    background: var(--gradient-nick);
+    color: var(--color-dark-purple);
   }
 
   @media (max-width: 640px) {
