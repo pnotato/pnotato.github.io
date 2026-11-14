@@ -80,4 +80,31 @@ const currentPage = pageName(Astro.url.pathname);
   .link:hover {
     color: var(--color-accent);
   }
+
+  .name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* Phones: drop the breadcrumb and tighten spacing so all links fit. */
+  @media (max-width: 640px) {
+    .navbar {
+      padding: 0 1rem 0.75rem;
+    }
+
+    .divider,
+    .page {
+      display: none;
+    }
+
+    .brand,
+    .links {
+      font-size: 1rem;
+    }
+
+    .links {
+      gap: 0.9rem;
+    }
+  }
 </style>
