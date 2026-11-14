@@ -41,6 +41,15 @@ html::-webkit-scrollbar {
 }
 
 /* Display face for headings; body copy stays in the default sans. */
+:root {
+  --gradient-link: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--color-ember) 50%, var(--color-cream)),
+    color-mix(in oklab, var(--color-flare) 50%, var(--color-cream)),
+    color-mix(in oklab, var(--color-accent) 50%, var(--color-cream))
+  );
+}
+
 :where(h1, h2, h3, .display) {
   font-family: var(--font-display);
 }
@@ -77,16 +86,11 @@ html.reveal-ready main :is(h1, h2, h3, p, li):not(.next-phrase, .next-phrase *).
   }
 }
 
-/* Hyperlinks share the sunset gradient used on "Nick" in the hero
-   (ember -> flare -> accent, top to bottom). box-decoration-break keeps the
+/* Hyperlinks use a softer version of the "Nick" sunset gradient: the same
+   ember -> flare -> accent stops, each mixed halfway toward cream. box-decoration-break keeps the
    gradient intact on every line when a link wraps. */
 .link-gradient {
-  background-image: linear-gradient(
-    to bottom,
-    var(--color-ember),
-    var(--color-flare),
-    var(--color-accent)
-  );
+  background-image: var(--gradient-link);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

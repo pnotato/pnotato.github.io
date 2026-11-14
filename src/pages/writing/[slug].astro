@@ -115,14 +115,9 @@ const date = post.data.date.toLocaleDateString("en-US", {
     margin-top: 1.25em;
   }
 
-  /* Same sunset gradient as .link-gradient in global.css. */
+  /* Same gradient as .link-gradient in global.css. */
   .post-body :global(a) {
-    background-image: linear-gradient(
-      to bottom,
-      var(--color-ember),
-      var(--color-flare),
-      var(--color-accent)
-    );
+    background-image: var(--gradient-link);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
